@@ -1,8 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="ka">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Circle - ბრიტანულ-ქართული აკადემიის მშობელთა ლოიალობის პროგრამა: პარტნიორი კომპანიების შეთავაზებები და პრივილეგიები BGA-ს ოჯახებისთვის.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Circle - BGA-ს მშობელთა საზოგადოება</title>
+<script>
+  // Google Analytics 4 measurement ID (G-XXXXXXXXXX); tracking stays off while this is empty.
+  window.CIRCLE_GA_ID = "";
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  if (window.CIRCLE_GA_ID) {
+    var ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + window.CIRCLE_GA_ID;
+    document.head.appendChild(ga);
+    gtag("js", new Date());
+    gtag("config", window.CIRCLE_GA_ID);
+  }
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -11,13 +30,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 82px; }
-  body { margin: 0; background: #F6F4EE; color: #0D1B3E; font-family: Manrope, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #F6F4EE; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: #2743A6; }
   @media (hover: hover) { a:hover { color: #C8102E; } }
+
+  /* Hero slides */
+  @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  @keyframes spinslow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes risein { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .pillar { animation: floaty 6s ease-in-out infinite; }
+  .pillar:nth-child(2) { animation-delay: 1.2s; } .pillar:nth-child(3) { animation-delay: 2.4s; }
+  .ring { animation: spinslow 28s linear infinite; }
+  .rise { animation: risein .8s cubic-bezier(.22,.61,.36,1) both; }
+  .rise2 { animation: risein .8s .12s cubic-bezier(.22,.61,.36,1) both; }
+  .rise3 { animation: risein .8s .24s cubic-bezier(.22,.61,.36,1) both; }
+  .cardlink { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; min-width: 0; box-sizing: border-box; padding: 7px 13px 7px 11px; border-radius: 999px; border: 1.5px solid #0D1B3E; background: #FFFFFF; color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
+  .cardlink:hover { background: #0D1B3E; color: #FFFFFF; }
+  .seal { position: absolute; left: -18px; top: -18px; z-index: 2; width: 92px; height: 92px; border-radius: 50%; background: #0D1B3E; border: 4px solid #FFFFFF; box-sizing: border-box; box-shadow: 0 14px 30px rgba(13,27,62,.35); display: flex; align-items: center; justify-content: center; }
+  .seal img { width: 64px; height: auto; display: block; }
+  .search { width: 100%; box-sizing: border-box; border: 1px solid #D8D4C6; border-radius: 999px; padding: 13px 18px 13px 44px; background: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14.5px; font-weight: 600; color: #0D1B3E; transition: border-color .2s; }
+  .search:focus { outline: none; border-color: #0D1B3E; }
+  .flbl { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B; }
+  .fld { width: 100%; box-sizing: border-box; border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; background: #FAF9F5; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; }
+  .fld:focus { outline: none; border-color: #0D1B3E; background: #FFFFFF; }
+  .fbtn { margin-top: 4px; width: 100%; border: none; border-radius: 999px; padding: 14px 24px; background: #F2B32C; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: all .25s; }
+  .fbtn:hover { background: #0D1B3E; color: #FFFFFF; }
+  .fbtn:disabled { opacity: .6; cursor: default; }
+  .cardlink svg { width: 14px; height: 14px; display: block; flex: 0 0 auto; }
+  .cardlink span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chiplink { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; border: 1px solid #E7E4DB; background: #FAF9F5; color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
+  .chiplink:hover { border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF; }
+  .chiplink svg { width: 14px; height: 14px; display: block; }
+  @media (prefers-reduced-motion: reduce) { .pillar, .ring, .rise, .rise2, .rise3 { animation: none !important; } }
+  @media (max-width: 760px) {
+    [data-screen-label^="Slide"] > div:last-child { min-height: 0 !important; }
+    .hero-art { display: none !important; }
+    .duo { gap: 12px !important; }
+    .duo img { border-width: 4px !important; }
+    .duo img:last-child { margin-top: 22px !important; }
+    .seal { width: 68px !important; height: 68px !important; left: -10px !important; top: -10px !important; border-width: 3px !important; }
+    .seal img { width: 46px !important; }
+  }
   @keyframes tickermove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -31,7 +88,7 @@
     nav > div { padding: 10px 16px !important; }
     /* Desktop links hide behind the hamburger menu on small screens */
     nav > div > div:last-of-type { display: none !important; }
-    nav button[aria-label="Menu"] { display: inline-flex !important; }
+    nav button[aria-label="მენიუ"] { display: inline-flex !important; }
   }
   @media (min-width: 881px) {
     /* Safety: a menu left open while resizing up must not linger */
@@ -39,8 +96,6 @@
   }
   @media (max-width: 760px) {
     [data-screen-label^="Slide"] { padding: 34px 22px 112px !important; gap: 26px !important; grid-template-columns: 1fr !important; }
-    [data-screen-label^="Slide 1"] > div:last-child { min-height: 300px !important; }
-    [data-screen-label^="Slide 2"] > div:last-child, [data-screen-label^="Slide 3"] > div:last-child { min-height: 0 !important; }
     div[style*="tickermove"] > span { font-size: 12.5px !important; }
     input, select, textarea { font-size: 16px !important; }
     footer > div > div:first-child > div > div > a { padding: 10px 0 !important; }
@@ -50,11 +105,11 @@
     }
     #how { padding: 56px 18px 24px !important; }
     #offers { padding: 44px 18px 60px !important; }
-    [data-screen-label="Become a partner CTA"] { padding: 0 18px 64px !important; }
-    [data-screen-label="Become a partner CTA"] > div { padding: 32px 22px !important; }
-    [data-screen-label="Become a partner CTA"] > div > button { width: 100%; }
-    [data-screen-label="Partner form popup"] { align-items: flex-start !important; padding: 12px !important; }
-    [data-screen-label="Partner form popup"] > div { padding: 26px 18px !important; }
+    [data-screen-label="Partner CTA"] { padding: 0 18px 64px !important; }
+    [data-screen-label="Partner CTA"] > div { padding: 32px 22px !important; }
+    [data-screen-label="Partner CTA"] > div > button { width: 100%; }
+    [data-screen-label$="popup"] { align-items: flex-start !important; padding: 12px !important; }
+    [data-screen-label$="popup"] > div { padding: 26px 18px !important; }
     footer > div { padding: 48px 18px 24px !important; }
     footer > div > div:first-child { gap: 28px !important; padding-bottom: 30px !important; }
   }
@@ -66,23 +121,25 @@
   <nav style="position: sticky; top: 0; z-index: 60; background: rgba(246,244,238,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,27,62,.08);">
     <div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <span style="font-family: Sora, sans-serif; font-weight: 800; font-size: 15px; letter-spacing: .22em;">AMBASSADOR</span>
-        <span style="font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: #16295B; border: 1px solid rgba(22,41,91,.25); border-radius: 999px; padding: 4px 10px;">BGA • BIST</span>
+        <img src="brand/circle-logo.png" alt="Circle" style="height: 52px; width: auto; display: block;">
+        <span style="font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: #16295B; border: 1px solid rgba(22,41,91,.25); border-radius: 999px; padding: 4px 10px;">BGA</span>
       </div>
       <div style="display: flex; align-items: center; gap: 22px;">
-        <a href="#offers" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">Offers</a>
-        <a href="#how" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">How it works</a>
-        <button onClick="{{ openPartner }}" style="background: transparent; border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF;">Become a partner</button>
-        <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">Browse offers</a>
+        <a href="#offers" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
+        <a href="#how" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
+        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
+        <button onClick="{{ openMember }}" style="background: transparent; border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF;">გაწევრიანდი</button>
+        <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">შეთავაზებების ნახვა</a>
       </div>
-      <button onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(13,27,62,.25); border-radius: 12px; background: transparent; color: #0D1B3E; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
+      <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(13,27,62,.25); border-radius: 12px; background: transparent; color: #0D1B3E; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F6F4EE; border-bottom: 1px solid rgba(13,27,62,.08); box-shadow: 0 22px 34px rgba(13,27,62,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
-        <a href="#offers" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">Offers</a>
-        <a href="#how" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">How it works</a>
-        <button onClick="{{ openPartnerFromMenu }}" style="margin-top: 4px; border: 1px solid rgba(13,27,62,.3); background: transparent; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">Become a partner</button>
-        <a href="#offers" onClick="{{ closeMenu }}" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">Browse offers</a>
+        <a href="#offers" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
+        <a href="#how" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
+        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
+        <button onClick="{{ openMember }}" style="margin-top: 4px; border: 1px solid rgba(13,27,62,.3); background: transparent; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button>
+        <a href="#offers" onClick="{{ closeMenu }}" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
       </div>
     </sc-if>
   </nav>
@@ -91,63 +148,55 @@
     <div onMouseEnter="{{ pauseEnter }}" onMouseLeave="{{ pauseLeave }}" style="position: relative; overflow: hidden; border-radius: 28px; background: #0D1B3E;">
       <div style="display: flex; transition: transform .65s cubic-bezier(.22,.61,.36,1); transform: {{ trackTransform }};">
 
-        <div data-screen-label="Slide 1 – Programme" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
-          <div style="max-width: 560px;">
-            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 18px;">PARENT LOYALTY PROGRAMME</div>
-            <h1 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(34px, 4.6vw, 58px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">One card.<br>A city of privileges.</h1>
-            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Exclusive offers from partner businesses across Tbilisi – for every BGA and BIST parent, in wellness, travel, dining and more.</p>
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-              <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #FFFFFF;">Browse all offers</a>
-              <a href="#how" style="border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="border-color: #F2B32C; color: #F2B32C;">How it works</a>
+        <div data-screen-label="Slide 1 – Belong" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+          <div class="hero-art ring" style="position: absolute; right: -140px; top: -160px; width: 520px; height: 520px; border-radius: 50%; border: 1.5px solid rgba(242,179,44,.28); pointer-events: none;"><span style="position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: #F2B32C;"></span></div>
+          <div style="max-width: 600px; position: relative;">
+            <div class="rise" style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 18px;">CIRCLE · BGA-ს საზოგადოება</div>
+            <h1 class="rise2" style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.1vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">მეტი, ვიდრე სკოლა.<br>სამყარო, რომელსაც ეკუთვნით.</h1>
+            <p class="rise3" style="font-size: 16.5px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Circle ბრიტანულ-ქართული აკადემიის მშობელთა საზოგადოებაა: ქსელი, რომლის ნაწილიც ხართ, განვითარება მთელი ოჯახისთვის და პრივილეგიები მთელ თბილისში - ყველაფერი ერთი ბარათით.</p>
+            <div class="rise3" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px;">
+              <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #FFFFFF;">ყველა შეთავაზების ნახვა</a>
+              <a href="#how" style="border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="border-color: #F2B32C; color: #F2B32C;">როგორ მუშაობს</a>
             </div>
+            <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .26em; color: rgba(255,255,255,.55);">საზოგადოება <span style="color: #F2B32C;">/</span> განვითარება <span style="color: #F2B32C;">/</span> კუთვნილება</div>
           </div>
-          <div style="position: relative; min-height: 340px; display: flex; align-items: center; justify-content: center;">
-            <div style="position: absolute; width: 300px; height: 300px; border: 2px solid rgba(242,179,44,.28); border-radius: 50%; transform: translate(60px, -30px);"></div>
-            <div style="position: absolute; width: 180px; height: 180px; border: 2px solid rgba(200,16,46,.35); border-radius: 50%; transform: translate(-140px, 90px);"></div>
-            <div style="position: relative; width: min(400px, 92%); aspect-ratio: 1.6; border-radius: 22px; padding: 26px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; transform: rotate(-5deg); background: linear-gradient(135deg, #23408F 0%, #16295B 45%, #0D1B3E 100%); box-shadow: 0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.15);">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: Sora, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .3em; color: #F2B32C;">AMBASSADOR</span>
-                <span style="font-size: 10px; font-weight: 700; letter-spacing: .12em; color: #FFFFFF; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 4px 9px;">BGA • BIST</span>
-              </div>
-              <div style="width: 46px; height: 34px; border-radius: 8px; background: linear-gradient(135deg, #F8D06B, #F2B32C 60%, #D99A14);"></div>
-              <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;">
-                <div>
-                  <div style="font-size: 9.5px; font-weight: 700; letter-spacing: .2em; color: rgba(255,255,255,.55); margin-bottom: 4px;">PARENT</div>
-                  <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 700; color: #FFFFFF; letter-spacing: .02em;">N. Beridze</div>
-                </div>
-                <div style="text-align: right;">
-                  <div style="font-size: 9.5px; font-weight: 700; letter-spacing: .2em; color: rgba(255,255,255,.55); margin-bottom: 4px;">ISSUE DATE</div>
-                  <div style="font-size: 13px; font-weight: 700; letter-spacing: .12em; color: #FFFFFF;">25 / 05 / 2026</div>
-                </div>
-              </div>
+          <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; max-width: 560px;">
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(242,179,44,.45); border-radius: 26px; pointer-events: none;"></div>
+              <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
+              <img src="photos/campus.webp" alt="კამპუსი ლისის ტბასთან, თბილისი" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(0,0,0,.4); display: block;">
             </div>
           </div>
         </div>
 
-        <div data-screen-label="Slide 2 – Featured wellness" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
-          <div style="max-width: 560px;">
-            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #0D1B3E; margin-bottom: 18px;">FEATURED THIS MONTH</div>
-            <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Train all year<br>for less.</h2>
-            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.75); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Lisi Lake Fitness Club – 25% off annual memberships for Ambassador cardholders, including pool and group classes.</p>
-            <a href="#offers" onClick="{{ goWellness }}" style="display: inline-block; background: #0D1B3E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #16295B; color: #F2B32C;">See wellness offers</a>
+        <div data-screen-label="Slide 2 – Community" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+          <div style="max-width: 560px; position: relative;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #0D1B3E; margin-bottom: 18px;">საზოგადოება და კავშირები</div>
+            <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">გახდით ოჯახების<br>წრის ნაწილი.</h2>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.75); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ბრიტანულ-ქართულ აკადემიაში თქვენ ოჯახების აქტიური წრის ნაწილი ხართ. სასკოლო ზეიმებიდან მშობელთა შეხვედრებსა და პარტნიორების საღამოებამდე - ყოველი ახალი ნაცნობობა ახალი მეგობრობის დასაწყისია.</p>
+            <a href="#offers" style="display: inline-block; background: #0D1B3E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #16295B; color: #F2B32C;">ჩვენი პარტნიორები</a>
           </div>
-          <div style="min-height: 340px; display: flex; align-items: center;">
-            <div style="width: 100%; height: clamp(220px, 60vw, 360px); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.25);">
-              <image-slot id="featured-wellness" shape="rounded" radius="20" placeholder="Drop a gym / wellness photo"></image-slot>
+          <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; max-width: 560px;">
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(13,27,62,.3); border-radius: 26px; pointer-events: none;"></div>
+              <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
+              <img src="photos/parent-event.webp" alt="მშობელი და ბავშვი სასკოლო ღონისძიებაზე" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(13,27,62,.3); display: block;">
             </div>
           </div>
         </div>
 
-        <div data-screen-label="Slide 3 – Featured travel" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px;">
-          <div style="max-width: 560px;">
-            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 18px;">NEW PARTNERS</div>
-            <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">Weekends,<br>upgraded.</h2>
-            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Kvareli Lake Resort – 20% off stays from Sunday to Thursday, plus late checkout for Ambassador families.</p>
-            <a href="#offers" onClick="{{ goTravel }}" style="display: inline-block; background: #C8102E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E;">See travel offers</a>
+        <div data-screen-label="Slide 3 – Growth" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+          <div style="max-width: 560px; position: relative;">
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 18px;">განათლება და განვითარება</div>
+            <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">განვითარდით ერთად,<br>როგორც ოჯახი.</h2>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ლექციები, ვორქშოფები და პარტნიორების სესიები როგორც მშობლებისთვის, ისე მოსწავლეებისთვის - ჯანმრთელობიდან და კეთილდღეობიდან მომავლის უნარებამდე, რადგან სასკოლო საზოგადოება ერთად სწავლას არასდროს წყვეტს.</p>
+            <a href="#how" style="display: inline-block; background: #C8102E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E;">როგორ მუშაობს პროგრამა</a>
           </div>
-          <div style="min-height: 340px; display: flex; align-items: center;">
-            <div style="width: 100%; height: clamp(220px, 60vw, 360px); border-radius: 20px; overflow: hidden; box-shadow: 0 24px 50px rgba(13,27,62,.18);">
-              <image-slot id="featured-travel" shape="rounded" radius="20" placeholder="Drop a resort / travel photo"></image-slot>
+          <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; max-width: 560px;">
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(200,16,46,.3); border-radius: 26px; pointer-events: none;"></div>
+              <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
+              <img src="photos/classroom.webp" alt="მასწავლებელი ორ მოსწავლესთან ერთად" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(13,27,62,.22); display: block;">
             </div>
           </div>
         </div>
@@ -156,149 +205,252 @@
 
       <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(13,27,62,.55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
         <div style="display: flex; gap: 8px;">
-          <button onClick="{{ prev }}" aria-label="Previous slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">←</button>
-          <button onClick="{{ next }}" aria-label="Next slide" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">→</button>
+          <button onClick="{{ prev }}" aria-label="წინა სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">←</button>
+          <button onClick="{{ next }}" aria-label="შემდეგი სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">→</button>
         </div>
         <div style="display: flex; gap: 6px; align-items: center;">
           <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="3">
-            <button onClick="{{ dot.onClick }}" aria-label="Go to slide" style="{{ dot.style }}"></button>
+            <button onClick="{{ dot.onClick }}" aria-label="სლაიდზე გადასვლა" style="{{ dot.style }}"></button>
           </sc-for>
         </div>
-        <span style="font-family: Sora, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .18em; color: rgba(255,255,255,.85);">{{ slideNum }} / 03</span>
+        <span style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .18em; color: rgba(255,255,255,.85);">{{ slideNum }} / 03</span>
       </div>
     </div>
   </section>
 
   <div style="max-width: 1400px; margin: 14px auto 0; padding: 0 16px;">
     <div style="overflow: hidden; border-radius: 999px; background: #0D1B3E;">
-      <div style="display: flex; width: max-content; animation: tickermove 30s linear infinite;">
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">WELLNESS &amp; SPORT ✦ TRAVEL ✦ MEDICINE ✦ ENTERTAINMENT ✦ FOOD ✦ AUTOMOTIVE ✦ OTHER ✦&nbsp;</span>
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">WELLNESS &amp; SPORT ✦ TRAVEL ✦ MEDICINE ✦ ENTERTAINMENT ✦ FOOD ✦ AUTOMOTIVE ✦ OTHER ✦&nbsp;</span>
+      <div style="display: flex; width: max-content; animation: tickermove 38s linear infinite;">
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
       </div>
     </div>
   </div>
 
   <section id="how" data-screen-label="How it works" style="max-width: 1200px; margin: 0 auto; padding: 76px 24px 36px;">
-    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">USING YOUR BENEFITS</div>
-    <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 28px; letter-spacing: -0.01em;">How it works</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px;">
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
-        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">01</div>
-        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Choose an offer</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Browse the list below – every offer is available to all BGA and BIST parents, all year round.</p>
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">როგორ ისარგებლოთ შეღავათებით</div>
+    <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 28px; letter-spacing: -0.01em;">როგორ მუშაობს</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px;">
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">01</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">დარეგისტრირდით წევრად</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">შეავსეთ მოკლე სარეგისტრაციო ფორმა. Circle ღიაა BGA-ს ოჯახებისთვის. Circle-ის გუნდი განიხილავს თითოეულ რეგისტრაციას და მალე დაგიკავშირდებათ.</p>
+        <button onClick="{{ openMember }}" style="margin-top: 16px; align-self: flex-start; background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #F2B32C; color: #0D1B3E;">დარეგისტრირდი</button>
       </div>
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
-        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">02</div>
-        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Visit the partner</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">No registration or booking through the school is needed – go directly to the partner location.</p>
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">02</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">აირჩიეთ შეთავაზება</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">დაათვალიერეთ ან მოძებნეთ შეთავაზებები ქვემოთ. თითოეულთან მითითებულია, რას იღებთ და რამდენ ხანს მოქმედებს შეთავაზება.</p>
       </div>
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px;">
-        <div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">03</div>
-        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">Show your parent card</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Present your BGA or BIST parent card before paying, and the discount is applied on the spot.</p>
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">03</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">ეწვიეთ პარტნიორს</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მიდით პირდაპირ პარტნიორთან ან დაჯავშნეთ წინასწარ, თუ შეთავაზება ამას ითვალისწინებს.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">04</div>
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">გაააქტიურეთ თქვენი შეღავათი</div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">თითოეულ შეთავაზებაში მითითებულია, როგორ დაადასტუროთ წევრობა: როგორც წესი, BGA-ს მშობლის ბარათით, ზოგჯერ პრომოკოდით ან დაჯავშნისას Circle-ის ხსენებით. იხილეთ „როგორ გამოვიყენო“ შეთავაზების დეტალებში.</p>
       </div>
     </div>
-    <div style="margin-top: 18px; background: #0D1B3E; color: #FFFFFF; border-radius: 20px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
-      <div style="width: 58px; height: 38px; flex: 0 0 auto; border-radius: 7px; background: linear-gradient(135deg, #F8D06B, #F2B32C 60%, #D99A14); display: flex; align-items: center; justify-content: center;">
-        <span style="font-family: Sora, sans-serif; font-size: 7px; font-weight: 800; letter-spacing: .18em; color: #0D1B3E;">AMB</span>
-      </div>
-      <p style="margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px;"><strong>Your parent card is your pass.</strong> To redeem any offer, simply present your valid BGA or BIST parent card at the partner location before you pay – no coupons or promo codes required.</p>
+    <div style="margin-top: 18px; background: #0D1B3E; color: #FFFFFF; border-radius: 20px; padding: 24px 28px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 46px; width: auto; flex: 0 0 auto; display: block;">
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px;"><strong style="color: #F2B32C;">ექსკლუზიურად BGA-ს საზოგადოებისთვის.</strong> Circle ბრიტანულ-ქართული აკადემიის მშობელთა საზოგადოებაა, ამიტომ ყველა შეთავაზება მხოლოდ რეგისტრირებული BGA-ს ოჯახებისთვისაა. შეთავაზებით სასარგებლოდ მიჰყევით „როგორ გამოვიყენო“ ნაბიჯებს: BGA-ს მშობლის ბარათი, პრომოკოდი ან დაჯავშნისას Circle-ის ხსენება.</p>
     </div>
   </section>
 
   <section id="offers" data-screen-label="Offers" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 84px;">
     <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
       <div>
-        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">PARTNER NETWORK</div>
-        <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0; letter-spacing: -0.01em;">All offers</h2>
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">პარტნიორთა ქსელი</div>
+        <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0; letter-spacing: -0.01em;">ყველა შეთავაზება</h2>
       </div>
       <div style="font-size: 14px; font-weight: 600; color: #5A6478;">{{ offerCountLabel }}</div>
     </div>
 
+    <div style="position: relative; max-width: 480px; margin-bottom: 16px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 17px; top: 50%; width: 17px; height: 17px; margin-top: -8.5px; color: #5A6478; pointer-events: none;"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+      <input type="search" class="search" value="{{ q }}" onChange="{{ onSearch }}" placeholder="მოძებნეთ შეთავაზება, პარტნიორი ან კატეგორია" aria-label="შეთავაზებების ძიება">
+    </div>
+
     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px;">
-      <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="8">
+      <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="9">
         <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}<span style="opacity: .55; font-weight: 700;">{{ chip.count }}</span></button>
       </sc-for>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 18px;">
-      <sc-for list="{{ cards }}" as="card" hint-placeholder-count="6">
-        <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; transition: all .3s;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,27,62,.12); border-color: #0D1B3E;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-auto-rows: 1fr; gap: 18px;">
+      <sc-for list="{{ cards }}" as="card" hint-placeholder-count="1">
+        <div role="button" tabindex="0" onClick="{{ card.open }}" style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 18px; padding: 24px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: all .3s;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,27,62,.12); border-color: #0D1B3E;">
           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-            <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; color: #16295B; text-transform: uppercase;">{{ card.cat }}</span>
-            <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">{{ card.badge }}</span>
+            <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #16295B; text-transform: uppercase;">{{ card.catLabel }}</span>
+            <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;">{{ card.badge }}</span>
           </div>
-          <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.01em;">{{ card.partner }}</div>
-          <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5A6478;">{{ card.deal }}</p>
-          <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
-            <div style="margin-top: auto; padding-top: 12px; border-top: 1px dashed #E3E0D6; font-size: 12px; font-weight: 600; color: #9AA0AF;">{{ card.note }}</div>
-          </sc-if>
+          <div style="height: 64px; flex: 0 0 auto; width: 100%; display: flex; align-items: center; justify-content: flex-start; overflow: hidden;">
+            <img src="{{ card.logo }}" alt="{{ card.partner }} (ლოგო)" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: left center;">
+          </div>
+          <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ card.partner }}</div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: #5A6478; height: 63px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{{ card.desc }}</p>
+          <div style="display: flex; align-items: center; gap: 10px; background: rgba(242,179,44,.16); border: 1px solid rgba(242,179,44,.45); border-radius: 12px; padding: 10px 14px;">
+            <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
+            <div style="font-size: 14px; font-weight: 800; color: #0D1B3E; line-height: 1.5; height: 42px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ card.benefit }}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #5A6478;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ card.validity }}</span></div>
+          <div style="margin-top: auto; padding-top: 10px; border-top: 1px dashed #E3E0D6; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; color: #2743A6;">
+            <div style="display: flex; align-items: center; min-width: 0;"><sc-for list="{{ card.cardLinks }}" as="link" hint-placeholder-count="1"><a href="{{ link.url }}" target="_blank" rel="noopener" class="cardlink" title="{{ link.title }}" onClick="{{ link.onClick }}"><sc-if value="{{ link.isWeb }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></svg></sc-if><sc-if value="{{ link.isFb }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></sc-if><sc-if value="{{ link.isIg }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg></sc-if><span>{{ link.cta }}</span></a></sc-for></div>
+            <span style="display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto;">დეტალურად <span aria-hidden="true">→</span></span>
+          </div>
         </div>
       </sc-for>
     </div>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #FFFFFF; border: 1px dashed #D8D4C6; border-radius: 18px; padding: 34px 24px; text-align: center;">
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 6px;">თქვენი ძიების შესაბამისი შეთავაზება ვერ მოიძებნა</div>
+        <p style="margin: 0 0 16px; font-size: 14px; color: #5A6478;">სცადეთ სხვა სიტყვა ან კვლავ აჩვენეთ ყველა შეთავაზება.</p>
+        <button onClick="{{ clearFilters }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 20px; border-radius: 999px; cursor: pointer;">ყველა შეთავაზების ჩვენება</button>
+      </div>
+    </sc-if>
   </section>
 
-  <section data-screen-label="Become a partner CTA" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 84px;">
+  <section data-screen-label="Partner CTA" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 84px;">
     <div style="background: #16295B; color: #FFFFFF; border-radius: 28px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
       <div style="max-width: 60ch;">
-        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 12px;">FOR BUSINESSES</div>
-        <h2 style="font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px; letter-spacing: -0.01em;">Run a business in Tbilisi?</h2>
-        <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.72); text-wrap: pretty;">Join the Ambassador partner network and introduce your offer to more than 1,000 BGA and BIST families.</p>
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 12px;">ბიზნესისთვის</div>
+        <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px; letter-spacing: -0.01em;">გაქვთ ბიზნესი საქართველოში?</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.72); text-wrap: pretty;">შემოუერთდით Circle-ის პარტნიორთა ქსელს და წარუდგინეთ თქვენი შეთავაზება BGA-ს ოჯახებს.</p>
       </div>
-      <button onClick="{{ openPartner }}" style="background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 800; padding: 15px 26px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF;">Become a partner</button>
+      <button onClick="{{ openPartner }}" style="background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; padding: 15px 26px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF;">დაარეგისტრირე ბიზნესი</button>
     </div>
   </section>
 
-  <sc-if value="{{ partnerOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; overscroll-behavior: contain;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(520px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative;">
-        <button onClick="{{ closePartner }}" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">✕</button>
-        <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}">
-          <div style="text-align: center; padding: 36px 8px;">
+  <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Offer details popup" onClick="{{ closeDetail }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; overscroll-behavior: contain;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(560px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative;">
+        <button onClick="{{ closeDetail }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">✕</button>
+        <div style="display: flex; justify-content: flex-start; align-items: center; gap: 10px; margin-bottom: 18px; padding-right: 48px;">
+          <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #16295B; text-transform: uppercase;">{{ detail.catLabel }}</span>
+          <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">{{ detail.badge }}</span>
+        </div>
+        <div style="height: 72px; width: 100%; display: flex; align-items: center; justify-content: flex-start; overflow: hidden; margin-bottom: 16px;">
+          <img src="{{ detail.logo }}" alt="{{ detail.partner }} (ლოგო)" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: left center;">
+        </div>
+        <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 26px; margin: 0 0 10px; letter-spacing: -0.01em;">{{ detail.partner }}</h3>
+        <sc-if value="{{ detail.hasLinks }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px;">
+            <sc-for list="{{ detail.links }}" as="link" hint-placeholder-count="0"><a href="{{ link.url }}" target="_blank" rel="noopener" class="chiplink" onClick="{{ link.onClick }}"><sc-if value="{{ link.isWeb }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></svg></sc-if><sc-if value="{{ link.isFb }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></sc-if><sc-if value="{{ link.isIg }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg></sc-if><span>{{ link.label }}</span></a></sc-for>
+          </div>
+        </sc-if>
+        <p style="margin: 0 0 18px; font-size: 14.5px; line-height: 1.65; color: #5A6478;">{{ detail.desc }}</p>
+        <div style="display: flex; align-items: flex-start; gap: 10px; background: rgba(242,179,44,.16); border: 1px solid rgba(242,179,44,.45); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px;">
+          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
+          <div>
+            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #16295B; margin-bottom: 2px;">თქვენი სარგებელი</div>
+            <div style="font-size: 15px; font-weight: 800; color: #0D1B3E;">{{ detail.benefit }}</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 10px; background: #F6F4EE; border: 1px solid #E7E4DB; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;">
+          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #0D1B3E; color: #FFFFFF; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center;">?</span>
+          <div>
+            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #16295B; margin-bottom: 2px;">როგორ გამოვიყენო</div>
+            <div style="font-size: 13.5px; font-weight: 600; line-height: 1.55; color: #0D1B3E;">{{ detail.activation }}</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: #16295B; margin-bottom: 18px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ detail.validity }}</span></div>
+        <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+          <div style="padding-top: 14px; border-top: 1px dashed #E3E0D6;">
+            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #9AA0AF; margin-bottom: 8px;">პირობები</div>
+            <sc-for list="{{ detail.conditions }}" as="cond" hint-placeholder-count="2">
+              <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; font-weight: 600; color: #5A6478; line-height: 1.55; margin-bottom: 5px;">
+                <span style="flex: 0 0 auto; margin-top: 7px; width: 5px; height: 5px; border-radius: 50%; background: #C8102E;"></span>
+                <span>{{ cond }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed #E3E0D6; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span style="font-size: 12.5px; color: #5A6478;">ისარგებლეთ ამ შეთავაზებით? გაგვიზიარეთ თქვენი გამოცდილება.</span>
+          <a href="{{ detailFeedbackMail }}" onClick="{{ feedbackClick }}" style="border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; padding: 9px 14px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">შეფასების გაზიარება</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ memberOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Member form popup" onClick="{{ closeMember }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(13,27,62,.35);">
+        <button type="button" onClick="{{ closeMember }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer;">✕</button>
+        <sc-if value="{{ memberSent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 30px 8px 10px;">
             <div style="width: 62px; height: 62px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
-            <h3 style="font-family: Sora, sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">Application received</h3>
-            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 38ch;">Thank you for your interest in the Ambassador programme. Our team will review your offer and get back to you within five working days.</p>
-            <button onClick="{{ closePartner }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">Done</button>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">გმადლობთ, თქვენი მოთხოვნა მიღებულია</h3>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">თქვენი მონაცემები მივიღეთ. Circle-ის გუნდი განიხილავს მათ და მალე დაგიკავშირდებათ.</p>
+            <button type="button" onClick="{{ closeMember }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ memberNotSent }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom: 22px; padding-right: 40px;">
+            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 8px;">წევრობა</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გახდით Circle-ის წევრი</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Circle ღიაა BGA-ს საზოგადოებისთვის. გამოგვიგზავნეთ თქვენი მონაცემები ქვემოთ და Circle-ის გუნდი მალე დაგიკავშირდებათ.</p>
+          </div>
+          <form onSubmit="{{ submitMember }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
+            <label class="flbl">სახელი და გვარი<input class="fld" type="text" name="name" autocomplete="name" required="{{ true }}" placeholder="მშობელი ან მეურვე"></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" placeholder="name@example.com"></label>
+              <label class="flbl">ტელეფონი<input class="fld" type="tel" name="phone" autocomplete="tel" required="{{ true }}" placeholder="+995"></label>
+            </div>
+            <label class="flbl">ბავშვის სახელი და კლასი<input class="fld" type="text" name="child" required="{{ true }}" placeholder="მაგ.: ნინო კ., მე-4 კლასი"></label>
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #0D1B3E;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
+            <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C8102E; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C8102E;">marketing@bga.ge</a>-ზე.</p>
+            </sc-if>
+            <button type="submit" class="fbtn" disabled="{{ memberSending }}">{{ memberButton }}</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ partnerOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(13,27,62,.35);">
+        <button type="button" onClick="{{ closePartner }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer;">✕</button>
+        <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 30px 8px 10px;">
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">განაცხადი მიღებულია</h3>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">გმადლობთ Circle-ით დაინტერესებისთვის. ჩვენი გუნდი განიხილავს თქვენს შეთავაზებას და პასუხს ელ. ფოსტით გამოგიგზავნით.</p>
+            <button type="button" onClick="{{ closePartner }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
           </div>
         </sc-if>
         <sc-if value="{{ partnerNotSent }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-bottom: 22px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 10px;">FOR BUSINESSES</div>
-            <h3 style="font-family: Sora, sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">Become a partner</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Tell us about your business and the offer you would like to make to BGA and BIST families.</p>
+          <div style="margin-bottom: 22px; padding-right: 40px;">
+            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 8px;">ბიზნესისთვის</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">დაარეგისტრირე ბიზნესი</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით თქვენი ბიზნესისა და იმ შეთავაზების შესახებ, რომელიც გსურთ BGA-ს ოჯახებს გაუკეთოთ.</p>
           </div>
           <form onSubmit="{{ submitPartner }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">BUSINESS NAME
-                <input type="text" name="business" required="{{ true }}" placeholder="e.g. Terrace Seventeen" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
-              </label>
-              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">CATEGORY
-                <select name="category" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 10px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
-                  <option>Wellness &amp; Sport</option>
-                  <option>Travel</option>
-                  <option>Medicine</option>
-                  <option>Entertainment</option>
-                  <option>Food</option>
-                  <option>Automotive</option>
-                  <option>Other</option>
-                </select>
-              </label>
+              <label class="flbl">კომპანიის დასახელება<input class="fld" type="text" name="business" autocomplete="organization" required="{{ true }}" placeholder="კომპანიის სახელი"></label>
+              <label class="flbl">კატეგორია<select class="fld" name="category" required="{{ true }}" defaultValue=""><option value="" disabled="{{ true }}">აირჩიეთ კატეგორია</option><option>ველნესი და სპორტი</option><option>მოგზაურობა და დასვენება</option><option>ჯანდაცვა</option><option>გართობა</option><option>გასტრონომია</option><option>ავტო-მოტო</option><option>სერვისები ექსპატებისთვის</option><option>სხვა</option></select></label>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">CONTACT PERSON
-                <input type="text" name="contact" required="{{ true }}" placeholder="Full name" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
-              </label>
-              <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">PHONE
-                <input type="tel" name="phone" placeholder="+995" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
-              </label>
+              <label class="flbl">საკონტაქტო პირი<input class="fld" type="text" name="contact" autocomplete="name" required="{{ true }}" placeholder="სახელი და გვარი"></label>
+              <label class="flbl">ტელეფონი<input class="fld" type="tel" name="phone" autocomplete="tel" required="{{ true }}" placeholder="+995"></label>
             </div>
-            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">EMAIL
-              <input type="email" name="email" required="{{ true }}" placeholder="name@company.ge" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C;">
-            </label>
-            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B;">YOUR PROPOSED OFFER
-              <textarea name="offer" rows="{{ three }}" placeholder="e.g. 15% off the full menu for Ambassador cardholders" style="border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; background: #FAF9F5; outline-color: #F2B32C; resize: vertical;"></textarea>
-            </label>
-            <button type="submit" style="margin-top: 4px; background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, sans-serif; font-size: 15px; font-weight: 800; padding: 14px 24px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">Send application</button>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" placeholder="name@company.ge"></label>
+              <label class="flbl">ვებგვერდი ან სოციალური ქსელის გვერდი<input class="fld" type="text" name="website" placeholder="არასავალდებულო"></label>
+            </div>
+            <label class="flbl">თქვენი შეთავაზება<textarea class="fld" name="offer" rows="{{ three }}" required="{{ true }}" placeholder="მაგ.: 15% ფასდაკლება სრულ მენიუზე Circle-ის წევრებისთვის" style="resize: vertical;"></textarea></label>
+            <sc-if value="{{ partnerError }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C8102E; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C8102E;">marketing@bga.ge</a>-ზე.</p>
+            </sc-if>
+            <button type="submit" class="fbtn" disabled="{{ partnerSending }}">{{ partnerButton }}</button>
           </form>
         </sc-if>
       </div>
@@ -310,32 +462,26 @@
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
         <div>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-            <span style="font-family: Sora, sans-serif; font-weight: 800; font-size: 14px; letter-spacing: .22em;">AMBASSADOR</span>
+            <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 60px; width: auto; display: block;">
           </div>
-          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">A loyalty programme for the parents of the British-Georgian Academy and the British International School of Tbilisi.</p>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">ბრიტანულ-ქართული აკადემიის მშობლების ლოიალობის პროგრამა.</p>
         </div>
         <div>
           <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">BGA</div>
           <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
             <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
-            <a href="mailto:bga@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">bga@bga.ge</a>
+            <a href="mailto:circle@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">circle@bga.ge</a>
+            <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #F2B32C; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
           </div>
         </div>
         <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">BIST</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
-            <a href="tel:+995322801919" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 80 19 19</a>
-            <a href="mailto:bist@bist.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">bist@bist.ge</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">CAMPUS</div>
-          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">Leo Kvachadze 17<br>Lisi Lake Area<br>Tbilisi 0186, Georgia</p>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">კამპუსი</div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">ლეო ქვაჩაძის ქ. 17<br>ლისის ტბის მიმდებარედ<br>თბილისი 0186, საქართველო</p>
         </div>
       </div>
       <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: 12px; color: rgba(255,255,255,.5);">
-        <span>© 2026 BGA • BIST. All rights reserved.</span>
-        <span style="max-width: 60ch;">Offers are provided by partner businesses and may change or end without notice. Parent cards are personal and non-transferable.</span>
+        <span>© 2026 BGA. ყველა უფლება დაცულია.</span>
+        <span style="max-width: 60ch;">შეთავაზებებს უზრუნველყოფენ პარტნიორი კომპანიები და ისინი შეიძლება შეიცვალოს ან შეწყდეს წინასწარი გაფრთხილების გარეშე. მშობლის ბარათი პერსონალურია და მისი გადაცემა სხვა პირისთვის დაუშვებელია.</span>
       </div>
     </div>
   </footer>
@@ -343,46 +489,314 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
-  &quot;autoplay&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero slider&quot; },
+  &quot;autoplay&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero slider&quot; },
   &quot;slideSeconds&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 6, &quot;min&quot;: 3, &quot;max&quot;: 12, &quot;step&quot;: 1, &quot;unit&quot;: &quot;s&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Hero slider&quot; },
   &quot;showTerms&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Offers&quot; }
 }">
 class Component extends DCLogic {
-  state = { slide: 0, cat: "All", paused: false, partnerOpen: false, partnerSent: false, menuOpen: false };
+  state = { slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, memberOpen: false, memberForm: "idle", partnerOpen: false, partnerForm: "idle" };
 
-  CATS = ["Wellness & Sport", "Travel", "Medicine", "Entertainment", "Food", "Automotive", "Other"];
+  CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Automotive", "Expat Services", "Other"];
+  CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
 
   OFFERS = [
-    { cat: "Wellness & Sport", partner: "Lisi Lake Fitness Club", badge: "−25%", deal: "25% off annual memberships, including pool and group classes.", note: "One membership per cardholder" },
-    { cat: "Wellness & Sport", partner: "AquaLife Swimming Centre", badge: "2×1", deal: "Two-for-one day passes at weekends, for parents and children.", note: "Saturdays and Sundays only" },
-    { cat: "Wellness & Sport", partner: "Vake Racket Club", badge: "−15%", deal: "15% off court hire and the junior tennis academy.", note: "Booking required" },
-    { cat: "Travel", partner: "Caucasus Voyager", badge: "−10%", deal: "10% off package tours and guided trips across Georgia.", note: "Not combinable with seasonal sales" },
-    { cat: "Travel", partner: "Kvareli Lake Resort", badge: "−20%", deal: "20% off stays from Sunday to Thursday, plus late checkout.", note: "Subject to availability" },
-    { cat: "Travel", partner: "AeroTransfer", badge: "−30%", deal: "30% off private airport transfers, any time of day.", note: "Book at least 12 hours ahead" },
-    { cat: "Medicine", partner: "MediPoint Clinic", badge: "−20%", deal: "20% off consultations and annual family check-ups.", note: "All branches in Tbilisi" },
-    { cat: "Medicine", partner: "DentArt Studio", badge: "−25%", deal: "25% off dental hygiene, whitening and paediatric dentistry.", note: "Weekdays only" },
-    { cat: "Medicine", partner: "OptiVision", badge: "GIFT", deal: "Free eye exam for the family, plus 15% off frames and lenses.", note: "One exam per family member per year" },
-    { cat: "Entertainment", partner: "CineHall", badge: "2×1", deal: "Two tickets for the price of one, Tuesday to Wednesday.", note: "Up to four tickets per visit" },
-    { cat: "Entertainment", partner: "FunCity Park", badge: "−20%", deal: "20% off family passes to all rides and attractions.", note: "Valid every day" },
-    { cat: "Entertainment", partner: "Tbilisi Concert Series", badge: "−15%", deal: "15% off season tickets and selected performances.", note: "Selected dates only" },
-    { cat: "Food", partner: "Terrace Seventeen", badge: "−15%", deal: "15% off the full menu, including weekend brunch.", note: "Dine-in only" },
-    { cat: "Food", partner: "Coffee Lab", badge: "GIFT", deal: "A free pastry with any drink, every day before noon.", note: "One per cardholder per day" },
-    { cat: "Food", partner: "Bread & Butter Bakery", badge: "−10%", deal: "10% off everything in store, seven days a week.", note: "All locations" },
-    { cat: "Automotive", partner: "AutoSpa Detailing", badge: "−20%", deal: "20% off full interior and exterior detailing.", note: "Booking required" },
-    { cat: "Automotive", partner: "TyrePro Service", badge: "FREE", deal: "Free seasonal tyre change with any tyre storage plan.", note: "Twice per year" },
-    { cat: "Other", partner: "BookHouse", badge: "−15%", deal: "15% off books, stationery and school supplies.", note: "Excludes gift cards" },
-    { cat: "Other", partner: "Lingua Centre", badge: "−10%", deal: "10% off language courses for parents and children.", note: "New enrolments only" }
+    {
+      cats: ["Wellness & Sport"],
+      partner: "Technogym",
+      aka: "ტექნოჯიმი",
+      badge: "−10%",
+      logo: "logos/technogym.png",
+      desc: "Technogym 1983 წელს დაარსებული იტალიური ველნეს-ბრენდია, რომელიც მთელ მსოფლიოშია ცნობილი დიზაინზე ორიენტირებული სავარჯიშო აღჭურვილობითა და ციფრული ქოუჩინგის ეკოსისტემით. მისი ტრენაჟორები 100-ზე მეტი ქვეყნის წამყვან სპორტდარბაზებში, სასტუმროებში, სპორტულ კლუბებსა და კერძო სახლებში დგას, კომპანია კი არაერთი ოლიმპიური თამაშების ოფიციალური მომწოდებელი იყო. თითოეული პროდუქტი - ძალოვანი და კარდიო ხაზებიდან კომპაქტურ სახლის აღჭურვილობასა და Technogym-ის აპლიკაციამდე - იტალიურ დიზაინს ვარჯიშის მეცნიერებასთან აერთიანებს, ასე რომ შეგიძლიათ შექმნათ სერიოზული სავარჯიშო სივრცე, რომელიც იმ ოთახსაც ამშვენებს, სადაც დგას.",
+      benefit: "10%-იანი ფასდაკლება საცალო შესყიდვებზე",
+      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი Technogym-ის მაღაზიაში (კოსტავას ქ. 37/39, Grato Passage). მხოლოდ საცალო შესყიდვებზე; გადახდა საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს შემდგომ შეტყობინებამდე",
+      links: [{ kind: "web", url: "https://www.technogym.com/" }],
+      conditions: ["მხოლოდ საცალო შესყიდვები მაღაზიაში", "გადახდა მხოლოდ ბარათით"]
+    },
+    {
+      cats: ["Wellness & Sport"],
+      partner: "ოკტოპუს ფიტნეს კლუბი",
+      aka: "Oktopus Fitness Club",
+      badge: "−30 ₾",
+      logo: "logos/oktopus.png",
+      desc: "ოკტოპუს ფიტნეს კლუბი არის პრემიუმ ფიტნეს სივრცე, რომელიც აერთიანებს თანამედროვე სავარჯიშო გარემოს, მაღალი ხარისხის ინფრასტრუქტურას, ჯგუფურ ვარჯიშებსა და პერსონალურ ტრენინგებს. ოკტოპუსის თითოეული ფილიალი შექმნილია იმისთვის, რომ ვარჯიში ყოველდღიური ცხოვრების სასიამოვნო და ენერგიულ ნაწილად აქციოს - თანამედროვე სივრცეში, პროფესიონალურ გარემოსა და მრავალფეროვან შესაძლებლობებთან ერთად.",
+      benefit: "აბონემენტი სპეციალურ Circle-ფასად: 30 ლარით ნაკლები ყველა ფილიალში",
+      activation: "მიდით კლუბის მიმღებში (ბათუმი, სანდრო ეული / ვაკე ან სითი მოლი / მზიური), წარადგინეთ მშობლის ბარათი და შეიძინეთ აბონემენტი Circle-ის ფასად. მხოლოდ ადგილზე შესყიდვისას.",
+      validity: "მოქმედებს 2026 წლის 28 ოქტომბრიდან 2027 წლის 11 ოქტომბრამდე",
+      links: [{ kind: "web", url: "https://oktopus.ge/" }, { kind: "facebook", url: "https://www.facebook.com/Oktopusfitness/" }, { kind: "instagram", url: "https://www.instagram.com/oktopusfitness/" }],
+      conditions: ["ბათუმი: 175 ლარი 195 ლარის ნაცვლად", "სანდრო ეული / ვაკე: 205 ლარი 235 ლარის ნაცვლად", "სითი მოლი / მზიური: 305 ლარი 335 ლარის ნაცვლად", "მოქმედებს მხოლოდ ჩამოთვლილ ფილიალებში, თითოეული ფილიალისთვის დადგენილი ფასით; მხოლოდ საცალო, ადგილზე შესყიდვები", "სკოლაში სწავლის სტატუსის შეწყვეტის შემდეგ ახალი აბონემენტი Circle-ის ფასად აღარ გაიცემა"]
+    },
+    {
+      cats: ["Wellness & Sport"],
+      partner: "თბილისის ბალნეოლოგიური სპა კურორტი",
+      aka: "Tbilisi Balneological Spa Resort",
+      badge: "−10%",
+      logo: "logos/tbilisi-balneological-resort.png",
+      desc: "თბილისის ბალნეოლოგიური სპა კურორტი აბანოთუბანში 1938 წლიდან სთავაზობს მკურნალობას თბილისის ბუნებრივ თერმულ წყლებზე, შენობაში, რომელიც 1998 წელს კულტურული მემკვიდრეობის ძეგლად იქნა აღიარებული. ბალნეოლოგიურ პროცედურებთან ერთად კურორტი სთავაზობს სპა და ველნეს-პროცედურებს, მასაჟებს, რეაბილიტაციასა და ფიზიოთერაპიას, კოსმეტოლოგიასა და ჯგუფურ ვარჯიშებს, მათ შორის აკვააერობიკას.",
+      benefit: "„Family Wellness & Care“: 10% ფასდაკლება სპა და გამაჯანსაღებელ პროცედურებზე და 10% ბავშვთა ცურვის შესწავლაზე",
+      activation: "პროცედურის ან ცურვის აბონემენტის გადახდამდე წარადგინეთ მშობლის ბარათი კურორტის მიმღებში (ვახტანგ გორგასლის ქ. 9, ყოველდღე 10:00-21:00). დაჯავშნა: 032 2 43 90 90 ან info@balneo.ge.",
+      validity: "მოქმედებს 2026 წლის 31 დეკემბრამდე",
+      links: [{ kind: "web", url: "https://balneo.ge/" }, { kind: "facebook", url: "https://www.facebook.com/balneo.ge/" }, { kind: "instagram", url: "https://www.instagram.com/balneological.spa.resort/" }],
+      conditions: ["10%-იანი ერთჯერადი ფასდაკლება მშობლებისთვის კურორტის ყველა ძირითად სპა და გამაჯანსაღებელ პროცედურაზე", "10%-იანი ერთჯერადი ფასდაკლება კურორტის აუზზე ბავშვთა ცურვის შესწავლის აბონემენტზე"]
+    },
+    {
+      cats: ["Travel & Leisure", "Expat Services"],
+      partner: "Premium Georgia",
+      aka: "პრემიუმ ჯორჯია",
+      badge: "−15%",
+      logo: "logos/premium-georgia.png",
+      desc: "Premium Georgia ბუტიკური სამოგზაურო, კონსიერჟ და ლაიფსთაილ კომპანიაა, რომელიც საქართველოში ინდივიდუალურ გამოცდილებებსა და პერსონალურ მხარდაჭერას სთავაზობს. მისი სერვისები მოიცავს კერძო მოგზაურობებს, VIP ტრანსფერებს, ექსკლუზიურ გამოცდილებებსა და კერძო ღონისძიებების დაგეგმვას, ასევე დახმარებას რელოკაციის, საბანკო და იურიდიულ საკითხებში. BGA-ს საზოგადოების წევრები ასევე იღებენ პრიორიტეტულ კონსულტაციებს, პრიორიტეტულ დაჯავშნას მაღალ სეზონზე და უფასო კონსულტაციებს მოგზაურობისა და კონსიერჟ-მომსახურების საკითხებზე, მათ შორის საქართველოში რელოკაციაზე.",
+      benefit: "15% ფასდაკლება Premium Georgia-ს ყველა მომსახურებაზე",
+      activation: "დაჯავშნისას (+995 551 055 550, info@premiumgeorgia.com) დაასახელეთ პრომოკოდი BGABIST15 და წარადგინეთ მშობლის ბარათი ან თქვენი სახელის დამადასტურებელი დოკუმენტი. გადაიხადეთ საბანკო ბარათით, რომელზეც მშობლის ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 30 სექტემბრამდე",
+      links: [{ kind: "web", url: "https://premiumgeorgia.com/" }, { kind: "facebook", url: "https://www.facebook.com/profile.php?id=61573476876513" }, { kind: "instagram", url: "https://www.instagram.com/premiumgeorgia/" }],
+      conditions: ["15% ვრცელდება Premium Georgia-ს ყველა მომსახურებაზე", "მოიცავს პრიორიტეტულ კონსულტაციებსა და პრიორიტეტულ დაჯავშნას მაღალ სეზონზე", "უფასო კონსულტაციები მოგზაურობის, ლაიფსთაილისა და რელოკაციის საკითხებზე"]
+    },
+    {
+      cats: ["Travel & Leisure"],
+      partner: "ბუტიკ-სასტუმრო კაბადონი",
+      aka: "Kabadoni Boutique Hotel",
+      badge: "−30%",
+      logo: "logos/kabadoni.png",
+      desc: "ბუტიკ-სასტუმრო კაბადონი სიღნაღის ისტორიულ ცენტრში მდებარეობს: ერთი მხრიდან ალაზნის ველის ვენახებსა და კავკასიონს გადაჰყურებს, მეორე მხრიდან - ძველ ქალაქს. მისი 21 ნომერი არტ-ნუვოს, ძველ ქართულ და აღმოსავლურ მოტივებს აერთიანებს; სასტუმროს აქვს რესტორანი ღია ტერასით, ღვინის ბარი, დახურული აუზი, სპორტდარბაზი და სპა. კაბადონი Preferred Hotels & Resorts-ის (Lifestyle Collection) წევრია.",
+      benefit: "30% ფასდაკლება განთავსებაზე",
+      activation: "დაჯავშნეთ პირდაპირ სასტუმროს მიმღებში (+995 322 24 04 00 ან info@kabadoni.ge) და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. რეგისტრაციისას წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი და გადაიხადეთ საბანკო ბარათით, რომელზეც იგივე სახელია.",
+      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტის ჩათვლით განთავსებაზე",
+      links: [{ kind: "web", url: "https://kabadoni.ge/" }, { kind: "facebook", url: "https://www.facebook.com/hotelkabadoni/" }, { kind: "instagram", url: "https://www.instagram.com/hotelkabadoni/" }],
+      conditions: ["ჯავშანი დამოკიდებულია სასტუმროს დატვირთულობაზე და საჭიროებს წინასწარ დადასტურებას", "ფასდაკლება ვრცელდება სასტუმროს სტანდარტულ გამოცხადებულ ტარიფებზე; მხოლოდ საცალო ჯავშნები"]
+    },
+    {
+      cats: ["Travel & Leisure"],
+      partner: "სამზეო ყვარელი",
+      aka: "Samzeo Kvareli",
+      badge: "−30%",
+      logo: "logos/samzeo-kvareli.png",
+      desc: "სამზეო ყვარელი ეთნო-ბუტიკური სასტუმროა ალაზნის ველის ქინძმარაულის მიკროზონაში: ჩრდილოეთით კავკასიონია, სამხრეთით - ვენახები. 52 000 კვადრატულ მეტრზე, საუკუნოვანი ტყის გარემოცვაში, სამ შენობაში 64 ნომერია რვა კატეგორიაში, ასევე ღია აუზი, საუნა, პადელის კორტი და საბავშვო სათამაშო სივრცე. რესტორანი ტრადიციულ კახურ სამზარეულოს თანამედროვე აქცენტებით აერთიანებს და ღვინის დეგუსტაციებსაც მასპინძლობს.",
+      benefit: "30% ფასდაკლება განთავსებაზე",
+      activation: "დაჯავშნეთ პირდაპირ სასტუმროს მიმღებში (+995 577 94 04 93 ან infokvareli@samzeo.ge) და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. რეგისტრაციისას წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი და გადაიხადეთ საბანკო ბარათით, რომელზეც იგივე სახელია.",
+      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტის ჩათვლით განთავსებაზე",
+      links: [{ kind: "web", url: "https://samzeo.ge/en/kvareli/home" }, { kind: "facebook", url: "https://www.facebook.com/hotelsamzeo" }, { kind: "instagram", url: "https://www.instagram.com/samzeohotels/" }],
+      conditions: ["ჯავშანი დამოკიდებულია სასტუმროს დატვირთულობაზე და საჭიროებს წინასწარ დადასტურებას", "ფასდაკლება ვრცელდება სასტუმროს სტანდარტულ გამოცხადებულ ტარიფებზე; მხოლოდ საცალო ჯავშნები"]
+    },
+    {
+      cats: ["Travel & Leisure"],
+      partner: "ლე პორტი ბათუმი",
+      aka: "Le Port Batumi",
+      badge: "−30%",
+      logo: "logos/le-port.png",
+      desc: "ლე პორტი სასტუმროა ბათუმში, გოგებაშვილის ქ. 30-ში, პლაჟიდან დაახლოებით 200 მეტრში, პორტთან, ბულვართან და „არგოს“ საბაგიროსთან ახლოს. მისი 45 ნომერი და აპარტამენტი სტანდარტული ნომრებიდან სტუდიოებს, საოჯახო ნომრებს, ლუქსებსა და პენტჰაუსს მოიცავს, ბევრ მათგანს სამზარეულო ან მინი-სამზარეულო აქვს; სასტუმრო სთავაზობს საუზმეს, რესტორანსა და ბარს, უფასო კერძო პარკინგსა და 150 სტუმრამდე ტევადობის საკონფერენციო დარბაზს.",
+      benefit: "30% ფასდაკლება განთავსებაზე",
+      activation: "დაჯავშნეთ პირდაპირ სასტუმროს მიმღებში (+995 577 22 77 31 ან info@leport.ge) და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. რეგისტრაციისას წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი და გადაიხადეთ საბანკო ბარათით, რომელზეც იგივე სახელია.",
+      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტის ჩათვლით განთავსებაზე",
+      links: [{ kind: "web", url: "https://leport.ge/" }, { kind: "facebook", url: "https://www.facebook.com/leportbatumi/" }, { kind: "instagram", url: "https://www.instagram.com/leport_batumi/" }],
+      conditions: ["ჯავშანი დამოკიდებულია სასტუმროს დატვირთულობაზე და საჭიროებს წინასწარ დადასტურებას", "ფასდაკლება ვრცელდება სასტუმროს სტანდარტულ გამოცხადებულ ტარიფებზე; მხოლოდ საცალო ჯავშნები"]
+    },
+    {
+      cats: ["Healthcare"],
+      partner: "კავკასიის მედიცინის ცენტრი",
+      aka: "Caucasus Medical Centre CMC",
+      badge: "−10–15%",
+      logo: "logos/cmc.png",
+      desc: "JCI საერთაშორისო აკრედიტაციის მქონე კავკასიის მედიცინის ცენტრი ბრიტანულ-ქართული აკადემიის მოსწავლეებს, მშობლებსა და პედაგოგებს ექსკლუზიურ პირობებს სთავაზობს: 15%-იან ფასდაკლებას ამბულატორიულ სერვისებზე და 10%-იან ფასდაკლებას სტანდარტულ და ინდივიდუალურ Check-Up პაკეტებზე. სპეციალური პირობები მოქმედებს კავკასიის მედიცინის ცენტრში, მისამართზე: თბილისი, პ. ქავთარაძის ქ. 23. დამატებითი ინფორმაციისთვის დარეკეთ: 0322 600 600.",
+      benefit: "15% ფასდაკლება ამბულატორიულ სერვისებზე, 10% Check-Up პაკეტებზე",
+      activation: "მომსახურების მიღებისას წარადგინეთ მშობლის ბარათი მიმღებში, მისამართზე: პ. ქავთარაძის ქ. 23; ფასდაკლება ადგილზევე გამოიყენება. ინფორმაცია: 032 2 600 600.",
+      validity: "მოქმედებს 2027 წლის 18 თებერვლამდე",
+      links: [{ kind: "web", url: "https://cmchospital.ge/" }, { kind: "facebook", url: "https://www.facebook.com/CaucasusMedicalCentre/" }, { kind: "instagram", url: "https://www.instagram.com/cmchospital" }],
+      conditions: ["15% ფასდაკლება ამბულატორიულ სერვისებზე და 10% სტანდარტულ და ინდივიდუალურ Check-Up პაკეტებზე", "არ ვრცელდება უკვე ფასდაკლებულ სერვისებზე"]
+    },
+    {
+      cats: ["Healthcare"],
+      partner: "კარაპს მედლაინი",
+      aka: "Caraps Medline",
+      badge: "−20%",
+      logo: "logos/caraps-medline.png",
+      desc: "კარაპს მედლაინი საქართველოში პირველი კლინიკაა, აკრედიტებული AACI-ის (American Accreditation Commission International) მიერ - ეს ნიშნავს, რომ მისი ხარისხის სტანდარტები სრულად შეესაბამება წამყვან ამერიკულ პროტოკოლებს. კლინიკა მუშაობს მხოლოდ FDA-ს მიერ დამტკიცებულ აღჭურვილობასა და პროდუქტებთან და სთავაზობს თანამედროვე ტექნოლოგიებზე, პროფესიონალურ მომსახურებასა და ინდივიდუალურ მიდგომაზე დაფუძნებულ სერვისებს. შეთავაზება მოიცავს აპარატურულ, საინექციო და დერმატოლოგიურ პროცედურებს, კანის დიაგნოსტიკასა და ლაზერულ ეპილაციას.",
+      benefit: "20% ფასდაკლება კლინიკის ყველა სერვისზე",
+      activation: "პროცედურამდე წარადგინეთ მშობლის ბარათი კლინიკაში და გადაიხადეთ საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 24 თებერვლამდე",
+      links: [{ kind: "web", url: "https://carapsmedline.ge/" }, { kind: "facebook", url: "https://www.facebook.com/carapsmedlineclinic/" }, { kind: "instagram", url: "https://www.instagram.com/carapsmedline/" }],
+      conditions: ["მოიცავს საინექციო და აპარატურულ პროცედურებს, ლაზერულ ეპილაციას, დერმატოლოგის კონსულტაციას, კანის დიაგნოსტიკასა და აკნეს მკურნალობის კომპლექსურ პროგრამას", "არ ვრცელდება უკვე ფასდაკლებულ სერვისებზე; ფასდაკლებები ერთმანეთს არ ემატება"]
+    },
+    {
+      cats: ["Healthcare"],
+      partner: "მედიქლაბჯორჯია",
+      aka: "MediClubGeorgia MCG",
+      badge: "პრიორიტეტული წვდომა",
+      logo: "logos/mediclubgeorgia.png",
+      desc: "მედიქლაბჯორჯია მოსწავლეებსა და მათ ოჯახებს სთავაზობს მაღალი ხარისხის, ინდივიდუალურ საჭიროებებზე მორგებულ და პრევენციაზე ორიენტირებულ სამედიცინო მომსახურებას. მისი საწევრო პროგრამა მიზნად ისახავს თითოეული ოჯახის ჯანმრთელობის მხარდაჭერას, სამედიცინო სერვისებზე ხელმისაწვდომობის გამარტივებასა და ჯანმრთელობის საკითხებზე ინფორმირებულობის ამაღლებას - იმ რწმენით, რომ ჯანმრთელობაზე ზრუნვა მხოლოდ სამედიცინო საჭიროების გაჩენისას არ იწყება, არამედ პრევენციით, განათლებითა და უწყვეტი მხარდაჭერით ყალიბდება.",
+      benefit: "პრივილეგირებული წვდომა და პერსონალური ჯანდაცვის მენეჯერის 24/7 მხარდაჭერა",
+      activation: "დაუკავშირდით მედიქლაბჯორჯიას (+995 32 225 1991 ან mcg@mcg.ge), თქვით, რომ BGA-ს Circle-ის წევრი ოჯახი ხართ, და პირველ ვიზიტზე წარადგინეთ მშობლის ბარათი. შემდეგ ვიზიტებს თქვენი პერსონალური ჯანდაცვის მენეჯერი დაგიგეგმავთ.",
+      validity: "მოქმედებს 2027 წლის ოქტომბრამდე",
+      links: [{ kind: "web", url: "https://www.mcg.ge/" }, { kind: "facebook", url: "https://www.facebook.com/MediClubGeorgia/" }, { kind: "instagram", url: "https://www.instagram.com/mediclubgeorgia/" }],
+      conditions: ["მოიცავს პრივილეგირებულ წვდომას მედიქლაბჯორჯიას სამედიცინო მომსახურებაზე, პერსონალური ჯანდაცვის მენეჯერის 24/7 მხარდაჭერას და ინდივიდუალურ პრევენციულ სკრინინგებს ბავშვებისა და მშობლებისთვის"]
+    },
+    {
+      cats: ["Entertainment"],
+      partner: "ილუზიების მუზეუმი",
+      aka: "Museum of Illusions",
+      badge: "−46%-მდე",
+      logo: "logos/museum-of-illusions.png",
+      desc: "ბეთლემის ქუჩა 10-ში მდებარე ილუზიების მუზეუმში სტუმრებს ვიზუალური ილუზიები, ინტერაქტიული ექსპონატები და გონების თავსატეხები ელოდებათ. ის სამუზეუმო სივრცეს ჰოლოზეუმსა და პლანეტარიუმთან იზიარებს, ასე რომ ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად შეგიძლიათ გააერთიანოთ.",
+      benefit: "ზრდასრულის ბილეთი 25 ლარი 40 ლარის ნაცვლად",
+      activation: "წარადგინეთ მშობლის ბარათი სალაროში, ბეთლემის ქ. 10-ში, და გადაიხადეთ საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 16 მარტამდე",
+      links: [{ kind: "web", url: "https://museumofillusions.ge/" }, { kind: "facebook", url: "https://www.facebook.com/museumofillusions.tbilisi/" }, { kind: "instagram", url: "https://www.instagram.com/museumofillusions_tbilisi/" }],
+      conditions: ["მხოლოდ ილუზიების მუზეუმი: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად (ჰოლოზეუმი ან პლანეტარიუმი): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ფასები ერთ ზრდასრულზეა (18+); 18 წლამდე ვიზიტორები საბავშვო ბილეთის სტანდარტულ ფასს იხდიან", "ინდივიდუალური (არაჯგუფური) ვიზიტები; ჯგუფური ფასები შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
+    },
+    {
+      cats: ["Entertainment"],
+      partner: "ჰოლოზეუმი",
+      aka: "Holoseum",
+      badge: "−46%-მდე",
+      logo: "logos/holoseum.png",
+      desc: "ბეთლემის ქუჩა 10-ში მდებარე ჰოლოზეუმი აუდიო-ვიზუალურ ციფრულ გამოფენას წარმოადგენს, რომელიც ვან გოგის შემოქმედებითაა შთაგონებული. ის სამუზეუმო სივრცეს ილუზიების მუზეუმსა და პლანეტარიუმთან იზიარებს, ასე რომ ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად შეგიძლიათ გააერთიანოთ.",
+      benefit: "ზრდასრულის ბილეთი 25 ლარი 40 ლარის ნაცვლად",
+      activation: "წარადგინეთ მშობლის ბარათი სალაროში, ბეთლემის ქ. 10-ში, და გადაიხადეთ საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 16 მარტამდე",
+      links: [{ kind: "facebook", url: "https://www.facebook.com/holoseum/" }],
+      conditions: ["მხოლოდ ჰოლოზეუმი: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად (ილუზიების მუზეუმი ან პლანეტარიუმი): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ფასები ერთ ზრდასრულზეა (18+); 18 წლამდე ვიზიტორები საბავშვო ბილეთის სტანდარტულ ფასს იხდიან", "ინდივიდუალური (არაჯგუფური) ვიზიტები; ჯგუფური ფასები შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
+    },
+    {
+      cats: ["Entertainment"],
+      partner: "პლანეტარიუმი",
+      aka: "Planetarium",
+      badge: "−46%-მდე",
+      logo: "logos/planetarium.png",
+      desc: "ბეთლემის ქუჩა 10-ში მდებარე პლანეტარიუმი გუმბათოვან ეკრანზე იმერსიულ, საგანმანათლებლო ანიმაციას აჩვენებს; აქვეა გიგანტური კალეიდოსკოპი კოსმიური გამოსახულებებით. ის სამუზეუმო სივრცეს ილუზიების მუზეუმსა და ჰოლოზეუმთან იზიარებს, ასე რომ ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად შეგიძლიათ გააერთიანოთ.",
+      benefit: "ზრდასრულის ბილეთი 25 ლარი 40 ლარის ნაცვლად",
+      activation: "წარადგინეთ მშობლის ბარათი სალაროში, ბეთლემის ქ. 10-ში, და გადაიხადეთ საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 16 მარტამდე",
+      links: [{ kind: "facebook", url: "https://www.facebook.com/betlemi10/" }],
+      conditions: ["მხოლოდ პლანეტარიუმი: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად (ილუზიების მუზეუმი ან ჰოლოზეუმი): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ფასები ერთ ზრდასრულზეა (18+); 18 წლამდე ვიზიტორები საბავშვო ბილეთის სტანდარტულ ფასს იხდიან", "ინდივიდუალური (არაჯგუფური) ვიზიტები; ჯგუფური ფასები შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
+    },
+    {
+      cats: ["Gastronomy", "Travel & Leisure"],
+      partner: "The Biltmore Tbilisi",
+      aka: "ბილტმორი თბილისი",
+      badge: "−10–20%",
+      logo: "logos/biltmore.png",
+      desc: "ისტორიულ რუსთაველის გამზირზე, დედაქალაქის გულში მდებარე სასტუმრო The Biltmore Tbilisi ხუთვარსკვლავიანი ღირსშესანიშნაობაა, სადაც თანამედროვე ელეგანტურობა, გამორჩეული არქიტექტურა და დახვეწილი სტუმართმოყვარეობა ერთიანდება. სასტუმროს ზედა სართულებზე განთავსებული რესტორანი Xeme და ბარი Xeme დაბადების დღეებისა და კერძო ზეიმებისთვის განსაკუთრებულ გარემოს ქმნის თბილისის პანორამული ხედებით. დაბადების დღის პაკეტები 120 ლარიდან იწყება ერთ პერსონაზე და მოიცავს სპეციალურად შედგენილ მენიუს, საფირმო უალკოჰოლო კოქტეილს, მაგიდის ელეგანტურ გაწყობასა და უფასო პარკირებას.",
+      benefit: "10% ფასდაკლება დაბადების დღის პაკეტებზე, 20% ფასდაკლება ნომრებზე",
+      activation: "დაჯავშნეთ სასტუმროს გაყიდვების გუნდთან, ნომერზე +995 32 272 72 72, და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. გადაიხადეთ საბანკო ბარათით, რომელზეც მშობლის ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს შემდგომ შეტყობინებამდე",
+      links: [{ kind: "web", url: "https://www.thebiltmorehotels.com/en/biltmore-tbilisi/" }, { kind: "facebook", url: "https://www.facebook.com/BiltmoreTbilisi" }, { kind: "instagram", url: "https://www.instagram.com/biltmoretbilisi" }],
+      conditions: ["დაბადების დღის პაკეტები 120 ლარიდან ერთ პერსონაზე; სივრცეები: რესტორანი Xeme (31-ე სართული, 15-20 სტუმარი) ან ბარი Xeme (30-ე სართული, 25-80 სტუმარი, ექსკლუზიური სარგებლობით)", "შეფ-მზარეულის მიერ ადგილზე კერძების მომზადების სადგურები, ინდივიდუალური შეკვეთით დამზადებული ტორტები და დამატებითი დეკორი ხელმისაწვდომია დამატებითი საფასურით", "20% ფასდაკლება სასტუმროს გამოქვეყნებულ ტარიფზე ყველა კატეგორიის ნომერზე, გარდა 30 დეკემბრიდან 5 იანვრის ჩათვლით პერიოდისა"]
+    },
+    {
+      cats: ["Travel & Leisure", "Gastronomy"],
+      partner: "სასტუმრო ხედი",
+      aka: "Khedi Hotel",
+      badge: "−10%",
+      logo: "logos/khedi.png",
+      desc: "სასტუმრო „ხედი“ 57-ნომრიანი სასტუმროა ავლაბარში, ქეთევან დედოფლის გამზირ 24-ში, სამების საკათედრო ტაძრიდან და მშვიდობის ხიდიდან რამდენიმე წუთის სავალზე. ზედა სართულზე რესტორანი „ხედი“ ქართული სამზარეულოს თანამედროვე ინტერპრეტაციას სთავაზობს, სუში ბარი „ხედი“ ახალ თევზსა და ზღვის პროდუქტებზეა ორიენტირებული, სასტუმროს კი ლობი-ბარი, 150 ადამიანამდე ტევადობის საკონფერენციო დარბაზი და ფიტნეს-სტუდიაც აქვს.",
+      benefit: "10% ფასდაკლება რესტორანზე, სუში ბარზე, განთავსებასა და საკონფერენციო დარბაზზე",
+      activation: "შეკვეთისას ან რეგისტრაციისას წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი, ან დაჯავშნისას (+995 322 448 000 ან sales@khedihotel.ge) თქვით, რომ BGA-ს Circle-ის წევრი ხართ. გადაიხადეთ საბანკო ბარათით, რომელზეც მშობლის ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 31 დეკემბრამდე",
+      links: [{ kind: "web", url: "https://khedihotel.ge/" }, { kind: "facebook", url: "https://www.facebook.com/profile.php?id=61551007004330" }, { kind: "instagram", url: "https://www.instagram.com/khedihotel/" }],
+      conditions: ["ვრცელდება მხოლოდ გამოცხადებულ ფასებზე და არ ჯამდება სხვა ფასდაკლებებთან ან უკვე ფასდაკლებულ შეთავაზებებთან", "მხოლოდ საცალო შესყიდვები"]
+    },
+    {
+      cats: ["Gastronomy"],
+      partner: "რესტორანი ანდაზი",
+      aka: "Restaurant Andazi",
+      badge: "−20%",
+      logo: "logos/andazi.png",
+      desc: "რესტორანი „ანდაზი“ სასტუმრო Hilton Garden Inn Tbilisi Chavchavadze-ს რესტორანი და ბარია, ჭავჭავაძის გამზირ 64ა-ში. მისი სამზარეულო ინოვაციასა და ტრადიციას აერთიანებს - ფერმიდან მაგიდამდე სალათებიდან გულდასმით შერჩეულ ინგრედიენტებზე აგებულ ძირითად კერძებამდე - გარემოში, სადაც თანამედროვე ელეგანტურობა თბილ, რუსტიკულ შტრიხებს ერწყმის და რომელიც ინტიმურ ვახშმებს, საქმიან შეხვედრებსა და დიდ შეკრებებს თანაბრად ერგება.",
+      benefit: "20% ფასდაკლება სარესტორნო მომსახურებაზე",
+      activation: "დაჯავშნეთ მაგიდა ნომერზე +995 322 25 20 20 და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. რესტორანში წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი და გადაიხადეთ საბანკო ბარათით, რომელზეც იგივე სახელია.",
+      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტის ჩათვლით",
+      links: [{ kind: "web", url: "https://www.hilton.com/en/hotels/tbsgigi-hilton-garden-inn-tbilisi-chavchavadze/dining/" }],
+      conditions: ["ვრცელდება რესტორნის სტანდარტული მენიუს ფასებზე; მხოლოდ საცალო, ადგილზე ვიზიტები"]
+    },
+    {
+      cats: ["Gastronomy"],
+      partner: "იაკობის ეზო",
+      aka: "Iakobis Ezo",
+      badge: "Circle Privilege",
+      logo: "logos/iakobis-ezo.png",
+      desc: "იაკობის ეზო დიზაინ-სასტუმრო Artizan-ის ბაღი, რესტორანი და ბარია იაკობ ნიკოლაძის ქ. 14-ში. ნეო-ბისტრო თანამედროვე, გულის გამათბობელ კერძებს სთავაზობს, რომლებიც ქართულ კულინარიულ ფესვებს ფრანგული ტექნიკით ხვეწს - საუზმიდან გვიან ვახშმამდე.",
+      benefit: "Iakobis Ezo Circle Privilege: შეფ-მზარეულის მისასალმებელი კომპლიმენტი, პრიორიტეტული ჯავშანი და სასურველი მაგიდა, მოწვევები გასტრონომიულ ღონისძიებებზე",
+      activation: "დაჯავშნეთ მაგიდა ონლაინ iakobisezo.resos.com-ზე (კომენტარის ველში მიუთითეთ CIRCLE Community) ან დარეკეთ ნომერზე +995 511 77 77 32 და ახსენეთ CIRCLE. ვიზიტისას წარადგინეთ მშობლის ბარათი.",
+      validity: "მოქმედებს 2026 წლის 28 ოქტომბრიდან 2027 წლის 27 ოქტომბრამდე",
+      links: [{ kind: "web", url: "https://www.artizanhotels.com/content/1117/5201/Iakobis-Ezo" }, { kind: "facebook", url: "https://www.facebook.com/iakobisezo" }, { kind: "instagram", url: "https://www.instagram.com/iakobisezo" }],
+      conditions: ["Chef’s Welcome Bite - შეფ-მზარეულის სპეციალური კომპლიმენტი, თითო მაგიდაზე ერთხელ, საკვების შეკვეთის შემთხვევაში", "მაგიდის პრიორიტეტული დაჯავშნა და სასურველი ადგილის შერჩევის შესაძლებლობა", "სპეციალური მოწვევები Iakobis Ezo-ს შერჩეულ გასტრონომიულ ღონისძიებებსა და განსაკუთრებულ საღამოებზე", "ყველა პრივილეგია მოქმედებს ხელმისაწვდომობის გათვალისწინებით"]
+    },
+    {
+      cats: ["Automotive"],
+      partner: "GeoWrap",
+      aka: "ჯეოვრაპი",
+      badge: "−5–40%",
+      logo: "logos/geowrap.png",
+      desc: "GeoWrap ავტომობილის დაცვისა და დეტეილინგის სტუდიაა დიდ დიღომში, თბილისი (ფარსადანის ქ. 9). სტუდია აკრავს თვითაღდგენად დამცავ ფირს - გამჭვირვალე პრიალას, გამჭვირვალე მატსა და ფერადს - და Gyeon-ის კერამიკულ საფარს, ასევე სთავაზობს პოლირებასა და ნაკაწრების მოშორებას, მინების დაბურვას, ინტერიერის ხმისა და ვიბროიზოლაციასა და დისკების თერმულ შეღებვას.",
+      benefit: "სპეციალური Circle-ფასები დამცავ ფირზე, კერამიკულ საფარზე, პოლირებაზე, მინების დაბურვასა და ავტომობილის მოვლის სხვა სერვისებზე: 5%-დან 40%-მდე ფასდაკლება",
+      activation: "დაჯავშნეთ სტუდიოში ნომერზე +995 593 10 31 13 (WhatsApp +995 593 73 13 31) და ეწვიეთ GeoWrap-ს დიდ დიღომში, ფარსადანის ქ. 9-ში. შეკვეთისას წარადგინეთ მშობლის ბარათი და გადაიხადეთ საბანკო ბარათით, რომელზეც სკოლის ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 30 სექტემბრამდე",
+      links: [{ kind: "web", url: "https://www.geowrap.ge/" }, { kind: "facebook", url: "https://www.facebook.com/Geowrapgeo/" }, { kind: "instagram", url: "https://www.instagram.com/geowrap/" }],
+      conditions: ["გამჭვირვალე პრიალა თვითაღდგენადი ფირი რისკის ზონაზე (ძრავის საფარი, წინა ბამპერი, წინა ფრთები, წინა მაშუქები, სარკის ხუფები): სედანი 4050 ლარი 4860 ლარის ნაცვლად", "თვითაღდგენადი ფირი მთლიან ავტომობილზე (გამჭვირვალე პრიალა, გამჭვირვალე მატი ან ფერადი): სედანი 9990 ლარი 10530-11340 ლარის ნაცვლად", "პოლირება და ნაკაწრების მოშორება: სედანი 800-1000 ლარი 1000-1200 ლარის ნაცვლად", "Gyeon-ის კერამიკული საფარი: 800 ლარიდან 1000 ლარის ნაცვლად (6-თვიანი Can Coat) 2500 ლარამდე 3000 ლარის ნაცვლად (5-წლიანი, ორი ფენა)", "მინების დაბურვა: სტანდარტული სედანი 1200 ლარი 1500 ლარის ნაცვლად; დისკების თერმული შეღებვა 2000 ლარიდან 2200 ლარის ნაცვლად", "ჯიპისა და Luxury supercar-ის ფასები შეთანხმებითაა განსაზღვრული; თქვენი ავტომობილის ფასს სტუდია დაგიდასტურებთ", "მხოლოდ საცალო, ადგილზე შესყიდვები სტუდიოში"]
+    },
+    {
+      cats: ["Automotive"],
+      partner: "Lexus Tbilisi",
+      aka: "ლექსუს თბილისი",
+      badge: "−10%",
+      logo: "logos/lexus.png",
+      desc: "Lexus Tbilisi Lexus-ის დილერი და სერვისცენტრია აღმაშენებლის ხეივან 160-ში, სადაც შეგიძლიათ გაეცნოთ Lexus-ის მიმდინარე მოდელებს და ავტომობილი ორიგინალური Lexus-ის ნაწილებით მოამსახუროთ. სერვისცენტრი ავტომობილის ფირით დაფარვის მომსახურებასაც სთავაზობს.",
+      benefit: "10% ფასდაკლება სერვისის პროცედურებზე, სათადარიგო ნაწილებსა და ავტომობილის ფირით დაფარვაზე",
+      activation: "დაჯავშნეთ სერვისი ნომერზე +995 32 222 55 88, info@lexus-tbilisi.ge-ზე ან ონლაინ lexusgeorgia.ge-ზე და თქვით, რომ BGA-ს Circle-ის წევრი ხართ. გადახდამდე წარადგინეთ მშობლის ბარათი და თქვენი სახელის დამადასტურებელი დოკუმენტი სერვისის მიმღებში.",
+      validity: "მოქმედებს 2027 წლის 14 ოქტომბრამდე",
+      links: [{ kind: "web", url: "https://www.lexusgeorgia.ge/" }],
+      conditions: ["ვრცელდება Lexus Tbilisi-ის სერვისის პროცედურებზე, სათადარიგო ნაწილებსა და ავტომობილის ფირით დაფარვაზე", "არ ვრცელდება საბურავებზე და ახალი ავტომობილების შეძენაზე", "მხოლოდ საცალო შესყიდვები"]
+    },
+    {
+      cats: ["Expat Services"],
+      partner: "ExpatHub",
+      aka: "ექსპატჰაბი",
+      badge: "−15%",
+      logo: "logos/expathub.png",
+      desc: "ExpatHub ეხმარება ექსპატებს საქართველოში ცხოვრების, ბიზნესისა და საიმიგრაციო პროცედურების საკითხებში. მისი სერვისები მოიცავს საბუღალტრო და საგადასახადო კონსულტაციას, ბიზნესის რეგისტრაციას, დახმარებას იმიგრაციისა და ბინადრობის საკითხებში, იურიდიულ მომსახურებასა და კონსულტაციას უძრავი ქონების შეძენასა თუ ქირაობაზე. გუნდი ორენოვან მხარდაჭერას სთავაზობს.",
+      benefit: "15% ფასდაკლება ExpatHub-ის მომსახურებაზე და პრიორიტეტული ჩაწერა",
+      activation: "ჩაეწერეთ კონსულტაციაზე ნომერზე +995 5111 39929 ან info@expathub.ge-ზე, მომსახურების შეკვეთისას წარადგინეთ მშობლის ბარათი და გადაიხადეთ საბანკო ბარათით, რომელზეც იგივე სახელია. სამუშაო საათები: ორშაბათი-ხუთშაბათი, 10:00-17:00.",
+      validity: "მოქმედებს 2027 წლის მარტამდე",
+      links: [{ kind: "web", url: "https://expathub.ge/" }, { kind: "facebook", url: "https://www.facebook.com/ExpatHub.GE/" }, { kind: "instagram", url: "https://www.instagram.com/expathub.ge/" }],
+      conditions: ["მოიცავს იურიდიულ, საგადასახადო და საბუღალტრო მომსახურებას, მათ შორის სასწავლო ბინადრობის ნებართვებს მოსწავლეებისა და მშობლებისთვის და უძრავი ქონების შეძენას", "პრიორიტეტული ჩაწერა Circle-ის წევრებისთვის"]
+    },
+    {
+      cats: ["Other"],
+      partner: "სახლი 7",
+      aka: "Sakhli7 Sakhli",
+      badge: "−5–15%",
+      logo: "logos/sakhli7.png",
+      desc: "კომპანია „სახლი“ ქმნის ავეჯს მთელი სახლისთვის, სწრაფი და მომხმარებელზე ორიენტირებული სერვისით. მისი მიზანია, პრემიუმ ხარისხის ავეჯით სივრცეს განსაკუთრებული ხასიათი შესძინოს. „სახლი“ ასევე გთავაზობთ ვირტუალური რეალობის ინოვაციურ სერვისს, რომლითაც მომხმარებელს ეძლევა საშუალება, პროექტი რეალურ მასშტაბში იხილოს და დიზაინის შეთანხმების პროცესში ადგილზევე შეიტანოს ცვლილებები.",
+      benefit: "5-15% ფასდაკლება ავეჯის მთელ კოლექციაზე",
+      activation: "შეკვეთისას წარადგინეთ მშობლის ბარათი „სახლის“ შოურუმში და გადაიხადეთ საბანკო ბარათით, რომელზეც თქვენი ბარათის იდენტური სახელია.",
+      validity: "მოქმედებს 2027 წლის 8 მარტამდე",
+      links: [{ kind: "web", url: "https://sakhli7.ge/" }],
+      conditions: ["ფასდაკლების ოდენობა (5-15%) პროდუქტის კატეგორიის მიხედვით განისაზღვრება", "მხოლოდ საცალო, ადგილზე შესყიდვები"]
+    },
+    {
+      cats: ["Expat Services"],
+      partner: "Origen Collection",
+      aka: "ორიჯენ კოლექშენი",
+      badge: "უფასო კონსულტაცია",
+      logo: "logos/origen-collection.png",
+      desc: "Origen Collection ბუტიკური, საოჯახო სააგენტოა, რომელიც საერთაშორისო მყიდველებს საქართველოში ძვირადღირებულ უძრავ ქონებასა და კონსიერჟ-მომსახურებას სთავაზობს, აქცენტით ექსკლუზიურ რეზიდენციებზე თბილისში, ბათუმსა და სხვა მოთხოვნად ადგილებში - პენტჰაუსებიდან და პრემიუმ აპარტამენტებიდან მთის ვილებსა და ზღვისპირა სახლებამდე. ის მხარს უჭერს საქართველოში რელოკაციულ ოჯახებს, მყიდველებსა და ინვესტორებს შეძენის ან ქირაობის მთელი პროცესის განმავლობაში, მათ შორის ქონების შერჩევაში, ინდივიდუალურ დათვალიერებაში, მოლაპარაკებებსა და იურიდიული და ტექნიკური შემოწმების კოორდინაციაში.",
+      benefit: "უფასო საკონსულტაციო მომსახურება (სტანდარტული ფასი $2500-4000) და 5%-მდე ფასდაკლება უძრავ ქონებაზე",
+      activation: "მისწერეთ executive@origencollection.com-ზე ან დარეკეთ ნომერზე +995 599 380 011, ახსენეთ Circle-ის პროგრამა და კონსულტაციაზე წარადგინეთ მშობლის ბარათი.",
+      validity: "მოქმედებს 2027 წლის 30 სექტემბრამდე",
+      links: [{ kind: "web", url: "https://www.origencollection.com/" }],
+      conditions: ["მოიცავს უფასო კერძო კონსულტაციას, ქონების პრიორიტეტულ მოძიებას, წვდომას შერჩეულ off-market უძრავ ქონებაზე, ქონების პირველად შესწავლას მოლაპარაკებების დაწყებამდე და ტრანზაქციის შემდგომ დახმარებას", "5%-მდე ფასდაკლება Origen Collection-ის მიერ წარმოდგენილ უძრავ ქონებაზე, სადაც ეს შესაძლებელია, მფლობელის ან დეველოპერის დადასტურების შემდეგ"]
+    }
   ];
 
   componentDidMount() {
     this.startTimer();
-    this.onKey = (e) => { if (e.key === "Escape") this.setState({ partnerOpen: false, menuOpen: false }); };
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, memberOpen: false, partnerOpen: false }); };
     window.addEventListener("keydown", this.onKey);
   }
-  componentWillUnmount() { clearInterval(this.timer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
+  componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.searchTimer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
   componentDidUpdate(prevProps) {
     if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
-    document.body.style.overflow = this.state.partnerOpen ? "hidden" : "";
+    document.body.style.overflow = this.state.detailIdx !== null || this.state.memberOpen || this.state.partnerOpen ? "hidden" : "";
   }
   startTimer() {
     clearInterval(this.timer);
@@ -392,16 +806,57 @@ class Component extends DCLogic {
     }, s * 1000);
   }
 
+  track(name, params) {
+    if (window.gtag) window.gtag("event", name, params || {});
+  }
+
+  sendForm(e, form, subject, event) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    if (fd.get("_honey")) return;
+    const payload = {};
+    fd.forEach((v, k) => { if (k !== "_honey") payload[k] = v; });
+    payload._subject = subject(payload);
+    payload._template = "table";
+    payload._captcha = "false";
+    this.setState({ [form]: "sending" });
+    fetch("https://formsubmit.co/ajax/marketing@bga.ge", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
+      .then(r => r.json())
+      .then(d => {
+        if (String(d.success) !== "true") throw new Error(d.message);
+        this.setState({ [form]: "sent" });
+        this.track(event.name, event.params);
+      })
+      .catch(() => this.setState({ [form]: "error" }));
+  }
+
   renderVals() {
-    const { slide, cat } = this.state;
-    const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #D8D4C6", background: "#FFFFFF", color: "#0D1B3E", fontFamily: "Manrope, sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
-    const chips = ["All", ...this.CATS].map(c => ({
-      label: c === "All" ? "All offers" : c,
-      count: c === "All" ? this.OFFERS.length : this.OFFERS.filter(o => o.cat === c).length,
-      onClick: () => this.setState({ cat: c }),
+    const { slide, cat, q, memberForm, partnerForm } = this.state;
+    const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #D8D4C6", background: "#FFFFFF", color: "#0D1B3E", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
+    const activeCats = this.CATS.filter(c => this.OFFERS.some(o => o.cats.includes(c)));
+    const chips = ["All", ...activeCats].map(c => ({
+      label: c === "All" ? "ყველა შეთავაზება" : this.CAT_KA[c] || c,
+      count: c === "All" ? this.OFFERS.length : this.OFFERS.filter(o => o.cats.includes(c)).length,
+      onClick: () => { this.setState({ cat: c }); this.track("select_category", { category: c }); },
       style: c === cat ? { ...chipBase, background: "#0D1B3E", color: "#FFFFFF", borderColor: "#0D1B3E" } : chipBase
     }));
-    const cards = cat === "All" ? this.OFFERS : this.OFFERS.filter(o => o.cat === cat);
+    const LINK_LABEL = { web: "ვებგვერდი", facebook: "Facebook", instagram: "Instagram" };
+    const LINK_CTA = { web: "ვებგვერდი", facebook: "Facebook გვერდი", instagram: "Instagram გვერდი" };
+    const decorate = o => {
+      const links = (o.links || []).map(l => ({ ...l, label: LINK_LABEL[l.kind] || "ბმული", cta: LINK_CTA[l.kind] || "გადასვლა", isWeb: l.kind === "web", isFb: l.kind === "facebook", isIg: l.kind === "instagram", title: o.partner + ": " + (LINK_LABEL[l.kind] || "ბმული"),
+        onClick: (e) => { e.stopPropagation(); this.track("partner_link_click", { partner: o.partner, link_type: l.kind }); } }));
+      const primary = ["web", "facebook", "instagram"].map(k => links.find(l => l.kind === k)).find(Boolean);
+      return { ...o, catLabel: o.cats.map(c => this.CAT_KA[c] || c).join(" · "), links, hasLinks: links.length > 0, cardLinks: primary ? [primary] : [] };
+    };
+    const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    const matches = o => {
+      const text = [o.partner, o.aka || "", o.desc, o.benefit, o.cats.join(" "), o.cats.map(c => this.CAT_KA[c] || c).join(" "), o.activation].join(" ").toLowerCase();
+      return terms.every(t => text.includes(t));
+    };
+    const cards = this.OFFERS.filter(o => (cat === "All" || o.cats.includes(cat)) && matches(o))
+      .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: this.OFFERS.indexOf(o) }); this.track("select_content", { content_type: "offer", item_id: o.partner }); } }));
+    const detail = this.state.detailIdx === null ? null : decorate(this.OFFERS[this.state.detailIdx]);
+    const mail = (subject, body) => "mailto:circle@bga.ge?subject=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : "");
     const dots = [0, 1, 2].map(i => ({
       onClick: () => this.setState({ slide: i }),
       style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#F2B32C" : "rgba(255,255,255,.35)" }
@@ -414,22 +869,49 @@ class Component extends DCLogic {
       pauseEnter: () => this.setState({ paused: true }),
       pauseLeave: () => this.setState({ paused: false }),
       goWellness: () => this.setState({ cat: "Wellness & Sport" }),
-      goTravel: () => this.setState({ cat: "Travel" }),
-      openPartner: () => this.setState({ partnerOpen: true, partnerSent: false }),
-      closePartner: () => this.setState({ partnerOpen: false }),
       toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),
-      openPartnerFromMenu: () => this.setState({ menuOpen: false, partnerOpen: true, partnerSent: false }),
       menuOpen: this.state.menuOpen,
+      q,
+      onSearch: (e) => {
+        const value = e.target.value;
+        this.setState({ q: value });
+        clearTimeout(this.searchTimer);
+        if (value.trim()) this.searchTimer = setTimeout(() => this.track("search", { search_term: value.trim() }), 900);
+      },
+      clearFilters: () => this.setState({ q: "", cat: "All" }),
+      noResults: cards.length === 0,
+      openMember: () => { this.setState({ memberOpen: true, memberForm: "idle", menuOpen: false }); this.track("form_open", { form: "member" }); },
+      closeMember: () => this.setState({ memberOpen: false }),
+      memberOpen: this.state.memberOpen,
+      memberSent: memberForm === "sent",
+      memberNotSent: memberForm !== "sent",
+      memberSending: memberForm === "sending",
+      memberError: memberForm === "error",
+      memberButton: memberForm === "sending" ? "იგზავნება…" : "რეგისტრაცია",
+      submitMember: (e) => this.sendForm(e, "memberForm", p => "Circle BGA membership registration: " + p.name, { name: "sign_up", params: { method: "circle_form" } }),
+      openPartner: () => { this.setState({ partnerOpen: true, partnerForm: "idle" }); this.track("form_open", { form: "partner" }); },
+      closePartner: () => this.setState({ partnerOpen: false }),
+      partnerOpen: this.state.partnerOpen,
+      partnerSent: partnerForm === "sent",
+      partnerNotSent: partnerForm !== "sent",
+      partnerSending: partnerForm === "sending",
+      partnerError: partnerForm === "error",
+      partnerButton: partnerForm === "sending" ? "იგზავნება…" : "განაცხადის გაგზავნა",
+      submitPartner: (e) => this.sendForm(e, "partnerForm", p => "Circle BGA partner application: " + p.business, { name: "generate_lead", params: { lead_type: "partner" } }),
+      feedbackClick: () => { this.setState({ menuOpen: false }); this.track("feedback_click"); },
+      three: 3,
       menuIcon: this.state.menuOpen ? "✕" : "☰",
       stopClick: (e) => e.stopPropagation(),
-      submitPartner: (e) => { e.preventDefault(); this.setState({ partnerSent: true }); },
-      partnerOpen: this.state.partnerOpen,
-      partnerSent: this.state.partnerSent,
-      partnerNotSent: !this.state.partnerSent,
-      three: 3,
+      detail,
+      detailOpen: !!detail,
+      closeDetail: () => this.setState({ detailIdx: null }),
+      feedbackMail: mail("Circle BGA feedback"),
+      detailFeedbackMail: mail("Circle BGA feedback: " + (detail ? detail.partner : "general")),
       dots, chips, cards,
-      offerCountLabel: `${cards.length} ${cards.length === 1 ? "offer" : "offers"}${cat === "All" ? " · 7 categories" : ""}`,
+      offerCountLabel: cat === "All" && !terms.length
+        ? `${this.OFFERS.length} შეთავაზება · ${activeCats.length} კატეგორია`
+        : `${cards.length} შეთავაზება ${this.OFFERS.length}-დან`,
       showNotes: this.props.showTerms ?? true
     };
   }
