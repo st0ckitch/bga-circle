@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#055397">
 <meta name="description" content="Circle - ბრიტანულ-ქართული აკადემიის მშობელთა ლოიალობის პროგრამა: პარტნიორი კომპანიების შეთავაზებები და პრივილეგიები BGA-ს ოჯახებისთვის.">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
@@ -34,9 +35,9 @@
 <script src="./image-slot.js"></script>
 <style>
   html { scroll-behavior: smooth; scroll-padding-top: 82px; }
-  body { margin: 0; background: #F6F4EE; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-  a { color: #2743A6; }
-  @media (hover: hover) { a:hover { color: #C8102E; } }
+  body { margin: 0; background: #F2F7FB; color: #055397; font-family: Manrope, 'Noto Sans Georgian', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #055397; }
+  @media (hover: hover) { a:hover { color: #04427A; } }
 
   /* Hero slides */
   @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
@@ -48,22 +49,22 @@
   .rise { animation: risein .8s cubic-bezier(.22,.61,.36,1) both; }
   .rise2 { animation: risein .8s .12s cubic-bezier(.22,.61,.36,1) both; }
   .rise3 { animation: risein .8s .24s cubic-bezier(.22,.61,.36,1) both; }
-  .cardlink { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; min-width: 0; box-sizing: border-box; padding: 7px 13px 7px 11px; border-radius: 999px; border: 1.5px solid #0D1B3E; background: #FFFFFF; color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
-  .cardlink:hover { background: #0D1B3E; color: #FFFFFF; }
-  .seal { position: absolute; left: -18px; top: -18px; z-index: 2; width: 92px; height: 92px; border-radius: 50%; background: #0D1B3E; border: 4px solid #FFFFFF; box-sizing: border-box; box-shadow: 0 14px 30px rgba(13,27,62,.35); display: flex; align-items: center; justify-content: center; }
+  .cardlink { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; min-width: 0; box-sizing: border-box; padding: 7px 13px 7px 11px; border-radius: 999px; border: 1.5px solid #055397; background: #FFFFFF; color: #055397; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
+  .cardlink:hover { background: #055397; color: #FFFFFF; }
+  .seal { position: absolute; left: -18px; top: -18px; z-index: 2; width: 92px; height: 92px; border-radius: 50%; background: #055397; border: 4px solid #FFFFFF; box-sizing: border-box; box-shadow: 0 14px 30px rgba(4,46,86,.35); display: flex; align-items: center; justify-content: center; }
   .seal img { width: 64px; height: auto; display: block; }
-  .search { width: 100%; box-sizing: border-box; border: 1px solid #D8D4C6; border-radius: 999px; padding: 13px 18px 13px 44px; background: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14.5px; font-weight: 600; color: #0D1B3E; transition: border-color .2s; }
-  .search:focus { outline: none; border-color: #0D1B3E; }
-  .flbl { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #16295B; }
-  .fld { width: 100%; box-sizing: border-box; border: 1px solid #D8D4C6; border-radius: 12px; padding: 12px 14px; background: #FAF9F5; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 600; color: #0D1B3E; }
-  .fld:focus { outline: none; border-color: #0D1B3E; background: #FFFFFF; }
-  .fbtn { margin-top: 4px; width: 100%; border: none; border-radius: 999px; padding: 14px 24px; background: #F2B32C; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: all .25s; }
-  .fbtn:hover { background: #0D1B3E; color: #FFFFFF; }
+  .search { width: 100%; box-sizing: border-box; border: 1px solid #C9D8E6; border-radius: 999px; padding: 13px 18px 13px 44px; background: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14.5px; font-weight: 600; color: #055397; transition: border-color .2s; }
+  .search:focus { outline: none; border-color: #055397; }
+  .flbl { display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: #04427A; }
+  .fld { width: 100%; box-sizing: border-box; border: 1px solid #C9D8E6; border-radius: 12px; padding: 12px 14px; background: #F7FAFD; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 600; color: #055397; }
+  .fld:focus { outline: none; border-color: #055397; background: #FFFFFF; }
+  .fbtn { margin-top: 4px; width: 100%; border: none; border-radius: 999px; padding: 14px 24px; background: #A0DBF2; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; transition: all .25s; }
+  .fbtn:hover { background: #055397; color: #FFFFFF; }
   .fbtn:disabled { opacity: .6; cursor: default; }
   .cardlink svg { width: 14px; height: 14px; display: block; flex: 0 0 auto; }
   .cardlink span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .chiplink { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; border: 1px solid #E7E4DB; background: #FAF9F5; color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
-  .chiplink:hover { border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF; }
+  .chiplink { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; border: 1px solid #DCE6EF; background: #F7FAFD; color: #055397; text-decoration: none; font-size: 12.5px; font-weight: 800; transition: all .2s; }
+  .chiplink:hover { border-color: #055397; background: #055397; color: #FFFFFF; }
   .chiplink svg { width: 14px; height: 14px; display: block; }
   @media (prefers-reduced-motion: reduce) { .pillar, .ring, .rise, .rise2, .rise3 { animation: none !important; } }
   @media (max-width: 760px) {
@@ -118,95 +119,95 @@
 
 <div data-screen-label="Ambassador one-pager" style="min-width: 320px;">
 
-  <nav style="position: sticky; top: 0; z-index: 60; background: rgba(246,244,238,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(13,27,62,.08);">
+  <nav style="position: sticky; top: 0; z-index: 60; background: rgba(242,247,251,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(4,46,86,.08);">
     <div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px;">
         <img src="brand/circle-logo.png" alt="Circle" style="height: 52px; width: auto; display: block;">
-        <span style="font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: #16295B; border: 1px solid rgba(22,41,91,.25); border-radius: 999px; padding: 4px 10px;">BGA</span>
+        <span style="font-size: 10.5px; font-weight: 700; letter-spacing: .14em; color: #04427A; border: 1px solid rgba(5,83,151,.35); border-radius: 999px; padding: 4px 10px;">BGA</span>
       </div>
       <div style="display: flex; align-items: center; gap: 22px;">
-        <a href="#offers" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
-        <a href="#how" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
-        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
-        <button onClick="{{ openMember }}" style="background: transparent; border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #0D1B3E; background: #0D1B3E; color: #FFFFFF;">გაწევრიანდი</button>
-        <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">შეთავაზებების ნახვა</a>
+        <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
+        <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
+        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
+        <button onClick="{{ openMember }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">გაწევრიანდი</button>
+        <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეთავაზებების ნახვა</a>
       </div>
-      <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(13,27,62,.25); border-radius: 12px; background: transparent; color: #0D1B3E; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
+      <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(4,46,86,.25); border-radius: 12px; background: transparent; color: #055397; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F6F4EE; border-bottom: 1px solid rgba(13,27,62,.08); box-shadow: 0 22px 34px rgba(13,27,62,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
-        <a href="#offers" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
-        <a href="#how" onClick="{{ closeMenu }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
-        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #0D1B3E; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
-        <button onClick="{{ openMember }}" style="margin-top: 4px; border: 1px solid rgba(13,27,62,.3); background: transparent; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button>
-        <a href="#offers" onClick="{{ closeMenu }}" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
+      <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F2F7FB; border-bottom: 1px solid rgba(4,46,86,.08); box-shadow: 0 22px 34px rgba(4,46,86,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
+        <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
+        <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
+        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
+        <button onClick="{{ openMember }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button>
+        <a href="#offers" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
       </div>
     </sc-if>
   </nav>
 
   <section data-screen-label="Hero slider" style="max-width: 1400px; margin: 0 auto; padding: 16px 16px 0;">
-    <div onMouseEnter="{{ pauseEnter }}" onMouseLeave="{{ pauseLeave }}" style="position: relative; overflow: hidden; border-radius: 28px; background: #0D1B3E;">
+    <div onMouseEnter="{{ pauseEnter }}" onMouseLeave="{{ pauseLeave }}" style="position: relative; overflow: hidden; border-radius: 28px; background: #055397;">
       <div style="display: flex; transition: transform .65s cubic-bezier(.22,.61,.36,1); transform: {{ trackTransform }};">
 
-        <div data-screen-label="Slide 1 – Belong" style="min-width: 100%; box-sizing: border-box; background: #0D1B3E; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
-          <div class="hero-art ring" style="position: absolute; right: -140px; top: -160px; width: 520px; height: 520px; border-radius: 50%; border: 1.5px solid rgba(242,179,44,.28); pointer-events: none;"><span style="position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: #F2B32C;"></span></div>
+        <div data-screen-label="Slide 1 – Belong" style="min-width: 100%; box-sizing: border-box; background: #055397; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+          <div class="hero-art ring" style="position: absolute; right: -140px; top: -160px; width: 520px; height: 520px; border-radius: 50%; border: 1.5px solid rgba(160,219,242,.4); pointer-events: none;"><span style="position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: #A0DBF2;"></span></div>
           <div style="max-width: 600px; position: relative;">
-            <div class="rise" style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 18px;">CIRCLE · BGA-ს საზოგადოება</div>
+            <div class="rise" style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2; margin-bottom: 18px;">CIRCLE · BGA-ს საზოგადოება</div>
             <h1 class="rise2" style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.1vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">მეტი, ვიდრე სკოლა.<br>სამყარო, რომელსაც ეკუთვნით.</h1>
             <p class="rise3" style="font-size: 16.5px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">Circle ბრიტანულ-ქართული აკადემიის მშობელთა საზოგადოებაა: ქსელი, რომლის ნაწილიც ხართ, განვითარება მთელი ოჯახისთვის და პრივილეგიები მთელ თბილისში - ყველაფერი ერთი ბარათით.</p>
             <div class="rise3" style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px;">
-              <a href="#offers" style="background: #F2B32C; color: #0D1B3E; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #FFFFFF;">ყველა შეთავაზების ნახვა</a>
-              <a href="#how" style="border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="border-color: #F2B32C; color: #F2B32C;">როგორ მუშაობს</a>
+              <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #FFFFFF;">ყველა შეთავაზების ნახვა</a>
+              <a href="#how" style="border: 1px solid rgba(255,255,255,.35); color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 700; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="border-color: #A0DBF2; color: #A0DBF2;">როგორ მუშაობს</a>
             </div>
-            <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .26em; color: rgba(255,255,255,.55);">საზოგადოება <span style="color: #F2B32C;">/</span> განვითარება <span style="color: #F2B32C;">/</span> კუთვნილება</div>
+            <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: .26em; color: rgba(255,255,255,.55);">საზოგადოება <span style="color: #A0DBF2;">/</span> განვითარება <span style="color: #A0DBF2;">/</span> კუთვნილება</div>
           </div>
           <div style="position: relative; display: flex; align-items: center; justify-content: center;">
             <div style="position: relative; width: 100%; max-width: 560px;">
-              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(242,179,44,.45); border-radius: 26px; pointer-events: none;"></div>
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(160,219,242,.9); border-radius: 26px; pointer-events: none;"></div>
               <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
               <img src="photos/campus.webp" alt="კამპუსი ლისის ტბასთან, თბილისი" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(0,0,0,.4); display: block;">
             </div>
           </div>
         </div>
 
-        <div data-screen-label="Slide 2 – Community" style="min-width: 100%; box-sizing: border-box; background: #F2B32C; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+        <div data-screen-label="Slide 2 – Community" style="min-width: 100%; box-sizing: border-box; background: #A0DBF2; color: #055397; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
           <div style="max-width: 560px; position: relative;">
-            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #0D1B3E; margin-bottom: 18px;">საზოგადოება და კავშირები</div>
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 18px;">საზოგადოება და კავშირები</div>
             <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">გახდით ოჯახების<br>წრის ნაწილი.</h2>
-            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.75); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ბრიტანულ-ქართულ აკადემიაში თქვენ ოჯახების აქტიური წრის ნაწილი ხართ. სასკოლო ზეიმებიდან მშობელთა შეხვედრებსა და პარტნიორების საღამოებამდე - ყოველი ახალი ნაცნობობა ახალი მეგობრობის დასაწყისია.</p>
-            <a href="#offers" style="display: inline-block; background: #0D1B3E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #16295B; color: #F2B32C;">ჩვენი პარტნიორები</a>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(4,46,86,.75); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ბრიტანულ-ქართულ აკადემიაში თქვენ ოჯახების აქტიური წრის ნაწილი ხართ. სასკოლო ზეიმებიდან მშობელთა შეხვედრებსა და პარტნიორების საღამოებამდე - ყოველი ახალი ნაცნობობა ახალი მეგობრობის დასაწყისია.</p>
+            <a href="#offers" style="display: inline-block; background: #055397; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #04427A; color: #A0DBF2;">ჩვენი პარტნიორები</a>
           </div>
           <div style="position: relative; display: flex; align-items: center; justify-content: center;">
             <div style="position: relative; width: 100%; max-width: 560px;">
-              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(13,27,62,.3); border-radius: 26px; pointer-events: none;"></div>
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(4,46,86,.3); border-radius: 26px; pointer-events: none;"></div>
               <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
-              <img src="photos/parent-event.webp" alt="მშობელი და ბავშვი სასკოლო ღონისძიებაზე" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(13,27,62,.3); display: block;">
+              <img src="photos/parent-event.webp" alt="მშობელი და ბავშვი სასკოლო ღონისძიებაზე" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(4,46,86,.3); display: block;">
             </div>
           </div>
         </div>
 
-        <div data-screen-label="Slide 3 – Growth" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #0D1B3E; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
+        <div data-screen-label="Slide 3 – Growth" style="min-width: 100%; box-sizing: border-box; background: #FFFFFF; color: #055397; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 40px; align-items: center; padding: 64px 56px 88px; position: relative; overflow: hidden;">
           <div style="max-width: 560px; position: relative;">
-            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 18px;">განათლება და განვითარება</div>
+            <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 18px;">განათლება და განვითარება</div>
             <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(32px, 4.2vw, 54px); line-height: 1.06; margin: 0 0 18px; letter-spacing: -0.01em;">განვითარდით ერთად,<br>როგორც ოჯახი.</h2>
-            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(13,27,62,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ლექციები, ვორქშოფები და პარტნიორების სესიები როგორც მშობლებისთვის, ისე მოსწავლეებისთვის - ჯანმრთელობიდან და კეთილდღეობიდან მომავლის უნარებამდე, რადგან სასკოლო საზოგადოება ერთად სწავლას არასდროს წყვეტს.</p>
-            <a href="#how" style="display: inline-block; background: #C8102E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E;">როგორ მუშაობს პროგრამა</a>
+            <p style="font-size: 16.5px; line-height: 1.6; color: rgba(4,46,86,.72); margin: 0 0 28px; max-width: 46ch; text-wrap: pretty;">ლექციები, ვორქშოფები და პარტნიორების სესიები როგორც მშობლებისთვის, ისე მოსწავლეებისთვის - ჯანმრთელობიდან და კეთილდღეობიდან მომავლის უნარებამდე, რადგან სასკოლო საზოგადოება ერთად სწავლას არასდროს წყვეტს.</p>
+            <a href="#how" style="display: inline-block; background: #055397; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 800; padding: 13px 22px; border-radius: 999px; transition: all .25s;" style-hover="background: #04427A;">როგორ მუშაობს პროგრამა</a>
           </div>
           <div style="position: relative; display: flex; align-items: center; justify-content: center;">
             <div style="position: relative; width: 100%; max-width: 560px;">
-              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(200,16,46,.3); border-radius: 26px; pointer-events: none;"></div>
+              <div style="position: absolute; inset: -14px 14px 14px -14px; border: 2px solid rgba(5,83,151,.3); border-radius: 26px; pointer-events: none;"></div>
               <div class="seal"><img src="brand/circle-logo-reverse.png" alt="Circle"></div>
-              <img src="photos/classroom.webp" alt="მასწავლებელი ორ მოსწავლესთან ერთად" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(13,27,62,.22); display: block;">
+              <img src="photos/classroom.webp" alt="მასწავლებელი ორ მოსწავლესთან ერთად" loading="lazy" style="position: relative; width: 100%; height: clamp(230px, 28vw, 380px); object-fit: cover; border-radius: 22px; box-shadow: 0 28px 60px rgba(4,46,86,.22); display: block;">
             </div>
           </div>
         </div>
 
       </div>
 
-      <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(13,27,62,.55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
+      <div style="position: absolute; left: 24px; bottom: 20px; display: flex; align-items: center; gap: 18px; background: rgba(4,46,86,.55); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 16px;">
         <div style="display: flex; gap: 8px;">
-          <button onClick="{{ prev }}" aria-label="წინა სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">←</button>
-          <button onClick="{{ next }}" aria-label="შემდეგი სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #0D1B3E;">→</button>
+          <button onClick="{{ prev }}" aria-label="წინა სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #055397;">←</button>
+          <button onClick="{{ next }}" aria-label="შემდეგი სლაიდი" style="width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #FFFFFF; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF; color: #055397;">→</button>
         </div>
         <div style="display: flex; gap: 6px; align-items: center;">
           <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="3">
@@ -219,50 +220,50 @@
   </section>
 
   <div style="max-width: 1400px; margin: 14px auto 0; padding: 0 16px;">
-    <div style="overflow: hidden; border-radius: 999px; background: #0D1B3E;">
+    <div style="overflow: hidden; border-radius: 999px; background: #055397;">
       <div style="display: flex; width: max-content; animation: tickermove 38s linear infinite;">
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #F2B32C;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
       </div>
     </div>
   </div>
 
   <section id="how" data-screen-label="How it works" style="max-width: 1200px; margin: 0 auto; padding: 76px 24px 36px;">
-    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">როგორ ისარგებლოთ შეღავათებით</div>
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 14px;">როგორ ისარგებლოთ შეღავათებით</div>
     <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 28px; letter-spacing: -0.01em;">როგორ მუშაობს</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px;">
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
-        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">01</div>
+      <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">01</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">დარეგისტრირდით წევრად</div>
         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">შეავსეთ მოკლე სარეგისტრაციო ფორმა. Circle ღიაა BGA-ს ოჯახებისთვის. Circle-ის გუნდი განიხილავს თითოეულ რეგისტრაციას და მალე დაგიკავშირდებათ.</p>
-        <button onClick="{{ openMember }}" style="margin-top: 16px; align-self: flex-start; background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #F2B32C; color: #0D1B3E;">დარეგისტრირდი</button>
+        <button onClick="{{ openMember }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">დარეგისტრირდი</button>
       </div>
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
-        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">02</div>
+      <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">02</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">აირჩიეთ შეთავაზება</div>
         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">დაათვალიერეთ ან მოძებნეთ შეთავაზებები ქვემოთ. თითოეულთან მითითებულია, რას იღებთ და რამდენ ხანს მოქმედებს შეთავაზება.</p>
       </div>
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
-        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">03</div>
+      <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">03</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">ეწვიეთ პარტნიორს</div>
         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მიდით პირდაპირ პარტნიორთან ან დაჯავშნეთ წინასწარ, თუ შეთავაზება ამას ითვალისწინებს.</p>
       </div>
-      <div style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
-        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #F2B32C; margin-bottom: 14px;">04</div>
+      <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
+        <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">04</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">გაააქტიურეთ თქვენი შეღავათი</div>
         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">თითოეულ შეთავაზებაში მითითებულია, როგორ დაადასტუროთ წევრობა: როგორც წესი, BGA-ს მშობლის ბარათით, ზოგჯერ პრომოკოდით ან დაჯავშნისას Circle-ის ხსენებით. იხილეთ „როგორ გამოვიყენო“ შეთავაზების დეტალებში.</p>
       </div>
     </div>
-    <div style="margin-top: 18px; background: #0D1B3E; color: #FFFFFF; border-radius: 20px; padding: 24px 28px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+    <div style="margin-top: 18px; background: #055397; color: #FFFFFF; border-radius: 20px; padding: 24px 28px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
       <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 46px; width: auto; flex: 0 0 auto; display: block;">
-      <p style="margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px;"><strong style="color: #F2B32C;">ექსკლუზიურად BGA-ს საზოგადოებისთვის.</strong> Circle ბრიტანულ-ქართული აკადემიის მშობელთა საზოგადოებაა, ამიტომ ყველა შეთავაზება მხოლოდ რეგისტრირებული BGA-ს ოჯახებისთვისაა. შეთავაზებით სასარგებლოდ მიჰყევით „როგორ გამოვიყენო“ ნაბიჯებს: BGA-ს მშობლის ბარათი, პრომოკოდი ან დაჯავშნისას Circle-ის ხსენება.</p>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; flex: 1 1 320px;"><strong style="color: #A0DBF2;">ექსკლუზიურად BGA-ს საზოგადოებისთვის.</strong> Circle ბრიტანულ-ქართული აკადემიის მშობელთა საზოგადოებაა, ამიტომ ყველა შეთავაზება მხოლოდ რეგისტრირებული BGA-ს ოჯახებისთვისაა. შეთავაზებით სასარგებლოდ მიჰყევით „როგორ გამოვიყენო“ ნაბიჯებს: BGA-ს მშობლის ბარათი, პრომოკოდი ან დაჯავშნისას Circle-ის ხსენება.</p>
     </div>
   </section>
 
   <section id="offers" data-screen-label="Offers" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 84px;">
     <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 24px;">
       <div>
-        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 14px;">პარტნიორთა ქსელი</div>
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 14px;">პარტნიორთა ქსელი</div>
         <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0; letter-spacing: -0.01em;">ყველა შეთავაზება</h2>
       </div>
       <div style="font-size: 14px; font-weight: 600; color: #5A6478;">{{ offerCountLabel }}</div>
@@ -281,22 +282,22 @@
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); grid-auto-rows: 1fr; gap: 18px;">
       <sc-for list="{{ cards }}" as="card" hint-placeholder-count="1">
-        <div role="button" tabindex="0" onClick="{{ card.open }}" style="background: #FFFFFF; border: 1px solid #E7E4DB; border-radius: 18px; padding: 24px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: all .3s;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px rgba(13,27,62,.12); border-color: #0D1B3E;">
+        <div role="button" tabindex="0" onClick="{{ card.open }}" style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 18px; padding: 24px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: all .3s;" style-hover="transform: translateY(-4px); box-shadow: 0 18px 40px rgba(4,46,86,.12); border-color: #055397;">
           <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-            <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #16295B; text-transform: uppercase;">{{ card.catLabel }}</span>
-            <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;">{{ card.badge }}</span>
+            <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #04427A; text-transform: uppercase;">{{ card.catLabel }}</span>
+            <span style="background: #A0DBF2; color: #055397; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto;">{{ card.badge }}</span>
           </div>
           <div style="height: 64px; flex: 0 0 auto; width: 100%; display: flex; align-items: center; justify-content: flex-start; overflow: hidden;">
             <img src="{{ card.logo }}" alt="{{ card.partner }} (ლოგო)" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: left center;">
           </div>
           <div style="font-size: 19px; font-weight: 800; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ card.partner }}</div>
           <p style="margin: 0; font-size: 13.5px; line-height: 1.55; color: #5A6478; height: 63px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{{ card.desc }}</p>
-          <div style="display: flex; align-items: center; gap: 10px; background: rgba(242,179,44,.16); border: 1px solid rgba(242,179,44,.45); border-radius: 12px; padding: 10px 14px;">
-            <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
-            <div style="font-size: 14px; font-weight: 800; color: #0D1B3E; line-height: 1.5; height: 42px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ card.benefit }}</div>
+          <div style="display: flex; align-items: center; gap: 10px; background: rgba(160,219,242,.28); border: 1px solid rgba(160,219,242,.9); border-radius: 12px; padding: 10px 14px;">
+            <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
+            <div style="font-size: 14px; font-weight: 800; color: #055397; line-height: 1.5; height: 42px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">{{ card.benefit }}</div>
           </div>
           <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #5A6478;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ card.validity }}</span></div>
-          <div style="margin-top: auto; padding-top: 10px; border-top: 1px dashed #E3E0D6; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; color: #2743A6;">
+          <div style="margin-top: auto; padding-top: 10px; border-top: 1px dashed #D6E2EC; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; color: #055397;">
             <div style="display: flex; align-items: center; min-width: 0;"><sc-for list="{{ card.cardLinks }}" as="link" hint-placeholder-count="1"><a href="{{ link.url }}" target="_blank" rel="noopener" class="cardlink" title="{{ link.title }}" onClick="{{ link.onClick }}"><sc-if value="{{ link.isWeb }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></svg></sc-if><sc-if value="{{ link.isFb }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></sc-if><sc-if value="{{ link.isIg }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"></path></svg></sc-if><span>{{ link.cta }}</span></a></sc-for></div>
             <span style="display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto;">დეტალურად <span aria-hidden="true">→</span></span>
           </div>
@@ -304,32 +305,32 @@
       </sc-for>
     </div>
     <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
-      <div style="background: #FFFFFF; border: 1px dashed #D8D4C6; border-radius: 18px; padding: 34px 24px; text-align: center;">
+      <div style="background: #FFFFFF; border: 1px dashed #C9D8E6; border-radius: 18px; padding: 34px 24px; text-align: center;">
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 6px;">თქვენი ძიების შესაბამისი შეთავაზება ვერ მოიძებნა</div>
         <p style="margin: 0 0 16px; font-size: 14px; color: #5A6478;">სცადეთ სხვა სიტყვა ან კვლავ აჩვენეთ ყველა შეთავაზება.</p>
-        <button onClick="{{ clearFilters }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 20px; border-radius: 999px; cursor: pointer;">ყველა შეთავაზების ჩვენება</button>
+        <button onClick="{{ clearFilters }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 20px; border-radius: 999px; cursor: pointer;">ყველა შეთავაზების ჩვენება</button>
       </div>
     </sc-if>
   </section>
 
   <section data-screen-label="Partner CTA" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 84px;">
-    <div style="background: #16295B; color: #FFFFFF; border-radius: 28px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
+    <div style="background: #04427A; color: #FFFFFF; border-radius: 28px; padding: 48px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
       <div style="max-width: 60ch;">
-        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #F2B32C; margin-bottom: 12px;">ბიზნესისთვის</div>
+        <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2; margin-bottom: 12px;">ბიზნესისთვის</div>
         <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px; letter-spacing: -0.01em;">გაქვთ ბიზნესი საქართველოში?</h2>
         <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.72); text-wrap: pretty;">შემოუერთდით Circle-ის პარტნიორთა ქსელს და წარუდგინეთ თქვენი შეთავაზება BGA-ს ოჯახებს.</p>
       </div>
-      <button onClick="{{ openPartner }}" style="background: #F2B32C; border: none; color: #0D1B3E; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; padding: 15px 26px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF;">დაარეგისტრირე ბიზნესი</button>
+      <button onClick="{{ openPartner }}" style="background: #A0DBF2; border: none; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; padding: 15px 26px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #FFFFFF;">დაარეგისტრირე ბიზნესი</button>
     </div>
   </section>
 
   <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Offer details popup" onClick="{{ closeDetail }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; overscroll-behavior: contain;">
+    <div data-screen-label="Offer details popup" onClick="{{ closeDetail }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; overscroll-behavior: contain;">
       <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(560px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative;">
-        <button onClick="{{ closeDetail }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">✕</button>
+        <button onClick="{{ closeDetail }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">✕</button>
         <div style="display: flex; justify-content: flex-start; align-items: center; gap: 10px; margin-bottom: 18px; padding-right: 48px;">
-          <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #16295B; text-transform: uppercase;">{{ detail.catLabel }}</span>
-          <span style="background: #F2B32C; color: #0D1B3E; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">{{ detail.badge }}</span>
+          <span style="font-size: 10.5px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; color: #04427A; text-transform: uppercase;">{{ detail.catLabel }}</span>
+          <span style="background: #A0DBF2; color: #055397; font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 13.5px; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">{{ detail.badge }}</span>
         </div>
         <div style="height: 72px; width: 100%; display: flex; align-items: center; justify-content: flex-start; overflow: hidden; margin-bottom: 16px;">
           <img src="{{ detail.logo }}" alt="{{ detail.partner }} (ლოგო)" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: left center;">
@@ -341,56 +342,56 @@
           </div>
         </sc-if>
         <p style="margin: 0 0 18px; font-size: 14.5px; line-height: 1.65; color: #5A6478;">{{ detail.desc }}</p>
-        <div style="display: flex; align-items: flex-start; gap: 10px; background: rgba(242,179,44,.16); border: 1px solid rgba(242,179,44,.45); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px;">
-          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
+        <div style="display: flex; align-items: flex-start; gap: 10px; background: rgba(160,219,242,.28); border: 1px solid rgba(160,219,242,.9); border-radius: 12px; padding: 12px 14px; margin-bottom: 18px;">
+          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span>
           <div>
-            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #16295B; margin-bottom: 2px;">თქვენი სარგებელი</div>
-            <div style="font-size: 15px; font-weight: 800; color: #0D1B3E;">{{ detail.benefit }}</div>
+            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #04427A; margin-bottom: 2px;">თქვენი სარგებელი</div>
+            <div style="font-size: 15px; font-weight: 800; color: #055397;">{{ detail.benefit }}</div>
           </div>
         </div>
-        <div style="display: flex; align-items: flex-start; gap: 10px; background: #F6F4EE; border: 1px solid #E7E4DB; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;">
-          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #0D1B3E; color: #FFFFFF; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center;">?</span>
+        <div style="display: flex; align-items: flex-start; gap: 10px; background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;">
+          <span style="flex: 0 0 auto; width: 20px; height: 20px; border-radius: 50%; background: #055397; color: #FFFFFF; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center;">?</span>
           <div>
-            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #16295B; margin-bottom: 2px;">როგორ გამოვიყენო</div>
-            <div style="font-size: 13.5px; font-weight: 600; line-height: 1.55; color: #0D1B3E;">{{ detail.activation }}</div>
+            <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #04427A; margin-bottom: 2px;">როგორ გამოვიყენო</div>
+            <div style="font-size: 13.5px; font-weight: 600; line-height: 1.55; color: #055397;">{{ detail.activation }}</div>
           </div>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: #16295B; margin-bottom: 18px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ detail.validity }}</span></div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; color: #04427A; margin-bottom: 18px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ detail.validity }}</span></div>
         <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
-          <div style="padding-top: 14px; border-top: 1px dashed #E3E0D6;">
+          <div style="padding-top: 14px; border-top: 1px dashed #D6E2EC;">
             <div style="font-size: 10px; font-weight: 800; letter-spacing: .18em; color: #9AA0AF; margin-bottom: 8px;">პირობები</div>
             <sc-for list="{{ detail.conditions }}" as="cond" hint-placeholder-count="2">
               <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; font-weight: 600; color: #5A6478; line-height: 1.55; margin-bottom: 5px;">
-                <span style="flex: 0 0 auto; margin-top: 7px; width: 5px; height: 5px; border-radius: 50%; background: #C8102E;"></span>
+                <span style="flex: 0 0 auto; margin-top: 7px; width: 5px; height: 5px; border-radius: 50%; background: #055397;"></span>
                 <span>{{ cond }}</span>
               </div>
             </sc-for>
           </div>
         </sc-if>
-        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed #E3E0D6; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed #D6E2EC; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
           <span style="font-size: 12.5px; color: #5A6478;">ისარგებლეთ ამ შეთავაზებით? გაგვიზიარეთ თქვენი გამოცდილება.</span>
-          <a href="{{ detailFeedbackMail }}" onClick="{{ feedbackClick }}" style="border: 1px solid rgba(13,27,62,.3); color: #0D1B3E; text-decoration: none; font-size: 12.5px; font-weight: 800; padding: 9px 14px; border-radius: 999px; transition: all .25s;" style-hover="background: #0D1B3E; color: #FFFFFF;">შეფასების გაზიარება</a>
+          <a href="{{ detailFeedbackMail }}" onClick="{{ feedbackClick }}" style="border: 1px solid rgba(4,46,86,.3); color: #055397; text-decoration: none; font-size: 12.5px; font-weight: 800; padding: 9px 14px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეფასების გაზიარება</a>
         </div>
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ memberOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Member form popup" onClick="{{ closeMember }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(13,27,62,.35);">
-        <button type="button" onClick="{{ closeMember }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer;">✕</button>
+    <div data-screen-label="Member form popup" onClick="{{ closeMember }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
+        <button type="button" onClick="{{ closeMember }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
         <sc-if value="{{ memberSent }}" hint-placeholder-val="{{ false }}">
           <div style="text-align: center; padding: 30px 8px 10px;">
-            <div style="width: 62px; height: 62px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
             <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">გმადლობთ, თქვენი მოთხოვნა მიღებულია</h3>
             <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">თქვენი მონაცემები მივიღეთ. Circle-ის გუნდი განიხილავს მათ და მალე დაგიკავშირდებათ.</p>
-            <button type="button" onClick="{{ closeMember }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+            <button type="button" onClick="{{ closeMember }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
           </div>
         </sc-if>
         <sc-if value="{{ memberNotSent }}" hint-placeholder-val="{{ true }}">
           <div style="margin-bottom: 22px; padding-right: 40px;">
             <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 8px;">წევრობა</div>
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">წევრობა</div>
             <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გახდით Circle-ის წევრი</h3>
             <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Circle ღიაა BGA-ს საზოგადოებისთვის. გამოგვიგზავნეთ თქვენი მონაცემები ქვემოთ და Circle-ის გუნდი მალე დაგიკავშირდებათ.</p>
           </div>
@@ -402,9 +403,9 @@
               <label class="flbl">ტელეფონი<input class="fld" type="tel" name="phone" autocomplete="tel" required="{{ true }}" placeholder="+995"></label>
             </div>
             <label class="flbl">ბავშვის სახელი და კლასი<input class="fld" type="text" name="child" required="{{ true }}" placeholder="მაგ.: ნინო კ., მე-4 კლასი"></label>
-            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #0D1B3E;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
             <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C8102E; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C8102E;">marketing@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C62828;">marketing@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ memberSending }}">{{ memberButton }}</button>
           </form>
@@ -414,21 +415,21 @@
   </sc-if>
 
   <sc-if value="{{ partnerOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(13,27,62,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(13,27,62,.35);">
-        <button type="button" onClick="{{ closePartner }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #E7E4DB; background: #FFFFFF; color: #0D1B3E; font-size: 15px; cursor: pointer;">✕</button>
+    <div data-screen-label="Partner form popup" onClick="{{ closePartner }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
+        <button type="button" onClick="{{ closePartner }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
         <sc-if value="{{ partnerSent }}" hint-placeholder-val="{{ false }}">
           <div style="text-align: center; padding: 30px 8px 10px;">
-            <div style="width: 62px; height: 62px; border-radius: 50%; background: #F2B32C; color: #0D1B3E; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
             <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">განაცხადი მიღებულია</h3>
             <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">გმადლობთ Circle-ით დაინტერესებისთვის. ჩვენი გუნდი განიხილავს თქვენს შეთავაზებას და პასუხს ელ. ფოსტით გამოგიგზავნით.</p>
-            <button type="button" onClick="{{ closePartner }}" style="background: #0D1B3E; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+            <button type="button" onClick="{{ closePartner }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
           </div>
         </sc-if>
         <sc-if value="{{ partnerNotSent }}" hint-placeholder-val="{{ true }}">
           <div style="margin-bottom: 22px; padding-right: 40px;">
             <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #C8102E; margin-bottom: 8px;">ბიზნესისთვის</div>
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">ბიზნესისთვის</div>
             <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">დაარეგისტრირე ბიზნესი</h3>
             <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით თქვენი ბიზნესისა და იმ შეთავაზების შესახებ, რომელიც გსურთ BGA-ს ოჯახებს გაუკეთოთ.</p>
           </div>
@@ -448,7 +449,7 @@
             </div>
             <label class="flbl">თქვენი შეთავაზება<textarea class="fld" name="offer" rows="{{ three }}" required="{{ true }}" placeholder="მაგ.: 15% ფასდაკლება სრულ მენიუზე Circle-ის წევრებისთვის" style="resize: vertical;"></textarea></label>
             <sc-if value="{{ partnerError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C8102E; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C8102E;">marketing@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C62828;">marketing@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ partnerSending }}">{{ partnerButton }}</button>
           </form>
@@ -457,25 +458,25 @@
     </div>
   </sc-if>
 
-  <footer data-screen-label="Footer" style="background: #0D1B3E; color: #FFFFFF;">
+  <footer data-screen-label="Footer" style="background: #055397; color: #FFFFFF;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
         <div>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-            <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 60px; width: auto; display: block;">
+            <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 64px; width: auto; display: block;">
           </div>
           <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">ბრიტანულ-ქართული აკადემიის მშობლების ლოიალობის პროგრამა.</p>
         </div>
         <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">BGA</div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">BGA</div>
           <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
             <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
             <a href="mailto:circle@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">circle@bga.ge</a>
-            <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #F2B32C; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
+            <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #A0DBF2; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
           </div>
         </div>
         <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #F2B32C; margin-bottom: 14px;">კამპუსი</div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">კამპუსი</div>
           <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">ლეო ქვაჩაძის ქ. 17<br>ლისის ტბის მიმდებარედ<br>თბილისი 0186, საქართველო</p>
         </div>
       </div>
@@ -832,13 +833,13 @@ class Component extends DCLogic {
 
   renderVals() {
     const { slide, cat, q, memberForm, partnerForm } = this.state;
-    const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #D8D4C6", background: "#FFFFFF", color: "#0D1B3E", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
+    const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
     const activeCats = this.CATS.filter(c => this.OFFERS.some(o => o.cats.includes(c)));
     const chips = ["All", ...activeCats].map(c => ({
       label: c === "All" ? "ყველა შეთავაზება" : this.CAT_KA[c] || c,
       count: c === "All" ? this.OFFERS.length : this.OFFERS.filter(o => o.cats.includes(c)).length,
       onClick: () => { this.setState({ cat: c }); this.track("select_category", { category: c }); },
-      style: c === cat ? { ...chipBase, background: "#0D1B3E", color: "#FFFFFF", borderColor: "#0D1B3E" } : chipBase
+      style: c === cat ? { ...chipBase, background: "#055397", color: "#FFFFFF", borderColor: "#055397" } : chipBase
     }));
     const LINK_LABEL = { web: "ვებგვერდი", facebook: "Facebook", instagram: "Instagram" };
     const LINK_CTA = { web: "ვებგვერდი", facebook: "Facebook გვერდი", instagram: "Instagram გვერდი" };
@@ -859,7 +860,7 @@ class Component extends DCLogic {
     const mail = (subject, body) => "mailto:circle@bga.ge?subject=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : "");
     const dots = [0, 1, 2].map(i => ({
       onClick: () => this.setState({ slide: i }),
-      style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#F2B32C" : "rgba(255,255,255,.35)" }
+      style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#A0DBF2" : "rgba(255,255,255,.35)" }
     }));
     return {
       trackTransform: `translateX(-${slide * 100}%)`,
