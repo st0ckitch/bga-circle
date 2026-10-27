@@ -476,20 +476,20 @@
         <sc-if value="{{ feedbackNotSent }}" hint-placeholder-val="{{ true }}">
           <div style="margin-bottom: 22px; padding-right: 40px;">
             <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">უკუკავშირი</div>
-            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გაგვიზიარეთ თქვენი შეფასება</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით, როგორ ისარგებლეთ შეთავაზებით, ან დაგვიწერეთ თქვენი აზრი Circle-ის შესახებ.</p>
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">შეფასება</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გაგვიზიარეთ თქვენი შთაბეჭდილება</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით, როგორ ისარგებლეთ შეთავაზებით ან გაგვიზიარეთ თქვენი მოსაზრება Circle-ის შესახებ.</p>
           </div>
           <form onSubmit="{{ submitFeedback }}" style="display: flex; flex-direction: column; gap: 14px;">
             <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label class="flbl">შეთავაზება<input class="fld" type="text" name="offer" defaultValue="{{ feedbackOffer }}" placeholder="არასავალდებულო"></label>
-              <label class="flbl">შეფასება<select class="fld" name="rating" defaultValue=""><option value="">არასავალდებულო</option><option>5 - შესანიშნავი</option><option>4 - კარგი</option><option>3 - საშუალო</option><option>2 - ცუდი</option><option>1 - ძალიან ცუდი</option></select></label>
+              <label class="flbl">შეთავაზება (არასავალდებულო)<input class="fld" type="text" name="offer" defaultValue="{{ feedbackOffer }}"></label>
+              <label class="flbl">შეფასება (არასავალდებულო)<select class="fld" name="rating" defaultValue=""><option value="">აირჩიეთ შეფასება</option><option>5 - საუკეთესო</option><option>4 - კარგი</option><option>3 - საშუალო</option><option>2 - ცუდი</option><option>1 - ძალიან ცუდი</option></select></label>
             </div>
             <label class="flbl">კომენტარი<textarea class="fld" name="message" rows="{{ four }}" required="{{ true }}" placeholder="რა მოგეწონათ და რა შეიძლება იყოს უკეთესი?" style="resize: vertical;"></textarea></label>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
               <label class="flbl">სახელი<input class="fld" type="text" name="name" autocomplete="name" placeholder="არასავალდებულო"></label>
-              <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
+              <label class="flbl">ელფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
             </div>
             <sc-if value="{{ feedbackError }}" hint-placeholder-val="{{ false }}">
               <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
