@@ -128,7 +128,7 @@
       <div style="display: flex; align-items: center; gap: 22px;">
         <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
-        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
+        <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
         <button onClick="{{ openMember }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">გაწევრიანდი</button>
         <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეთავაზებების ნახვა</a>
       </div>
@@ -138,7 +138,7 @@
       <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F2F7FB; border-bottom: 1px solid rgba(4,46,86,.08); box-shadow: 0 22px 34px rgba(4,46,86,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
         <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
-        <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
+        <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
         <button onClick="{{ openMember }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button>
         <a href="#offers" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
       </div>
@@ -370,7 +370,7 @@
         </sc-if>
         <div style="margin-top: 18px; padding-top: 14px; border-top: 1px dashed #D6E2EC; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
           <span style="font-size: 12.5px; color: #5A6478;">ისარგებლეთ ამ შეთავაზებით? გაგვიზიარეთ თქვენი გამოცდილება.</span>
-          <a href="{{ detailFeedbackMail }}" onClick="{{ feedbackClick }}" style="border: 1px solid rgba(4,46,86,.3); color: #055397; text-decoration: none; font-size: 12.5px; font-weight: 800; padding: 9px 14px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეფასების გაზიარება</a>
+          <a href="#feedback" onClick="{{ openDetailFeedback }}" style="border: 1px solid rgba(4,46,86,.3); color: #055397; text-decoration: none; font-size: 12.5px; font-weight: 800; padding: 9px 14px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეფასების გაზიარება</a>
         </div>
       </div>
     </div>
@@ -384,7 +384,7 @@
           <div style="text-align: center; padding: 30px 8px 10px;">
             <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
             <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">თქვენ დარეგისტრირდით</h3>
-            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">გმადლობთ, რომ Circle-ს შემოუერთდით. თქვენი მშობლის ბარათი თქვენი წევრობის დასტურია - წარადგინეთ ის ნებისმიერ პარტნიორთან და ისარგებლეთ შეთავაზებებით.</p>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">გმადლობთ, რომ Circle-ს შემოუერთდით.</p>
             <button type="button" onClick="{{ closeMember }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
           </div>
         </sc-if>
@@ -461,6 +461,46 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ feedbackOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Feedback form popup" onClick="{{ closeFeedback }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
+        <button type="button" onClick="{{ closeFeedback }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
+        <sc-if value="{{ feedbackSent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 30px 8px 10px;">
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">გმადლობთ!</h3>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">თქვენი შეფასება მიღებულია. ის დაგვეხმარება Circle-ის გაუმჯობესებაში.</p>
+            <button type="button" onClick="{{ closeFeedback }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ feedbackNotSent }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom: 22px; padding-right: 40px;">
+            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">უკუკავშირი</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გაგვიზიარეთ თქვენი შეფასება</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით, როგორ ისარგებლეთ შეთავაზებით, ან დაგვიწერეთ თქვენი აზრი Circle-ის შესახებ.</p>
+          </div>
+          <form onSubmit="{{ submitFeedback }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">შეთავაზება<input class="fld" type="text" name="offer" defaultValue="{{ feedbackOffer }}" placeholder="არასავალდებულო"></label>
+              <label class="flbl">შეფასება<select class="fld" name="rating" defaultValue=""><option value="">არასავალდებულო</option><option>5 - შესანიშნავი</option><option>4 - კარგი</option><option>3 - საშუალო</option><option>2 - ცუდი</option><option>1 - ძალიან ცუდი</option></select></label>
+            </div>
+            <label class="flbl">კომენტარი<textarea class="fld" name="message" rows="{{ four }}" required="{{ true }}" placeholder="რა მოგეწონათ და რა შეიძლება იყოს უკეთესი?" style="resize: vertical;"></textarea></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">სახელი<input class="fld" type="text" name="name" autocomplete="name" placeholder="არასავალდებულო"></label>
+              <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
+            </div>
+            <sc-if value="{{ feedbackError }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
+            </sc-if>
+            <button type="submit" class="fbtn" disabled="{{ feedbackSending }}">{{ feedbackButton }}</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
   <footer data-screen-label="Footer" style="background: #055397; color: #FFFFFF;">
     <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px;">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
@@ -475,7 +515,7 @@
           <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
             <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
             <a href="mailto:circle@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">circle@bga.ge</a>
-            <a href="{{ feedbackMail }}" onClick="{{ feedbackClick }}" style="color: #A0DBF2; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
+            <a href="#feedback" onClick="{{ openFeedback }}" style="color: #A0DBF2; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
           </div>
         </div>
         <div>
@@ -498,7 +538,7 @@
   &quot;showTerms&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Offers&quot; }
 }">
 class Component extends DCLogic {
-  state = { slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, memberOpen: false, memberForm: "idle", partnerOpen: false, partnerForm: "idle" };
+  state = { slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, memberOpen: false, memberForm: "idle", partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
   CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Other"];
   CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
@@ -898,13 +938,13 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.startTimer();
-    this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, memberOpen: false, partnerOpen: false }); };
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, memberOpen: false, partnerOpen: false, feedbackOpen: false }); };
     window.addEventListener("keydown", this.onKey);
   }
   componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.searchTimer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
   componentDidUpdate(prevProps) {
     if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
-    document.body.style.overflow = this.state.detailIdx !== null || this.state.memberOpen || this.state.partnerOpen ? "hidden" : "";
+    document.body.style.overflow = this.state.detailIdx !== null || this.state.memberOpen || this.state.partnerOpen || this.state.feedbackOpen ? "hidden" : "";
   }
   startTimer() {
     clearInterval(this.timer);
@@ -923,7 +963,7 @@ class Component extends DCLogic {
     const fd = new FormData(e.currentTarget);
     if (fd.get("_honey")) return;
     const payload = {};
-    fd.forEach((v, k) => { if (k !== "_honey") payload[k] = v; });
+    fd.forEach((v, k) => { if (k !== "_honey" && String(v).trim() !== "") payload[k] = v; });
     payload._subject = subject(payload);
     payload._template = "table";
     payload._captcha = "false";
@@ -961,7 +1001,7 @@ class Component extends DCLogic {
       for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
       this.offersShuffled = true;
     }
-    const { slide, cat, q, memberForm, partnerForm } = this.state;
+    const { slide, cat, q, memberForm, partnerForm, feedbackForm } = this.state;
     const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
     const activeCats = this.CATS.filter(c => this.OFFERS.some(o => o.cats.includes(c)));
     const chips = ["All", ...activeCats].map(c => ({
@@ -986,7 +1026,6 @@ class Component extends DCLogic {
     const cards = this.OFFERS.filter(o => (cat === "All" || o.cats.includes(cat)) && matches(o))
       .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: this.OFFERS.indexOf(o) }); this.track("select_content", { content_type: "offer", item_id: o.partner }); } }));
     const detail = this.state.detailIdx === null ? null : decorate(this.OFFERS[this.state.detailIdx]);
-    const mail = (subject, body) => "mailto:circle@bga.ge?subject=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : "");
     const dots = [0, 1, 2].map(i => ({
       onClick: () => this.setState({ slide: i }),
       style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#A0DBF2" : "rgba(255,255,255,.35)" }
@@ -1029,15 +1068,24 @@ class Component extends DCLogic {
       partnerError: partnerForm === "error",
       partnerButton: partnerForm === "sending" ? "იგზავნება…" : "განაცხადის გაგზავნა",
       submitPartner: (e) => this.sendForm(e, "partnerForm", p => "Circle BGA partner application: " + p.business, { name: "generate_lead", params: { lead_type: "partner" } }),
-      feedbackClick: () => { this.setState({ menuOpen: false }); this.track("feedback_click"); },
       three: 3,
       menuIcon: this.state.menuOpen ? "✕" : "☰",
       stopClick: (e) => e.stopPropagation(),
       detail,
       detailOpen: !!detail,
       closeDetail: () => this.setState({ detailIdx: null }),
-      feedbackMail: mail("Circle BGA feedback"),
-      detailFeedbackMail: mail("Circle BGA feedback: " + (detail ? detail.partner : "general")),
+      openFeedback: (e) => { if (e) e.preventDefault(); this.setState({ feedbackOpen: true, feedbackForm: "idle", feedbackOffer: "", menuOpen: false }); this.track("form_open", { form: "feedback" }); },
+      openDetailFeedback: (e) => { if (e) e.preventDefault(); this.setState({ feedbackOpen: true, feedbackForm: "idle", feedbackOffer: detail ? detail.partner : "", detailIdx: null }); this.track("form_open", { form: "feedback", item_id: detail ? detail.partner : "" }); },
+      closeFeedback: () => this.setState({ feedbackOpen: false }),
+      feedbackOpen: this.state.feedbackOpen,
+      feedbackOffer: this.state.feedbackOffer,
+      feedbackSent: feedbackForm === "sent",
+      feedbackNotSent: feedbackForm !== "sent",
+      feedbackSending: feedbackForm === "sending",
+      feedbackError: feedbackForm === "error",
+      feedbackButton: feedbackForm === "sending" ? "იგზავნება…" : "გაგზავნა",
+      submitFeedback: (e) => this.sendForm(e, "feedbackForm", p => "Circle BGA feedback: " + (p.offer || "general"), { name: "feedback_submit", params: {} }),
+      four: 4,
       dots, chips, cards,
       offerCountLabel: cat === "All" && !terms.length
         ? `${this.OFFERS.length} შეთავაზება · ${activeCats.length} კატეგორია`
