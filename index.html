@@ -402,10 +402,13 @@
               <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" placeholder="name@example.com"></label>
               <label class="flbl">ტელეფონი<input class="fld" type="tel" name="phone" autocomplete="tel" required="{{ true }}" placeholder="+995"></label>
             </div>
-            <label class="flbl">ბავშვის სახელი და კლასი<input class="fld" type="text" name="child" required="{{ true }}" placeholder="მაგ.: ნინო კ., მე-4 კლასი"></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">ბავშვის სახელი და გვარი<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" placeholder="მაგ.: ნინო ბერიძე"></label>
+              <label class="flbl">კლასი<input class="fld" type="text" name="grade" autocomplete="off" required="{{ true }}" placeholder="მაგ.: მე-4 კლასი"></label>
+            </div>
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
             <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C62828;">marketing@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ memberSending }}">{{ memberButton }}</button>
           </form>
@@ -449,7 +452,7 @@
             </div>
             <label class="flbl">თქვენი შეთავაზება<textarea class="fld" name="offer" rows="{{ three }}" required="{{ true }}" placeholder="მაგ.: 15% ფასდაკლება სრულ მენიუზე Circle-ის წევრებისთვის" style="resize: vertical;"></textarea></label>
             <sc-if value="{{ partnerError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:marketing@bga.ge" style="color: #C62828;">marketing@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ partnerSending }}">{{ partnerButton }}</button>
           </form>
@@ -925,7 +928,7 @@ class Component extends DCLogic {
     payload._template = "table";
     payload._captcha = "false";
     this.setState({ [form]: "sending" });
-    fetch("https://formsubmit.co/ajax/marketing@bga.ge", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
+    fetch("https://formsubmit.co/ajax/circle@bga.ge", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
       .then(r => r.json())
       .then(d => {
         if (String(d.success) !== "true") throw new Error(d.message);
