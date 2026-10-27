@@ -928,14 +928,30 @@ class Component extends DCLogic {
     payload._template = "table";
     payload._captcha = "false";
     this.setState({ [form]: "sending" });
+    // FormSubmit only answers once it has emailed the submission, which can take a long time.
+    // Wait up to 4 seconds for its answer, then thank the visitor while the request finishes in the background.
+    let shown = false;
+    const sent = () => {
+      if (shown) return;
+      shown = true;
+      clearTimeout(timer);
+      this.setState({ [form]: "sent" });
+      this.track(event.name, event.params);
+    };
+    const timer = setTimeout(sent, 4000);
     fetch("https://formsubmit.co/ajax/circle@bga.ge", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
       .then(r => r.json())
       .then(d => {
         if (String(d.success) !== "true") throw new Error(d.message);
-        this.setState({ [form]: "sent" });
-        this.track(event.name, event.params);
+        sent();
       })
-      .catch(() => this.setState({ [form]: "error" }));
+      .catch(() => {
+        if (shown) { this.track("form_error", { form: form, after_thanks: true }); return; }
+        shown = true;
+        clearTimeout(timer);
+        this.setState({ [form]: "error" });
+        this.track("form_error", { form: form });
+      });
   }
 
   renderVals() {
