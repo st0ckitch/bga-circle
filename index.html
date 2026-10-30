@@ -408,7 +408,7 @@
             </div>
             <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
             <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ memberMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ memberSending }}">{{ memberButton }}</button>
           </form>
@@ -452,7 +452,7 @@
             </div>
             <label class="flbl">თქვენი შეთავაზება<textarea class="fld" name="offer" rows="{{ three }}" required="{{ true }}" placeholder="მაგ.: 15% ფასდაკლება სრულ მენიუზე Circle-ის წევრებისთვის" style="resize: vertical;"></textarea></label>
             <sc-if value="{{ partnerError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ partnerMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ partnerSending }}">{{ partnerButton }}</button>
           </form>
@@ -492,7 +492,7 @@
               <label class="flbl">ელფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
             </div>
             <sc-if value="{{ feedbackError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="mailto:circle@bga.ge" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ feedbackMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
             </sc-if>
             <button type="submit" class="fbtn" disabled="{{ feedbackSending }}">{{ feedbackButton }}</button>
           </form>
@@ -971,18 +971,31 @@ class Component extends DCLogic {
     if (window.gtag) window.gtag("event", name, params || {});
   }
 
+  // Web3Forms access key for circle@bga.ge, from web3forms.com. It only lets the site send to that address,
+  // so it is safe to publish. The free plan accepts 250 submissions a month. Leave empty to use FormSubmit only.
+  WEB3FORMS_KEY = "14891151-f0d3-4224-82ba-a52891b77b50";
+
+  // The form services to try, in order, until one accepts the submission.
+  formServices(subject) {
+    const services = [];
+    if (this.WEB3FORMS_KEY) services.push({ url: "https://api.web3forms.com/submit", extra: { access_key: this.WEB3FORMS_KEY, subject: subject, from_name: "Circle website" } });
+    services.push({ url: "https://formsubmit.co/ajax/circle@bga.ge", extra: { _subject: subject, _template: "table", _captcha: "false" } });
+    return services;
+  }
+
   sendForm(e, form, subject, event) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     if (fd.get("_honey")) return;
-    const payload = {};
-    fd.forEach((v, k) => { if (k !== "_honey" && String(v).trim() !== "") payload[k] = v; });
-    payload._subject = subject(payload);
-    payload._template = "table";
-    payload._captcha = "false";
+    const answers = {};
+    fd.forEach((v, k) => { if (k !== "_honey" && String(v).trim() !== "") answers[k] = v; });
+    const title = subject(answers);
+    // If sending fails, the error message's email link opens an email to circle@bga.ge with the details already filled in.
+    const lines = Object.keys(answers).map(k => k + ": " + answers[k]);
+    this.failedMail = { ...this.failedMail, [form]: "mailto:circle@bga.ge?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(lines.join("\n")) };
     this.setState({ [form]: "sending" });
-    // FormSubmit only answers once it has emailed the submission, which can take a long time.
-    // Wait up to 4 seconds for its answer, then thank the visitor while the request finishes in the background.
+    // Form services can take a long time to answer. Wait up to 4 seconds, then thank the visitor
+    // while the request finishes in the background.
     let shown = false;
     const sent = () => {
       if (shown) return;
@@ -992,18 +1005,26 @@ class Component extends DCLogic {
       this.track(event.name, event.params);
     };
     const timer = setTimeout(sent, 4000);
-    fetch("https://formsubmit.co/ajax/circle@bga.ge", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload) })
-      .then(r => r.json())
-      .then(d => {
-        if (String(d.success) !== "true") throw new Error(d.message);
-        sent();
-      })
-      .catch(() => {
-        if (shown) { this.track("form_error", { form: form, after_thanks: true }); return; }
+    // Try each service in turn, so the submission still arrives when one is down or over its limit.
+    // Plain form fields, not JSON, keep this a simple request that browsers send without a CORS preflight.
+    const services = this.formServices(title);
+    const post = i => fetch(services[i].url, { method: "POST", headers: { "Accept": "application/json" }, body: new URLSearchParams({ ...answers, ...services[i].extra }) })
+      .then(r => r.json().catch(() => { throw new Error("HTTP " + r.status + ", not JSON"); }))
+      .then(d => { if (String(d.success) !== "true") throw new Error(d.message || "not accepted"); })
+      .catch(err => {
+        if (i + 1 >= services.length) throw err;
+        this.track("form_fallback", { form: form, from: services[i].url, reason: String((err && err.message) || err).slice(0, 100) });
+        return post(i + 1);
+      });
+    post(0)
+      .then(sent)
+      .catch(err => {
+        const reason = String((err && err.message) || err).slice(0, 100);
+        if (shown) { this.track("form_error", { form: form, after_thanks: true, reason: reason }); return; }
         shown = true;
         clearTimeout(timer);
         this.setState({ [form]: "error" });
-        this.track("form_error", { form: form });
+        this.track("form_error", { form: form, reason: reason });
       });
   }
 
@@ -1070,6 +1091,7 @@ class Component extends DCLogic {
       memberNotSent: memberForm !== "sent",
       memberSending: memberForm === "sending",
       memberError: memberForm === "error",
+      memberMailto: (this.failedMail && this.failedMail.memberForm) || "mailto:circle@bga.ge",
       memberButton: memberForm === "sending" ? "იგზავნება…" : "რეგისტრაცია",
       submitMember: (e) => this.sendForm(e, "memberForm", p => "Circle BGA membership registration: " + p.name, { name: "sign_up", params: { method: "circle_form" } }),
       openPartner: () => { this.setState({ partnerOpen: true, partnerForm: "idle" }); this.track("form_open", { form: "partner" }); },
@@ -1079,6 +1101,7 @@ class Component extends DCLogic {
       partnerNotSent: partnerForm !== "sent",
       partnerSending: partnerForm === "sending",
       partnerError: partnerForm === "error",
+      partnerMailto: (this.failedMail && this.failedMail.partnerForm) || "mailto:circle@bga.ge",
       partnerButton: partnerForm === "sending" ? "იგზავნება…" : "განაცხადის გაგზავნა",
       submitPartner: (e) => this.sendForm(e, "partnerForm", p => "Circle BGA partner application: " + p.business, { name: "generate_lead", params: { lead_type: "partner" } }),
       three: 3,
@@ -1096,6 +1119,7 @@ class Component extends DCLogic {
       feedbackNotSent: feedbackForm !== "sent",
       feedbackSending: feedbackForm === "sending",
       feedbackError: feedbackForm === "error",
+      feedbackMailto: (this.failedMail && this.failedMail.feedbackForm) || "mailto:circle@bga.ge",
       feedbackButton: feedbackForm === "sending" ? "იგზავნება…" : "გაგზავნა",
       submitFeedback: (e) => this.sendForm(e, "feedbackForm", p => "Circle BGA feedback: " + (p.offer || "general"), { name: "feedback_submit", params: {} }),
       four: 4,
