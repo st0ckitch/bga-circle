@@ -114,11 +114,41 @@
     footer > div { padding: 48px 18px 24px !important; }
     footer > div > div:first-child { gap: 28px !important; padding-bottom: 30px !important; }
   }
+
+  /* The sign-in page that visitors see until they log in */
+  .gate { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); background: #F2F7FB; }
+  .gate-brand { position: relative; overflow: hidden; background: #055397; color: #FFFFFF; padding: 44px 56px; display: flex; flex-direction: column; gap: 34px; }
+  .gate-ring { position: absolute; right: -170px; top: -190px; width: 520px; height: 520px; border-radius: 50%; border: 1.5px solid rgba(160,219,242,.28); pointer-events: none; }
+  .gate-ring span { position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: #A0DBF2; }
+  .gate-logo { position: relative; height: 60px; width: auto; display: block; align-self: flex-start; }
+  .gate-copy { position: relative; max-width: 540px; }
+  .gate-kicker { font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2; margin-bottom: 16px; }
+  .gate-title { font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.08; margin: 0 0 16px; letter-spacing: -0.01em; }
+  .gate-text { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0; max-width: 46ch; }
+  .gate-photo { position: relative; margin-top: auto; max-width: 540px; }
+  .gate-photo::before { content: ""; position: absolute; inset: -12px 12px 12px -12px; border: 2px solid rgba(160,219,242,.45); border-radius: 26px; pointer-events: none; }
+  .gate-photo img { position: relative; width: 100%; height: clamp(200px, 22vw, 300px); object-fit: cover; border-radius: 22px; display: block; box-shadow: 0 28px 60px rgba(0,0,0,.4); }
+  .gate-contact { position: relative; display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; font-weight: 600; }
+  .gate-contact a { color: rgba(255,255,255,.75); text-decoration: none; }
+  .gate-contact a:hover { color: #A0DBF2; }
+  .gate-main { display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+  .gate-card { width: min(480px, 100%); background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 24px; padding: 32px; box-sizing: border-box; box-shadow: 0 24px 60px rgba(4,46,86,.10); }
+  @media (max-width: 900px) {
+    .gate { grid-template-columns: 1fr; }
+    .gate-brand { padding: 24px 20px 28px; gap: 18px; }
+    .gate-logo { height: 46px; }
+    .gate-title { font-size: 26px; }
+    .gate-text { font-size: 14.5px; }
+    .gate-photo, .gate-contact { display: none; }
+    .gate-main { align-items: flex-start; padding: 16px 12px 40px; }
+    .gate-card { padding: 24px 18px; }
+  }
 </style>
 </helmet>
 
 <div data-screen-label="Ambassador one-pager" style="min-width: 320px;">
 
+  <sc-if value="{{ showSite }}" hint-placeholder-val="{{ true }}">
   <nav style="position: sticky; top: 0; z-index: 60; background: rgba(242,247,251,.88); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(4,46,86,.08);">
     <div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
       <div style="display: flex; align-items: center; gap: 12px;">
@@ -129,8 +159,6 @@
         <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
-        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openLogin }}" style="background: none; border: none; padding: 0; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer;">{{ t.logIn }}</button></sc-if>
-        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">გაწევრიანდი</button></sc-if>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">{{ t.myAccount }}</button></sc-if>
         <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეთავაზებების ნახვა</a>
       </div>
@@ -141,8 +169,6 @@
         <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
-        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openLogin }}" style="background: none; border: none; text-align: left; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 16px; font-weight: 700; padding: 13px 6px; cursor: pointer;">{{ t.logIn }}</button></sc-if>
-        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button></sc-if>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">{{ t.myAccount }}</button></sc-if>
         <a href="#offers" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
       </div>
@@ -240,7 +266,7 @@
         <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">01</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">გახდით Circle-ის წევრი</div>
         <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">შექმენით Circle-ის ანგარიში ერთ წუთში. მშობლები და მეურვეები რეგისტრირდებიან შვილის პირადი ნომრით, BGA-ს თანამშრომლები კი - სამსახურებრივი ელფოსტით.</p>
-        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">დარეგისტრირდი</button></sc-if><sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">{{ t.myAccount }}</button></sc-if>
+        <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">{{ t.myAccount }}</button></sc-if>
       </div>
       <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
         <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">02</div>
@@ -273,6 +299,17 @@
       <div style="font-size: 14px; font-weight: 600; color: #5A6478;">{{ offerCountLabel }}</div>
     </div>
 
+    <sc-if value="{{ offersLoading }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="padding: 48px 0; text-align: center; font-size: 15px; font-weight: 700; color: #5A6478;">{{ t.loadingOffers }}</div>
+    </sc-if>
+    <sc-if value="{{ offersFailed }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 22px; padding: 40px 28px; text-align: center;">
+        <div style="font-size: 17px; font-weight: 800; margin-bottom: 6px;">{{ t.failedTitle }}</div>
+        <p style="margin: 0 0 16px; font-size: 14px; color: #5A6478;">{{ t.failedText }}</p>
+        <button onClick="{{ retryOffers }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 700; padding: 13px 24px; border-radius: 999px; cursor: pointer;">{{ t.retry }}</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showOffers }}" hint-placeholder-val="{{ true }}">
     <div style="position: relative; max-width: 480px; margin-bottom: 16px;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 17px; top: 50%; width: 17px; height: 17px; margin-top: -8.5px; color: #5A6478; pointer-events: none;"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
       <input type="search" class="search" value="{{ q }}" onChange="{{ onSearch }}" placeholder="მოძებნეთ შეთავაზება, პარტნიორი ან კატეგორია" aria-label="შეთავაზებების ძიება">
@@ -314,6 +351,7 @@
         <p style="margin: 0 0 16px; font-size: 14px; color: #5A6478;">სცადეთ სხვა სიტყვა ან კვლავ აჩვენეთ ყველა შეთავაზება.</p>
         <button onClick="{{ clearFilters }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 20px; border-radius: 999px; cursor: pointer;">ყველა შეთავაზების ჩვენება</button>
       </div>
+    </sc-if>
     </sc-if>
   </section>
 
@@ -380,7 +418,227 @@
     </div>
   </sc-if>
 
-  <sc-if value="{{ authOpen }}" hint-placeholder-val="{{ false }}">
+  <sc-if value="{{ feedbackOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Feedback form popup" onClick="{{ closeFeedback }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
+        <button type="button" onClick="{{ closeFeedback }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
+        <sc-if value="{{ feedbackSent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align: center; padding: 30px 8px 10px;">
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">გმადლობთ!</h3>
+            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">თქვენი შეფასება მიღებულია. ის დაგვეხმარება Circle-ის გაუმჯობესებაში.</p>
+            <button type="button" onClick="{{ closeFeedback }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ feedbackNotSent }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom: 22px; padding-right: 40px;">
+            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">შეფასება</div>
+            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გაგვიზიარეთ თქვენი შთაბეჭდილება</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით, როგორ ისარგებლეთ შეთავაზებით ან გაგვიზიარეთ თქვენი მოსაზრება Circle-ის შესახებ.</p>
+          </div>
+          <form onSubmit="{{ submitFeedback }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">შეთავაზება (არასავალდებულო)<input class="fld" type="text" name="offer" defaultValue="{{ feedbackOffer }}"></label>
+              <label class="flbl">შეფასება<select class="fld" name="rating" defaultValue=""><option value="">აირჩიე</option><option>5 - საუკეთესო</option><option>4 - კარგი</option><option>3 - საშუალო</option><option>2 - ცუდი</option><option>1 - ძალიან ცუდი</option></select></label>
+            </div>
+            <label class="flbl">კომენტარი<textarea class="fld" name="message" rows="{{ four }}" required="{{ true }}" placeholder="რა მოგეწონათ და რა შეიძლება იყოს უკეთესი?" style="resize: vertical;"></textarea></label>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
+              <label class="flbl">სახელი<input class="fld" type="text" name="name" autocomplete="name" placeholder="არასავალდებულო"></label>
+              <label class="flbl">ელფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
+            </div>
+            <sc-if value="{{ feedbackError }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ feedbackMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
+            </sc-if>
+            <button type="submit" class="fbtn" disabled="{{ feedbackSending }}">{{ feedbackButton }}</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <footer data-screen-label="Footer" style="background: #055397; color: #FFFFFF;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 64px; width: auto; display: block;">
+          </div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">ბრიტანულ-ქართული აკადემიის მშობლების ლოიალობის პროგრამა.</p>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">BGA</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+            <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
+            <a href="mailto:circle@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">circle@bga.ge</a>
+            <a href="#feedback" onClick="{{ openFeedback }}" style="color: #A0DBF2; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">კამპუსი</div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">ლეო ქვაჩაძის ქ. 17<br>ლისის ტბის მიმდებარედ<br>თბილისი 0186, საქართველო</p>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: 12px; color: rgba(255,255,255,.5);">
+        <span>© 2026 BGA. ყველა უფლება დაცულია.</span>
+        <span style="max-width: 60ch;">შეთავაზებებს უზრუნველყოფენ პარტნიორი კომპანიები და ისინი შეიძლება შეიცვალოს ან შეწყდეს წინასწარი გაფრთხილების გარეშე. მშობლის ბარათი პერსონალურია და მისი გადაცემა სხვა პირისთვის დაუშვებელია.</span>
+      </div>
+    </div>
+  </footer>
+  </sc-if>
+
+  <sc-if value="{{ showChecking }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Checking login" style="min-height: 100vh; background: #055397; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;">
+      <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 64px; width: auto; display: block;">
+      <span role="status" style="font-size: 14px; font-weight: 700; color: rgba(255,255,255,.75);">{{ t.working }}</span>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ authPage }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Sign-in page" class="gate">
+      <div class="gate-brand">
+        <div class="ring gate-ring" aria-hidden="true"><span></span></div>
+        <img src="brand/circle-logo-reverse.png" alt="Circle" class="gate-logo">
+        <div class="gate-copy">
+          <div class="gate-kicker">{{ t.gateKicker }}</div>
+          <h1 class="gate-title">{{ t.gateTitle1 }}<br>{{ t.gateTitle2 }}</h1>
+          <p class="gate-text">{{ t.gateText }}</p>
+        </div>
+        <div class="gate-photo"><img src="photos/bga-balloon.webp" alt="BGA-ს მოსწავლე პატარა ბავშვს ბუშტს აწვდის სკოლის ეზოში"></div>
+        <div class="gate-contact"><a href="{{ t.contactMailto }}">{{ t.contactEmail }}</a><a href="{{ t.contactTel }}">{{ t.contactPhone }}</a></div>
+      </div>
+      <main class="gate-main">
+        <div class="gate-card">
+          <sc-if value="{{ authTabs }}" hint-placeholder-val="{{ true }}">
+            <div role="tablist" aria-label="Circle" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 999px; margin-bottom: 26px;">
+              <button type="button" role="tab" aria-selected="{{ tabLoginOn }}" onClick="{{ toLogin }}" style="{{ tabLoginStyle }}">{{ t.tabLogin }}</button>
+              <button type="button" role="tab" aria-selected="{{ tabJoinOn }}" onClick="{{ toJoin }}" style="{{ tabJoinStyle }}">{{ t.tabJoin }}</button>
+            </div>
+          </sc-if>
+          <div style="margin-bottom: 22px;">
+            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">{{ authKicker }}</div>
+            <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em; overflow-wrap: anywhere;">{{ authTitle }}</h2>
+            <sc-if value="{{ authHasIntro }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">{{ authIntro }}</p></sc-if>
+          </div>
+          <sc-if value="{{ modeJoin }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submitJoin }}" style="display: flex; flex-direction: column; gap: 14px;">
+              <div class="flbl" id="circle-member-type">{{ t.memberType }}</div>
+              <div role="group" aria-labelledby="circle-member-type" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: -6px;">
+                <sc-for list="{{ roleChoices }}" as="choice" hint-placeholder-count="3"><button type="button" onClick="{{ choice.pick }}" aria-pressed="{{ choice.on }}" style="{{ choice.style }}">{{ choice.label }}</button></sc-for>
+              </div>
+              <sc-if value="{{ roleChosen }}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 14px;">
+                  <label class="flbl">{{ joinEmailLabel }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ joinEmailPh }}"></label>
+                  <sc-if value="{{ isEmployee }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478; margin-top: -6px;">{{ t.workEmailHint }}</p></sc-if>
+                  <sc-if value="{{ isFamily }}" hint-placeholder-val="{{ true }}">
+                    <div style="display: flex; flex-direction: column; gap: 14px;">
+                <sc-for list="{{ kidRows }}" as="kid" hint-placeholder-count="1">
+                  <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <div style="display: flex; gap: 8px; align-items: flex-end;">
+                      <label class="flbl" style="flex: 1 1 auto; min-width: 0;">{{ kid.label }}<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" value="{{ kid.value }}" onChange="{{ kid.onChange }}" aria-invalid="{{ kid.bad }}" placeholder="{{ t.kidPh }}" style="{{ kid.fieldStyle }}"></label>
+                      <sc-if value="{{ kid.removable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ kid.remove }}" aria-label="{{ t.remove }}" style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; border: 1px solid #C9D8E6; background: #FFFFFF; color: #055397; font-size: 14px; cursor: pointer;">✕</button></sc-if>
+                    </div>
+                    <sc-if value="{{ kid.hasStatus }}" hint-placeholder-val="{{ false }}"><p role="status" style="{{ kid.statusStyle }}">{{ kid.statusText }}</p></sc-if>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ canAddKid }}" hint-placeholder-val="{{ true }}"><div><button type="button" onClick="{{ addKid }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.addKid }}</button></div></sc-if>
+                <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478;">{{ t.kidHint }}</p>
+                    </div>
+                  </sc-if>
+                  <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>{{ consentText }}</span></label>
+                  <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+                  <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ roleNotChosen }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if></sc-if>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ modeJoinSent }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ sentText }}</p>
+              <sc-if value="{{ hasSentKids }}" hint-placeholder-val="{{ false }}">
+                <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ sentKids }}" as="kid" hint-placeholder-count="1"><p style="{{ kid.style }}">{{ kid.text }}</p></sc-for></div>
+              </sc-if>
+              <sc-if value="{{ someNotFound }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.notFoundNote }}</p></sc-if>
+              <button type="button" onClick="{{ toLogin }}" class="fbtn">{{ t.backToLogin }}</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ modeFinish }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ submitFinish }}" style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.typeLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupRole }}</span></div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.emailLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupEmail }}</span></div>
+                <sc-if value="{{ signupHasKids }}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.childrenLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupKids }}</span></div></sc-if>
+              </div>
+              <input type="email" name="username" autocomplete="username" value="{{ signupEmail }}" readOnly="{{ true }}" style="display: none;">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+                <label class="flbl">{{ t.firstName }}<input class="fld" type="text" name="firstName" autocomplete="given-name" required="{{ true }}" maxlength="60"></label>
+                <label class="flbl">{{ t.lastName }}<input class="fld" type="text" name="lastName" autocomplete="family-name" required="{{ true }}" maxlength="60"></label>
+              </div>
+              <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
+              <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+              <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ modeLinkError }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <p role="alert" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ authError }}</p>
+              <button type="button" onClick="{{ openJoin }}" class="fbtn">{{ t.registerAgain }}</button>
+              <button type="button" onClick="{{ toLogin }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.logIn }}</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ modeLogin }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ submitLogin }}" style="display: flex; flex-direction: column; gap: 14px;">
+              <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
+              <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="current-password" required="{{ true }}" placeholder="{{ t.passwordPh }}"></label>
+              <div><button type="button" onClick="{{ toForgot }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.forgotLink }}</button></div>
+              <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+              <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ modeForgot }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ submitForgot }}" style="display: flex; flex-direction: column; gap: 14px;">
+              <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
+              <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+              <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+              <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;"><button type="button" onClick="{{ toLogin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.backToLogin }}</button></p>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ modeForgotSent }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ forgotSentText }}</p>
+              <button type="button" onClick="{{ toLogin }}" class="fbtn">{{ t.backToLogin }}</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ modeReset }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ submitReset }}" style="display: flex; flex-direction: column; gap: 14px;">
+              <label class="flbl">{{ t.newPassword }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
+              <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+              <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{ modeWorking }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.working }}</p>
+              <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+            </div>
+          </sc-if>
+          <p style="margin: 24px 0 0; padding-top: 18px; border-top: 1px dashed #D6E2EC; text-align: center; font-size: 13px; line-height: 1.6; color: #5A6478;">{{ t.partnerQuestion }} <button type="button" onClick="{{ openPartner }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.partnerLink }}</button></p>
+        </div>
+      </main>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ authOverlay }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Account popup" onClick="{{ closeAuth }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
       <div role="dialog" aria-modal="true" aria-label="{{ authTitle }}" onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
         <button type="button" onClick="{{ closeAuth }}" aria-label="{{ t.close }}" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
@@ -391,70 +649,6 @@
           <sc-if value="{{ authHasIntro }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">{{ authIntro }}</p></sc-if>
         </div>
 
-        <sc-if value="{{ modeJoin }}" hint-placeholder-val="{{ true }}">
-          <form onSubmit="{{ submitJoin }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="flbl" id="circle-member-type">{{ t.memberType }}</div>
-            <div role="group" aria-labelledby="circle-member-type" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: -6px;">
-              <sc-for list="{{ roleChoices }}" as="choice" hint-placeholder-count="3"><button type="button" onClick="{{ choice.pick }}" aria-pressed="{{ choice.on }}" style="{{ choice.style }}">{{ choice.label }}</button></sc-for>
-            </div>
-            <sc-if value="{{ roleChosen }}" hint-placeholder-val="{{ true }}">
-              <div style="display: flex; flex-direction: column; gap: 14px;">
-                <label class="flbl">{{ joinEmailLabel }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ joinEmailPh }}"></label>
-                <sc-if value="{{ isEmployee }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478; margin-top: -6px;">{{ t.workEmailHint }}</p></sc-if>
-                <sc-if value="{{ isFamily }}" hint-placeholder-val="{{ true }}">
-                  <div style="display: flex; flex-direction: column; gap: 14px;">
-              <sc-for list="{{ kidRows }}" as="kid" hint-placeholder-count="1">
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <div style="display: flex; gap: 8px; align-items: flex-end;">
-                    <label class="flbl" style="flex: 1 1 auto; min-width: 0;">{{ kid.label }}<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" value="{{ kid.value }}" onChange="{{ kid.onChange }}" aria-invalid="{{ kid.bad }}" placeholder="{{ t.kidPh }}" style="{{ kid.fieldStyle }}"></label>
-                    <sc-if value="{{ kid.removable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ kid.remove }}" aria-label="{{ t.remove }}" style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; border: 1px solid #C9D8E6; background: #FFFFFF; color: #055397; font-size: 14px; cursor: pointer;">✕</button></sc-if>
-                  </div>
-                  <sc-if value="{{ kid.hasStatus }}" hint-placeholder-val="{{ false }}"><p role="status" style="{{ kid.statusStyle }}">{{ kid.statusText }}</p></sc-if>
-                </div>
-              </sc-for>
-              <sc-if value="{{ canAddKid }}" hint-placeholder-val="{{ true }}"><div><button type="button" onClick="{{ addKid }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.addKid }}</button></div></sc-if>
-              <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478;">{{ t.kidHint }}</p>
-                  </div>
-                </sc-if>
-                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>{{ consentText }}</span></label>
-                <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
-                <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
-              </div>
-            </sc-if>
-            <sc-if value="{{ roleNotChosen }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if></sc-if>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;">{{ t.haveAccount }} <button type="button" onClick="{{ toLogin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.logIn }}</button></p>
-          </form>
-        </sc-if>
-
-        <sc-if value="{{ modeJoinSent }}" hint-placeholder-val="{{ false }}">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ sentText }}</p>
-            <sc-if value="{{ hasSentKids }}" hint-placeholder-val="{{ false }}">
-              <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ sentKids }}" as="kid" hint-placeholder-count="1"><p style="{{ kid.style }}">{{ kid.text }}</p></sc-for></div>
-            </sc-if>
-            <sc-if value="{{ someNotFound }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.notFoundNote }}</p></sc-if>
-            <button type="button" onClick="{{ closeAuth }}" class="fbtn">{{ t.backToOffers }}</button>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ modeFinish }}" hint-placeholder-val="{{ false }}">
-          <form onSubmit="{{ submitFinish }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.typeLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupRole }}</span></div>
-              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.emailLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupEmail }}</span></div>
-              <sc-if value="{{ signupHasKids }}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.childrenLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupKids }}</span></div></sc-if>
-            </div>
-            <input type="email" name="username" autocomplete="username" value="{{ signupEmail }}" readOnly="{{ true }}" style="display: none;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
-              <label class="flbl">{{ t.firstName }}<input class="fld" type="text" name="firstName" autocomplete="given-name" required="{{ true }}" maxlength="60"></label>
-              <label class="flbl">{{ t.lastName }}<input class="fld" type="text" name="lastName" autocomplete="family-name" required="{{ true }}" maxlength="60"></label>
-            </div>
-            <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
-            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
-            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
-          </form>
-        </sc-if>
-
         <sc-if value="{{ modeDone }}" hint-placeholder-val="{{ false }}">
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</div>
@@ -462,49 +656,6 @@
             <button type="button" onClick="{{ seeOffers }}" class="fbtn">{{ t.seeOffers }}</button>
             <button type="button" onClick="{{ openAccount }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.myAccount }}</button>
           </div>
-        </sc-if>
-
-        <sc-if value="{{ modeLinkError }}" hint-placeholder-val="{{ false }}">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <p role="alert" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ authError }}</p>
-            <button type="button" onClick="{{ openJoin }}" class="fbtn">{{ t.registerAgain }}</button>
-            <button type="button" onClick="{{ toLogin }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.logIn }}</button>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ modeLogin }}" hint-placeholder-val="{{ false }}">
-          <form onSubmit="{{ submitLogin }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
-            <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="current-password" required="{{ true }}" placeholder="{{ t.passwordPh }}"></label>
-            <div><button type="button" onClick="{{ toForgot }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.forgotLink }}</button></div>
-            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
-            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;">{{ t.newHere }} <button type="button" onClick="{{ openJoin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.becomeMember }}</button></p>
-          </form>
-        </sc-if>
-
-        <sc-if value="{{ modeForgot }}" hint-placeholder-val="{{ false }}">
-          <form onSubmit="{{ submitForgot }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
-            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
-            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
-            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;"><button type="button" onClick="{{ toLogin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.backToLogin }}</button></p>
-          </form>
-        </sc-if>
-
-        <sc-if value="{{ modeForgotSent }}" hint-placeholder-val="{{ false }}">
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ forgotSentText }}</p>
-            <button type="button" onClick="{{ toLogin }}" class="fbtn">{{ t.backToLogin }}</button>
-          </div>
-        </sc-if>
-
-        <sc-if value="{{ modeReset }}" hint-placeholder-val="{{ false }}">
-          <form onSubmit="{{ submitReset }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <label class="flbl">{{ t.newPassword }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
-            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
-            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
-          </form>
         </sc-if>
 
         <sc-if value="{{ modeAccount }}" hint-placeholder-val="{{ false }}">
@@ -598,75 +749,6 @@
     </div>
   </sc-if>
 
-  <sc-if value="{{ feedbackOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Feedback form popup" onClick="{{ closeFeedback }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
-        <button type="button" onClick="{{ closeFeedback }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
-        <sc-if value="{{ feedbackSent }}" hint-placeholder-val="{{ false }}">
-          <div style="text-align: center; padding: 30px 8px 10px;">
-            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
-            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">გმადლობთ!</h3>
-            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">თქვენი შეფასება მიღებულია. ის დაგვეხმარება Circle-ის გაუმჯობესებაში.</p>
-            <button type="button" onClick="{{ closeFeedback }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
-          </div>
-        </sc-if>
-        <sc-if value="{{ feedbackNotSent }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-bottom: 22px; padding-right: 40px;">
-            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">შეფასება</div>
-            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გაგვიზიარეთ თქვენი შთაბეჭდილება</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">მოგვიყევით, როგორ ისარგებლეთ შეთავაზებით ან გაგვიზიარეთ თქვენი მოსაზრება Circle-ის შესახებ.</p>
-          </div>
-          <form onSubmit="{{ submitFeedback }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label class="flbl">შეთავაზება (არასავალდებულო)<input class="fld" type="text" name="offer" defaultValue="{{ feedbackOffer }}"></label>
-              <label class="flbl">შეფასება<select class="fld" name="rating" defaultValue=""><option value="">აირჩიე</option><option>5 - საუკეთესო</option><option>4 - კარგი</option><option>3 - საშუალო</option><option>2 - ცუდი</option><option>1 - ძალიან ცუდი</option></select></label>
-            </div>
-            <label class="flbl">კომენტარი<textarea class="fld" name="message" rows="{{ four }}" required="{{ true }}" placeholder="რა მოგეწონათ და რა შეიძლება იყოს უკეთესი?" style="resize: vertical;"></textarea></label>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label class="flbl">სახელი<input class="fld" type="text" name="name" autocomplete="name" placeholder="არასავალდებულო"></label>
-              <label class="flbl">ელფოსტა<input class="fld" type="email" name="email" autocomplete="email" placeholder="არასავალდებულო"></label>
-            </div>
-            <sc-if value="{{ feedbackError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ feedbackMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
-            </sc-if>
-            <button type="submit" class="fbtn" disabled="{{ feedbackSending }}">{{ feedbackButton }}</button>
-          </form>
-        </sc-if>
-      </div>
-    </div>
-  </sc-if>
-
-  <footer data-screen-label="Footer" style="background: #055397; color: #FFFFFF;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 28px;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12);">
-        <div>
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-            <img src="brand/circle-logo-reverse.png" alt="Circle" style="height: 64px; width: auto; display: block;">
-          </div>
-          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.65); max-width: 34ch;">ბრიტანულ-ქართული აკადემიის მშობლების ლოიალობის პროგრამა.</p>
-        </div>
-        <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">BGA</div>
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
-            <a href="tel:+995322251253" style="color: rgba(255,255,255,.85); text-decoration: none;">+995 322 251 253</a>
-            <a href="mailto:circle@bga.ge" style="color: rgba(255,255,255,.85); text-decoration: none;">circle@bga.ge</a>
-            <a href="#feedback" onClick="{{ openFeedback }}" style="color: #A0DBF2; text-decoration: none; font-weight: 700;">შეთავაზების შეფასება</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 11px; font-weight: 800; letter-spacing: .2em; color: #A0DBF2; margin-bottom: 14px;">კამპუსი</div>
-          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.85);">ლეო ქვაჩაძის ქ. 17<br>ლისის ტბის მიმდებარედ<br>თბილისი 0186, საქართველო</p>
-        </div>
-      </div>
-      <div style="display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: 12px; color: rgba(255,255,255,.5);">
-        <span>© 2026 BGA. ყველა უფლება დაცულია.</span>
-        <span style="max-width: 60ch;">შეთავაზებებს უზრუნველყოფენ პარტნიორი კომპანიები და ისინი შეიძლება შეიცვალოს ან შეწყდეს წინასწარი გაფრთხილების გარეშე. მშობლის ბარათი პერსონალურია და მისი გადაცემა სხვა პირისთვის დაუშვებელია.</span>
-      </div>
-    </div>
-  </footer>
-
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
@@ -677,428 +759,29 @@
 class Component extends DCLogic {
   // The saved login of a Circle member (see "Circle accounts" below).
   token = this.readToken();
-  state = { signedIn: !!this.token, account: null, authOpen: false, authMode: "join", authBusy: false, authError: "", authEmail: "", role: "", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
+  state = { signedIn: !!this.token, checking: !!this.token, offers: null, offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
   CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Other"];
   CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
 
-  OFFERS = [
-    {
-      cats: ["Wellness & Sport"],
-      partner: "Technogym",
-      aka: "ტექნოჯიმი",
-      badge: "−10%",
-      logo: "logos/technogym.png",
-      desc: "Technogym იტალიური ველნეს-ბრენდია, რომელიც 1983 წელს დაარსდა და მთელ მსოფლიოშია ცნობილი დახვეწილი დიზაინის მქონე სავარჯიშო ინვენტარითა და ციფრული სამწვრთნელო ეკოსისტემით. მისი ტრენაჟორები გამოიყენება წამყვან სავარჯიშო დარბაზებში, სასტუმროებში, სპორტულ კლუბებსა და კერძო სახლებში 100-ზე მეტ ქვეყანაში; კომპანია ასევე არაერთი ოლიმპიური თამაშების ოფიციალური მომწოდებელი იყო. თითოეული პროდუქტი - ძალისმიერი და კარდიოხაზებიდან დაწყებული, სახლის კომპაქტური ინვენტარითა და Technogym App-ით დამთავრებული - აერთიანებს იტალიურ დიზაინსა და ვარჯიშის მეცნიერებას, რათა წევრებმა შეძლონ ინტერიერზე იდეალურად მორგებული, სრულფასოვანი სავარჯიშო სივრცის მოწყობა.",
-      benefit: "10%-იანი ფასდაკლება საცალო შენაძენებზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი Technogym-ის შოურუმში (მ. კოსტავას ქ. 37/39, „გრატო პასაჟი“). შეთავაზება ვრცელდება მხოლოდ საცალო შესყიდვებზე, მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით ანგარიშსწორებისას.",
-      validity: "ძალაშია 2027 წლის 29 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.technogym.com/" }],
-      conditions: ["მოქმედებს მხოლოდ ადგილზე, საცალო შესყიდვებისას", "ანგარიშსწორება შესაძლებელია მხოლოდ საბანკო ბარათით"]
-    },
-    {
-      cats: ["Wellness & Sport"],
-      partner: "ოკტოპუს ფიტნეს კლუბი",
-      aka: "Oktopus Fitness Club",
-      badge: "−30 ₾",
-      logo: "logos/oktopus.png",
-      desc: "„ოკტოპუს ფიტნეს კლუბი“ პრემიუმ კლასის ფიტნეს-სივრცეა, რომელიც აერთიანებს თანამედროვე სავარჯიშო გარემოს, მაღალი ხარისხის ინფრასტრუქტურას, ჯგუფურ ვარჯიშებსა და პერსონალურ ტრენინგებს. „ოკტოპუსის“ თითოეული ფილიალი შექმნილია იმისთვის, რომ თანამედროვე სივრცის, პროფესიონალური გარემოსა და მრავალფეროვანი შესაძლებლობების წყალობით, ვარჯიში ყოველდღიური ცხოვრების სასიამოვნო და ენერგიულ ნაწილად აქციოს.",
-      benefit: "აბონემენტი სპეციალურ Circle-ის ფასად: 30 ლარით ნაკლები ყველა ფილიალში",
-      activation: "ეწვიეთ კლუბის მიმღებს (ბათუმი, სანდრო ეული / ვაკე ან „სითი მოლი“ / „მზიური“), წარადგინეთ მშობლის ბარათი და შეიძინეთ აბონემენტი Circle-ის სპეციალურ ფასად. მოქმედებს მხოლოდ ადგილზე შეძენისას.",
-      validity: "ძალაშია 2026 წლის 28 ოქტომბრიდან 2027 წლის 11 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://oktopus.ge/" }, { kind: "facebook", url: "https://www.facebook.com/Oktopusfitness/" }, { kind: "instagram", url: "https://www.instagram.com/oktopusfitness/" }],
-      conditions: ["ბათუმი: 175 ლარი 195 ლარის ნაცვლად (20-ლარიანი შეღავათი)", "სანდრო ეული / ვაკე: 205 ლარი 235 ლარის ნაცვლად", "„სითი მოლი“ / „მზიური“: 305 ლარი 335 ლარის ნაცვლად", "მოქმედებს მხოლოდ ჩამოთვლილ ფილიალებში, თითოეული ფილიალისთვის დადგენილი ტარიფით; ვრცელდება მხოლოდ ადგილზე, საცალო შესყიდვებზე", "მოსწავლის მიერ სკოლაში სწავლის შეწყვეტის შემდეგ, ახალი აბონემენტი Circle-ის ფასად აღარ გაიცემა"]
-    },
-    {
-      cats: ["Wellness & Sport"],
-      partner: "პარაგრაფ თაბორი",
-      aka: "Paragraph Golf & Spa Tabori პარაგრაფი თაბორის გოლფი გოლფ კლუბი",
-      badge: "−20%",
-      logo: "logos/paragraph-tabori.png",
-      desc: "Paragraph Golf & Spa Tabori, Autograph Collection თბილისის გადმოსახედზე, თაბორის მთაზე, თავისუფლების მოედნიდან სულ რაღაც 10 წუთის სავალზე მდებარეობს და ქალაქის პანორამასა და მთებს გადაჰყურებს. მისი 9-ფოსოიანი გოლფის მოედანი დედაქალაქში პირველია. აქვე ფუნქციონირებს გოლფის აკადემია დამწყებთა და მოზარდებისთვის, სასტუმროში კი განთავსებულია Paragraph Spa, 220 კვ.მ სავარჯიშო დარბაზი, დახურული აუზი და ჯაკუზი. კლუბის მწვრთნელების გაკვეთილები დამწყებ მოთამაშეებს Green Card-ის მიღებაში ეხმარება, რაც მოედანზე დამოუკიდებლად თამაშის უფლებას იძლევა.",
-      benefit: "20%-იანი ფასდაკლება გოლფზე და სპეციალური სასწავლო პაკეტები",
-      activation: "მომსახურების მისაღებად საჭიროა წინასწარი ჯავშანი: დაჯავშნეთ გაკვეთილები ან თამაშის დრო (tee time) გოლფ-კლუბში ნომერზე +995 591 16 13 03 ან ელფოსტაზე golf.reservations@paragraphhotels.com და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. ვიზიტისას მიმღებში წარადგინეთ მოსწავლის ან მშობლის ბარათი (მიიღება ასლი ან ფოტოც) და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 31 აგვისტომდე",
-      links: [{ kind: "web", url: "https://www.marriott.com/en-us/hotels/tbsap-paragraph-golf-and-spa-tabori-autograph-collection/overview/" }, { kind: "instagram", url: "https://www.instagram.com/paragraphtabori_/" }],
-      conditions: ["ყველა გაკვეთილსა და თამაშზე საჭიროა წინასწარი ჯავშანი", "იუნიორთა პაკეტი (15 წლამდე): 6 გაკვეთილი 1,125 ლარად - პაკეტი შექმნილია იმისთვის, რომ მოსწავლეებმა სწრაფად აიღონ Green Card და მოიპოვონ მოედანზე თამაშის უფლება", "სტანდარტული პაკეტი მშობლებისთვის: 6 გაკვეთილი 1,250 ლარად (5 გაკვეთილის შეძენის შემთხვევაში, მე-6 საჩუქრად)", "20%-იანი ფასდაკლება კლუბის სტანდარტულ ტარიფებზე (green fee) წევრებისთვის, რომლებიც თამაშობენ გოლფს ან ფლობენ მოედანზე დაშვების ლიცენზიას (Green Card)", "ჯავშანი დამოკიდებულია ადგილების ხელმისაწვდომობაზე; გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Wellness & Sport", "Healthcare"],
-      partner: "თბილისის ბალნეოლოგიური კურორტი",
-      aka: "Tbilisi Balneological Spa Resort balneo სპა",
-      badge: "−10%",
-      logo: "logos/tbilisi-balneological-resort.png",
-      desc: "აბანოთუბანში მდებარე „თბილისის ბალნეოლოგიური კურორტი“ 1938 წლიდან სთავაზობს სტუმრებს გამაჯანსაღებელ პროცედურებს თბილისის ბუნებრივ თერმულ წყლებზე. შენობას 1998 წელს კულტურული მემკვიდრეობის ძეგლის სტატუსი მიენიჭა. ბალნეოლოგიურ პროცედურებთან ერთად, კურორტი მომხმარებლებს სთავაზობს სპა და ველნეს-მომსახურებას, მასაჟს, რეაბილიტაციასა და ფიზიოთერაპიას, კოსმეტოლოგიურ სერვისებსა და ჯგუფურ ვარჯიშებს, მათ შორის - აკვააერობიკას.",
-      benefit: "საოჯახო ველნესი და თავის მოვლა: 10%-იანი ფასდაკლება სპა და ველნეს-პროცედურებზე და 10%-იანი ფასდაკლება ბავშვთა ცურვის გაკვეთილებზე",
-      activation: "პროცედურის ან ცურვის აბონემენტის საფასურის გადახდამდე წარადგინეთ მშობლის ბარათი კურორტის მიმღებში (ვ. გორგასლის ქ. 9; სამუშაო საათები: ყოველდღე, 10:00-დან 21:00 საათამდე). დასაჯავშნად დაუკავშირდით: 032 2 43 90 90 ან info@balneo.ge.",
-      validity: "ძალაშია 2026 წლის 31 დეკემბრამდე",
-      links: [{ kind: "web", url: "https://balneo.ge/" }, { kind: "facebook", url: "https://www.facebook.com/balneo.ge/" }, { kind: "instagram", url: "https://www.instagram.com/balneological.spa.resort/" }],
-      conditions: ["ერთჯერადი 10%-იანი ფასდაკლება მშობლებისთვის სპა და ველნესის ყველა ძირითად პროცედურაზე", "ერთჯერადი 10%-იანი ფასდაკლება ბავშვთა ცურვის გაკვეთილების აბონემენტზე კურორტის აუზში"]
-    },
-    {
-      cats: ["Travel & Leisure", "Expat Services"],
-      partner: "Premium Georgia",
-      aka: "პრემიუმ ჯორჯია",
-      badge: "−15%",
-      logo: "logos/premium-georgia.png",
-      desc: "Premium Georgia ბუტიკური ტიპის სამოგზაურო, კონსიერჟ და ლაიფსთაილ-კომპანიაა, რომელიც გთავაზობთ ინდივიდუალურ ტურებსა და პერსონალიზებულ მომსახურებას საქართველოში. კომპანიის სერვისები მოიცავს კერძო მოგზაურობებისა და ღონისძიებების დაგეგმვას, VIP ტრანსფერებსა და ექსკლუზიურ გამოცდილებებს, ასევე მხარდაჭერას რელოკაციის, საბანკო და იურიდიულ საკითხებში. BGA-ს საზოგადოების წევრები დამატებით სარგებლობენ პრიორიტეტული მომსახურებით, პრიორიტეტული ჯავშნით აქტიურ სეზონზე და უფასო სამოგზაურო თუ კონსიერჟ-კონსულტაციებით, მათ შორის საქართველოში რელოკაციის მიმართულებით.",
-      benefit: "15%-იანი ფასდაკლება Premium Georgia-ს ყველა მომსახურებაზე",
-      activation: "დაჯავშნისას (+995 551 055 550, info@premiumgeorgia.com) მიუთითეთ პრომოკოდი BGABIST15 და წარადგინეთ მშობლის ბარათი ან პირადობის დამადასტურებელი დოკუმენტი. ანგარიშსწორება უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 30 სექტემბრამდე",
-      links: [{ kind: "web", url: "https://premiumgeorgia.com/" }, { kind: "facebook", url: "https://www.facebook.com/profile.php?id=61573476876513" }, { kind: "instagram", url: "https://www.instagram.com/premiumgeorgia/" }],
-      conditions: ["15%-იანი ფასდაკლება ვრცელდება Premium Georgia-ს ყველა სერვისზე", "მოიცავს პრიორიტეტულ კონსულტაციებსა და პრიორიტეტულ ჯავშანს მაღალ სეზონზე", "უფასო სამოგზაურო, ლაიფსთაილ და რელოკაციის კონსულტაციები"]
-    },
-    {
-      cats: ["Travel & Leisure"],
-      partner: "ბუტიკ-სასტუმრო კაბადონი",
-      aka: "Kabadoni Boutique Hotel ყაბადონი",
-      badge: "−30%",
-      logo: "logos/kabadoni.png",
-      desc: "ბუტიკ-სასტუმრო „კაბადონი“ სიღნაღის ისტორიულ ცენტრში მდებარეობს; მისი ერთი მხარე ალაზნის ველის ვენახებსა და კავკასიონს გადაჰყურებს, მეორე კი - ძველ ქალაქს. სასტუმროს 21 ნომერში ჰარმონიულადაა შერწყმული არტ-ნუვოს (მოდერნის), ძველი ქართული და აღმოსავლური მოტივები. სასტუმროში ფუნქციონირებს რესტორანი ღია ტერასით, ღვინის ბარი, დახურული აუზი, სავარჯიშო დარბაზი და სპა. „კაბადონი“ Preferred Hotels & Resorts-ის (Lifestyle Collection) წევრია.",
-      benefit: "30%-იანი ფასდაკლება განთავსებაზე",
-      activation: "დაჯავშნეთ ნომერი პირდაპირ სასტუმროს მიმღებთან დაკავშირებით ნომერზე +995 322 24 04 00 ან ელფოსტაზე info@kabadoni.ge და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. რეგისტრაციისას (check-in) წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტამდე პერიოდში განთავსებაზე",
-      links: [{ kind: "web", url: "https://kabadoni.ge/" }, { kind: "facebook", url: "https://www.facebook.com/hotelkabadoni/" }, { kind: "instagram", url: "https://www.instagram.com/hotelkabadoni/" }],
-      conditions: ["ჯავშანი დამოკიდებულია ნომრების ხელმისაწვდომობაზე და საჭიროებს სასტუმროს წინასწარ დასტურს", "ფასდაკლება ვრცელდება სასტუმროს ოფიციალურ სტანდარტულ ტარიფებზე და მოქმედებს მხოლოდ ინდივიდუალურ (საცალო) ჯავშნებზე"]
-    },
-    {
-      cats: ["Travel & Leisure"],
-      partner: "სამზეო ყვარელი",
-      aka: "Samzeo Kvareli",
-      badge: "−30%",
-      logo: "logos/samzeo-kvareli.png",
-      desc: "„სამზეო ყვარელი“ ეთნო-ბუტიკური ტიპის სასტუმროა ალაზნის ველზე, ქინძმარაულის მიკროზონაში, რომელსაც ჩრდილოეთით კავკასიონი აკრავს, სამხრეთით კი - ვენახები. საუკუნოვან ტყეში, 52,000 კვ.მ ფართობზე გაშლილი კომპლექსი აერთიანებს სამ შენობაში განთავსებულ რვა კატეგორიის 64 ნომერს, ღია აუზს, საუნას, პადელის მოედანსა და ბავშვთა გასართობ სივრცეს. სასტუმროს რესტორანში ტრადიციული კახური სამზარეულო თანამედროვე აქცენტებით არის წარმოდგენილი და იმართება ღვინის დეგუსტაციები.",
-      benefit: "30%-იანი ფასდაკლება განთავსებაზე",
-      activation: "დაჯავშნეთ ნომერი პირდაპირ სასტუმროს მიმღებთან დაკავშირებით ნომერზე +995 577 94 04 93 ან ელფოსტაზე infokvareli@samzeo.ge და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. რეგისტრაციისას (check-in) წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტამდე პერიოდში განთავსებაზე",
-      links: [{ kind: "web", url: "https://samzeo.ge/en/kvareli/home" }, { kind: "facebook", url: "https://www.facebook.com/hotelsamzeo" }, { kind: "instagram", url: "https://www.instagram.com/samzeohotels/" }],
-      conditions: ["ჯავშანი დამოკიდებულია ნომრების ხელმისაწვდომობაზე და საჭიროებს სასტუმროს წინასწარ დასტურს", "ფასდაკლება ვრცელდება სასტუმროს ოფიციალურ სტანდარტულ ტარიფებზე და მოქმედებს მხოლოდ ინდივიდუალურ (საცალო) ჯავშნებზე"]
-    },
-    {
-      cats: ["Travel & Leisure"],
-      partner: "ლე პორტ ბათუმი",
-      aka: "Le Port Batumi ლე პორტი",
-      badge: "−30%",
-      logo: "logos/le-port.png",
-      desc: "აპარტ-სასტუმრო „ლე პორტი“ მდებარეობს ბათუმში (ი. გოგებაშვილის ქ. 30), სანაპიროდან დაახლოებით 200 მეტრში - პორტთან, ბულვართან და საბაგირო „არგოსთან“ ახლოს. სასტუმრო აერთიანებს 45 ნომერსა და აპარტამენტს, მათ შორის სტანდარტულ, სტუდიოს ტიპისა და საოჯახო ნომრებს, ლუქსებსა და პენტჰაუსს (მრავალი მათგანი აღჭურვილია სამზარეულოთი ან მინი-სამზარეულოთი). სტუმრების განკარგულებაშია საუზმე, რესტორანი, ბარი, უფასო კერძო პარკინგი და საკონფერენციო დარბაზი 150-მდე პერსონაზე.",
-      benefit: "30%-იანი ფასდაკლება განთავსებაზე",
-      activation: "დაჯავშნეთ ნომერი პირდაპირ სასტუმროს მიმღებთან დაკავშირებით ნომერზე +995 577 22 77 31 ან ელფოსტაზე info@leport.ge და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. რეგისტრაციისას (check-in) წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "მოქმედებს 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტამდე პერიოდში განთავსებაზე",
-      links: [{ kind: "web", url: "https://leport.ge/" }, { kind: "facebook", url: "https://www.facebook.com/leportbatumi/" }, { kind: "instagram", url: "https://www.instagram.com/leport_batumi/" }],
-      conditions: ["ჯავშანი დამოკიდებულია ნომრების ხელმისაწვდომობაზე და საჭიროებს სასტუმროს წინასწარ დასტურს", "ფასდაკლება ვრცელდება სასტუმროს ოფიციალურ სტანდარტულ ტარიფებზე და მოქმედებს მხოლოდ ინდივიდუალურ (საცალო) ჯავშნებზე"]
-    },
-    {
-      cats: ["Travel & Leisure"],
-      partner: "სასტუმრო ბოდბე",
-      aka: "Bodbe Hotel ბოდბე სიღნაღი",
-      badge: "−25%",
-      logo: "logos/bodbe-hotel.png",
-      desc: "„ბოდბე“ თანამედროვე სასტუმროა კახეთში, სიღნაღის განაპირას, ბოდბის მონასტრის მახლობლად. მისი ნომრებისა და საპრეზიდენტო პენტჰაუსის აივნებიდან ალაზნის ველისა და კავკასიონის ხედები იშლება. რესტორანი Aura და ღვინის ბარი სტუმრებს ქართულ და საერთაშორისო კერძებსა და ღვინოებს სთავაზობს, სახურავის ტერასა კი ქალაქსა და ველს 360-გრადუსიანი პანორამით გადაჰყურებს. სასტუმროში ასევე ფუნქციონირებს სპა და გამაჯანსაღებელი (ველნეს) სივრცე.",
-      benefit: "25%-იანი ფასდაკლება განთავსებაზე",
-      activation: "დაჯავშნეთ ნომერი პირდაპირ სასტუმროსთან დაკავშირებით ნომერზე +995 32 222 22 42 ან ელფოსტაზე info@bodbehotel.ge და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. რეგისტრაციისას (check-in) წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია დამატებით შეტყობინებამდე",
-      links: [{ kind: "web", url: "https://bodbehotel.ge/" }, { kind: "facebook", url: "https://www.facebook.com/bodbehotel" }, { kind: "instagram", url: "https://www.instagram.com/bodbehotel/" }],
-      conditions: ["ჯავშანი დამოკიდებულია ნომრების ხელმისაწვდომობაზე და საჭიროებს სასტუმროს წინასწარ დასტურს", "ფასდაკლება ვრცელდება სასტუმროს ოფიციალურ სტანდარტულ ტარიფებზე და მოქმედებს მხოლოდ ინდივიდუალურ (საცალო) ჯავშნებზე"]
-    },
-    {
-      cats: ["Healthcare"],
-      partner: "კავკასიის მედიცინის ცენტრი",
-      aka: "Caucasus Medical Centre CMC",
-      badge: "−10–15%",
-      logo: "logos/cmc.png",
-      desc: "JCI-ის საერთაშორისო აკრედიტაციის მქონე „კავკასიის მედიცინის ცენტრი“ ბრიტანულ-ქართული აკადემიის მოსწავლეებს, მშობლებსა და პედაგოგებს ექსკლუზიურ პირობებს სთავაზობს: 15%-იან ფასდაკლებას ამბულატორიულ სერვისებზე და 10%-იან ფასდაკლებას სტანდარტულ და ინდივიდუალურ Check-Up პაკეტებზე. სპეციალური პირობები მოქმედებს კლინიკაში მისამართზე: თბილისი, პ. ქავთარაძის ქ. 23. დამატებითი ინფორმაციისთვის დაუკავშირდით: 032 2 600 600.",
-      benefit: "15%-იანი ფასდაკლება ამბულატორიულ სერვისებზე, 10%-იანი - Check-Up პაკეტებზე",
-      activation: "მომსახურების მიღებისას წარადგინეთ მშობლის ბარათი კლინიკის მიმღებში (პ. ქავთარაძის ქ. 23); ფასდაკლება გააქტიურდება ადგილზევე. საინფორმაციო სამსახური: 032 2 600 600.",
-      validity: "ძალაშია 2027 წლის 18 თებერვლამდე",
-      links: [{ kind: "web", url: "https://cmchospital.ge/" }, { kind: "facebook", url: "https://www.facebook.com/CaucasusMedicalCentre/" }, { kind: "instagram", url: "https://www.instagram.com/cmchospital" }],
-      conditions: ["15%-იანი ფასდაკლება ამბულატორიულ სერვისებზე და 10%-იანი ფასდაკლება სტანდარტულ და ინდივიდუალურ Check-Up პაკეტებზე", "შეთავაზება არ ვრცელდება უკვე ფასდაკლებულ სერვისებზე"]
-    },
-    {
-      cats: ["Healthcare", "Wellness & Sport"],
-      partner: "კარაპს მედლაინი",
-      aka: "Caraps Medline",
-      badge: "−20%",
-      logo: "logos/caraps-medline.png",
-      desc: "„კარაპს მედლაინი“ საქართველოში პირველი კლინიკაა, რომელიც აკრედიტებულია AACI-ის (American Accreditation Commission International) მიერ, რაც ადასტურებს, რომ მისი ხარისხის სტანდარტები სრულად შეესაბამება წამყვან ამერიკულ პროტოკოლებს. კლინიკა იყენებს მხოლოდ FDA-ს მიერ დამტკიცებულ აპარატურასა და პრეპარატებს და მომხმარებლებს სთავაზობს თანამედროვე ტექნოლოგიებზე, პროფესიონალიზმსა და ინდივიდუალურ მიდგომაზე დაფუძნებულ მომსახურებას. შეთავაზება მოიცავს აპარატურულ, საინექციო და დერმატოლოგიურ პროცედურებს, კანის დიაგნოსტიკასა და ლაზერულ ეპილაციას.",
-      benefit: "20%-იანი ფასდაკლება კლინიკის ყველა სერვისზე",
-      activation: "პროცედურის დაწყებამდე წარადგინეთ მშობლის ბარათი კლინიკის მიმღებში, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 24 თებერვლამდე",
-      links: [{ kind: "web", url: "https://carapsmedline.ge/" }, { kind: "facebook", url: "https://www.facebook.com/carapsmedlineclinic/" }, { kind: "instagram", url: "https://www.instagram.com/carapsmedline/" }],
-      conditions: ["მოიცავს საინექციო და აპარატურულ პროცედურებს, ლაზერულ ეპილაციას, დერმატოლოგის კონსულტაციას, კანის დიაგნოსტიკასა და აკნეს მკურნალობის კომპლექსურ პროგრამას", "არ ვრცელდება უკვე ფასდაკლებულ სერვისებზე; სხვა აქციებთან და ფასდაკლებებთან არ ჯამდება"]
-    },
-    {
-      cats: ["Healthcare"],
-      partner: "მედიქლაბჯორჯია",
-      aka: "MediClubGeorgia MCG",
-      badge: "პრიორიტეტული წვდომა",
-      logo: "logos/mediclubgeorgia.png",
-      desc: "„მედიქლაბჯორჯია“ მოსწავლეებსა და მათ ოჯახებს სთავაზობს მაღალი ხარისხის, ინდივიდუალურ საჭიროებებსა და პრევენციაზე მორგებულ სამედიცინო მომსახურებას.",
-      benefit: "პრივილეგირებული მომსახურება და პირადი სამედიცინო მენეჯერის 24/7 მხარდაჭერა",
-      activation: "დაუკავშირდით „მედიქლაბჯორჯიას“ (+995 32 225 19 91 ან mcg@mcg.ge) და აცნობეთ, რომ ხართ Circle-ის (BGA) წევრი ოჯახი. პირველ ვიზიტზე თან იქონიეთ მშობლის ბარათი, მომდევნო ვიზიტებს კი თქვენი პირადი მენეჯერი დაგეგმავს.",
-      validity: "ძალაშია 2027 წლის ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.mcg.ge/" }, { kind: "facebook", url: "https://www.facebook.com/MediClubGeorgia/" }, { kind: "instagram", url: "https://www.instagram.com/mediclubgeorgia/" }],
-      conditions: ["პრივილეგირებული წვდომა „მედიქლაბჯორჯიას“ სერვისებზე", "პირადი სამედიცინო მენეჯერის 24/7 მომსახურება", "ინდივიდუალური პრევენციული კვლევები (სკრინინგი) ბავშვებისა და მშობლებისთვის"]
-    },
-    {
-      cats: ["Entertainment"],
-      partner: "ილუზიების მუზეუმი",
-      aka: "Museum of Illusions",
-      badge: "−46%-მდე",
-      logo: "logos/museum-of-illusions.png",
-      desc: "ბეთლემის ქ. 10-ში მდებარე „ილუზიების მუზეუმში“ სტუმრებს ვიზუალური ილუზიები, ინტერაქტიული ექსპონატები და ინტელექტუალური თავსატეხები ელოდებათ. მუზეუმი სივრცეს „ჰოლოზეუმსა“ და „პლანეტარიუმთან“ იზიარებს, რაც საშუალებას გაძლევთ, ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად გააერთიანოთ.",
-      benefit: "ზრდასრულის ბილეთი 25 ლარად (40 ლარის ნაცვლად)",
-      activation: "წარადგინეთ მშობლის ბარათი მუზეუმის სალაროში (ბეთლემის ქ. 10) და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 16 მარტამდე",
-      links: [{ kind: "web", url: "https://museumofillusions.ge/" }, { kind: "facebook", url: "https://www.facebook.com/museumofillusions.tbilisi/" }, { kind: "instagram", url: "https://www.instagram.com/museumofillusions_tbilisi/" }],
-      conditions: ["მხოლოდ „ილუზიების მუზეუმი“: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად („ჰოლოზეუმი“ ან „პლანეტარიუმი“): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ტარიფები მოცემულია ერთ ზრდასრულ ვიზიტორზე (18+); 18 წლამდე სტუმრებზე მოქმედებს საბავშვო ბილეთის სტანდარტული ფასი", "ვრცელდება მხოლოდ ინდივიდუალურ (არაჯგუფურ) ვიზიტებზე; ჯგუფური ვიზიტის ღირებულება განისაზღვრება შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
-    },
-    {
-      cats: ["Entertainment"],
-      partner: "ჰოლოზეუმი",
-      aka: "Holoseum",
-      badge: "−46%-მდე",
-      logo: "logos/holoseum.png",
-      desc: "ბეთლემის ქ. 10-ში მდებარე „ჰოლოზეუმი“ აუდიოვიზუალურ ციფრულ გამოფენას წარმოადგენს, რომელიც ვან გოგის შემოქმედებითაა შთაგონებული. იგი სამუზეუმო სივრცეს „ილუზიების მუზეუმსა“ და „პლანეტარიუმთან“ იზიარებს, რაც საშუალებას გაძლევთ, ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად გააერთიანოთ.",
-      benefit: "ზრდასრულის ბილეთი 25 ლარად (40 ლარის ნაცვლად)",
-      activation: "წარადგინეთ მშობლის ბარათი მუზეუმის სალაროში (ბეთლემის ქ. 10) და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 16 მარტამდე",
-      links: [{ kind: "facebook", url: "https://www.facebook.com/holoseum/" }],
-      conditions: ["მხოლოდ „ჰოლოზეუმი“: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად („ილუზიების მუზეუმი“ ან „პლანეტარიუმი“): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ტარიფები მოცემულია ერთ ზრდასრულ ვიზიტორზე (18+); 18 წლამდე სტუმრებზე მოქმედებს საბავშვო ბილეთის სტანდარტული ფასი", "ვრცელდება მხოლოდ ინდივიდუალურ (არაჯგუფურ) ვიზიტებზე; ჯგუფური ვიზიტის ღირებულება განისაზღვრება შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
-    },
-    {
-      cats: ["Entertainment"],
-      partner: "პლანეტარიუმი",
-      aka: "Planetarium",
-      badge: "−46%-მდე",
-      logo: "logos/planetarium.png",
-      desc: "ბეთლემის ქ. 10-ში მდებარე „პლანეტარიუმი“ სტუმრებს გუმბათოვან ეკრანზე იმერსიულ, საგანმანათლებლო ანიმაციას სთავაზობს; აქვე განთავსებულია გიგანტური კალეიდოსკოპი კოსმოსური გამოსახულებებით. იგი სამუზეუმო სივრცეს „ილუზიების მუზეუმსა“ და „ჰოლოზეუმთან“ იზიარებს, რაც საშუალებას გაძლევთ, ვიზიტი ერთ ან ორივე მათგანთან შეღავათიან ფასად გააერთიანოთ.",
-      benefit: "ზრდასრულის ბილეთი 25 ლარად (40 ლარის ნაცვლად)",
-      activation: "წარადგინეთ მშობლის ბარათი მუზეუმის სალაროში (ბეთლემის ქ. 10) და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 16 მარტამდე",
-      links: [{ kind: "facebook", url: "https://www.facebook.com/betlemi10/" }],
-      conditions: ["მხოლოდ „პლანეტარიუმი“: 25 ლარი 40 ლარის ნაცვლად", "კიდევ ერთ მუზეუმთან ერთად („ილუზიების მუზეუმი“ ან „ჰოლოზეუმი“): 35 ლარი 65 ლარის ნაცვლად", "სამივე მუზეუმი: 45 ლარი 80 ლარის ნაცვლად", "ტარიფები მოცემულია ერთ ზრდასრულ ვიზიტორზე (18+); 18 წლამდე სტუმრებზე მოქმედებს საბავშვო ბილეთის სტანდარტული ფასი", "ვრცელდება მხოლოდ ინდივიდუალურ (არაჯგუფურ) ვიზიტებზე; ჯგუფური ვიზიტის ღირებულება განისაზღვრება შეთანხმებით; სხვა ფასდაკლებებთან არ ჯამდება"]
-    },
-    {
-      cats: ["Gastronomy", "Travel & Leisure"],
-      partner: "The Biltmore Tbilisi",
-      aka: "ბილტმორ თბილისი ბილტმორი",
-      badge: "−10–20%",
-      logo: "logos/biltmore.png",
-      desc: "დედაქალაქის შუაგულში, ისტორიულ რუსთაველის გამზირზე მდებარე ხუთვარსკვლავიანი სასტუმრო The Biltmore Tbilisi გამორჩეული სივრცეა, სადაც თანამედროვე ელეგანტურობა, უნიკალური არქიტექტურა და დახვეწილი სტუმართმოყვარეობა ერწყმის ერთმანეთს. სასტუმროს ბოლო სართულებზე განთავსებული რესტორანი და ბარი Xeme იდეალურ გარემოს ქმნის დაბადების დღეებისა და კერძო წვეულებებისთვის, თბილისის პანორამული ხედების ფონზე. დაბადების დღის პაკეტების ღირებულება იწყება 120 ლარიდან ერთ სტუმარზე და მოიცავს სპეციალურად შედგენილ მენიუს, საფირმო უალკოჰოლო კოქტეილს (Signature Mocktail), მაგიდის ელეგანტურ სერვირებასა და უფასო პარკინგს.",
-      benefit: "10%-იანი ფასდაკლება დაბადების დღის პაკეტებზე, 20%-იანი ფასდაკლება განთავსებაზე",
-      activation: "დაჯავშნეთ სასტუმროს გაყიდვების დეპარტამენტთან დაკავშირებით ნომერზე +995 32 272 72 72 და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. ანგარიშსწორება განახორციელეთ მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია დამატებით შეტყობინებამდე",
-      links: [{ kind: "web", url: "https://www.thebiltmorehotels.com/en/biltmore-tbilisi/" }, { kind: "facebook", url: "https://www.facebook.com/BiltmoreTbilisi" }, { kind: "instagram", url: "https://www.instagram.com/biltmoretbilisi" }],
-      conditions: ["დაბადების დღის პაკეტები - 120 ლარიდან ერთ სტუმარზე; სივრცეები: რესტორანი Xeme (31-ე სართული, 15-დან 20 სტუმრამდე) ან ბარი Xeme (30-ე სართული, 25-დან 80 სტუმრამდე, სივრცის სრული დახურვით)", "შეფ-მზარეულის მიერ კერძების ადგილზე მომზადების კუთხე (live stations), ინდივიდუალური დაბადების დღის ტორტი და დამატებითი დეკორაცია ხელმისაწვდომია დამატებითი ანაზღაურებით", "20%-იანი ფასდაკლება მოქმედებს სასტუმროს ყველა კატეგორიის ნომრის ოფიციალურ ტარიფზე, გარდა 30 დეკემბრიდან 5 იანვრამდე პერიოდისა"]
-    },
-    {
-      cats: ["Gastronomy", "Wellness & Sport"],
-      partner: "თბილისი მარიოტი",
-      aka: "Tbilisi Marriott Hotel მარიოტი",
-      badge: "−20%",
-      logo: "logos/tbilisi-marriott.png",
-      desc: "„თბილისი მარიოტი“ რუსთაველის გამზირზე, დედაქალაქის შუაგულში მდებარე ისტორიული სასტუმროა - თავისუფლების მოედნიდან, ოპერის თეატრიდან და ძველი თბილისიდან რამდენიმე წუთის სავალზე. სასტუმროში ფუნქციონირებს კაფე-რესტორანი Parnas, Lobby Lounge და Majestic Cigar Lounge, ხოლო სავარჯიშო დარბაზი აღჭურვილია კარდიო და ძალისმიერი ტრენაჟორებით, საუნითა და ორთქლის ოთახებით. სასტუმროს, „ქორთიარდ მარიოტთან“ და „მოქსი თბილისთან“ ერთად, GMT Hotels მართავს, შესაბამისად, Circle-ის წევრები სამივე სასტუმროში იდენტური შეღავათებით სარგებლობენ.",
-      benefit: "20%-იანი ფასდაკლება კვებაზე, სავარჯიშო დარბაზსა და მასაჟზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი სასტუმროს რესტორნებსა და ბარებში, სავარჯიშო დარბაზში ან მასაჟის სერვისით სარგებლობისას და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით. ბავშვის დაბადების დღის წვეულების დასაგეგმად დაუკავშირდით სასტუმროს ნომერზე +995 32 277 92 00 და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი.",
-      validity: "ძალაშია 2027 წლის 20 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.marriott.com/en-us/hotels/tbsmc-tbilisi-marriott-hotel/overview/" }],
-      conditions: ["20%-იანი ფასდაკლება სასტუმროს კვების ობიექტებში (F&B), ალკოჰოლური სასმელების გარდა", "20%-იანი ფასდაკლება სავარჯიშო დარბაზით სარგებლობასა და მასაჟის მომსახურებაზე", "სპეციალური ფასდაკლება ბავშვის დაბადების დღის ღონისძიებებზე - სასტუმროსთან წინასწარი შეთანხმებით", "შეთავაზება მოქმედებს მხოლოდ ადგილზე, საცალო ანგარიშსწორებისას; გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Gastronomy", "Wellness & Sport"],
-      partner: "ქორთიარდ მარიოტი",
-      aka: "Courtyard by Marriott Tbilisi ქორთიარდი მარიოტი",
-      badge: "−20%",
-      logo: "logos/courtyard-marriott.png",
-      desc: "„ქორთიარდ მარიოტი თბილისი“ თავისუფლების მოედანზე, რუსთაველის გამზირისა და ძველი თბილისის გასაყარზე მდებარეობს, საიდანაც ქალაქის მთავარი ღირსშესანიშნაობები ფეხით სავალ მანძილზეა. რესტორანი და ბარი Brasserie Freedom სტუმრებს საუზმიდან გვიან ვახშმამდე და კოქტეილებამდე მასპინძლობს, სასტუმროში კი განთავსებულია 24-საათიანი სავარჯიშო დარბაზი, გათბობადი დახურული აუზი და ჯაკუზი. სასტუმრო „თბილისი მარიოტთან“ და „მოქსი თბილისთან“ ერთად GMT Hotels-ის ქსელში შედის და Circle-ის შეღავათები სამივეგან იდენტურია.",
-      benefit: "20%-იანი ფასდაკლება კვებაზე, სავარჯიშო დარბაზსა და მასაჟზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი Brasserie Freedom-ში, სავარჯიშო დარბაზში ან მასაჟის სერვისით სარგებლობისას და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით. ბავშვის დაბადების დღის წვეულების დასაგეგმად დაუკავშირდით სასტუმროს ნომერზე +995 32 277 91 00 და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი.",
-      validity: "ძალაშია 2027 წლის 20 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.marriott.com/en-us/hotels/tbscy-courtyard-tbilisi/overview/" }],
-      conditions: ["20%-იანი ფასდაკლება სასტუმროს კვების ობიექტებში (F&B), ალკოჰოლური სასმელების გარდა", "20%-იანი ფასდაკლება სავარჯიშო დარბაზით სარგებლობასა და მასაჟის მომსახურებაზე", "სპეციალური ფასდაკლება ბავშვის დაბადების დღის ღონისძიებებზე - სასტუმროსთან წინასწარი შეთანხმებით", "შეთავაზება მოქმედებს მხოლოდ ადგილზე, საცალო ანგარიშსწორებისას; გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Gastronomy"],
-      partner: "მოქსი თბილისი",
-      aka: "Moxy Tbilisi მოქსი",
-      badge: "−20%",
-      logo: "logos/moxy-tbilisi.png",
-      desc: "„მოქსი თბილისი“ Marriott-ის თამამი, თანამედროვე სტილის (lifestyle) სასტუმროა ზაარბრიუკენის მოედანზე, დედაქალაქის ერთ-ერთ ყველაზე ცოცხალ უბანში - მშრალი ხიდის ბაზრობიდან და მტკვრის სანაპიროდან რამდენიმე ნაბიჯში. სასტუმროს მთავარი თავშეყრის ადგილია Now Bar, სწრაფი წახემსებისა და ყავისთვის კი ფუნქციონირებს Grab & Go Bar; სასტუმროს საერთო სივრცეები იდეალურია წვეულებებისა და სადღესასწაულო შეკრებებისთვის. „მოქსის“, „თბილისი მარიოტთან“ და „ქორთიარდ მარიოტთან“ ერთად, GMT Hotels მართავს.",
-      benefit: "20%-იანი ფასდაკლება კვებასა და სასმელებზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი Now Bar-ში ან Grab & Go Bar-ში და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით. ბავშვის დაბადების დღის წვეულების დასაგეგმად დაუკავშირდით სასტუმროს ნომერზე +995 32 277 92 77 და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი.",
-      validity: "ძალაშია 2027 წლის 20 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.marriott.com/en-us/hotels/tbsox-moxy-tbilisi/overview/" }],
-      conditions: ["20%-იანი ფასდაკლება სასტუმროს კვების ობიექტებში (F&B), ალკოჰოლური სასმელების გარდა", "სპეციალური ფასდაკლება ბავშვის დაბადების დღის ღონისძიებებზე - სასტუმროსთან წინასწარი შეთანხმებით", "სავარჯიშო დარბაზისა და მასაჟის შეღავათები „მოქსიზე“ არ ვრცელდება, რადგან სასტუმროში აღნიშნული სერვისები არ ფუნქციონირებს", "შეთავაზება მოქმედებს მხოლოდ ადგილზე, საცალო ანგარიშსწორებისას; გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Travel & Leisure", "Gastronomy"],
-      partner: "სასტუმრო ხედი",
-      aka: "Khedi Hotel",
-      badge: "−10%",
-      logo: "logos/khedi.png",
-      desc: "„ხედი“ 57-ნომრიანი სასტუმროა ავლაბარში (ქეთევან დედოფლის გამზ. 24), სამების საკათედრო ტაძრიდან და მშვიდობის ხიდიდან რამდენიმე წუთის სავალზე. ბოლო სართულზე განთავსებული რესტორანი „ხედი“ სტუმრებს ქართული სამზარეულოს თანამედროვე ინტერპრეტაციას სთავაზობს, სუშის ბარი კი გამორჩეულია ახალი თევზისა და ზღვის პროდუქტების კერძებით. სასტუმროში ასევე ფუნქციონირებს ლობი-ბარი, საკონფერენციო დარბაზი 150-მდე პერსონაზე და ფიტნეს-სტუდია.",
-      benefit: "10%-იანი ფასდაკლება რესტორანზე, სუშის ბარზე, განთავსებასა და საკონფერენციო დარბაზზე",
-      activation: "შეკვეთის ან რეგისტრაციის დროს წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ხოლო წინასწარი დაჯავშნისას (+995 322 448 000, sales@khedihotel.ge) აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 31 დეკემბრამდე",
-      links: [{ kind: "web", url: "https://khedihotel.ge/" }, { kind: "facebook", url: "https://www.facebook.com/profile.php?id=61551007004330" }, { kind: "instagram", url: "https://www.instagram.com/khedihotel/" }],
-      conditions: ["ვრცელდება მხოლოდ ოფიციალურ ტარიფებზე; სხვა ფასდაკლებებთან დაჯამება ან უკვე ფასდაკლებულ შეთავაზებებზე გამოყენება დაუშვებელია", "მოქმედებს მხოლოდ საცალო შესყიდვებზე"]
-    },
-    {
-      cats: ["Gastronomy"],
-      partner: "რესტორანი ანდაზი",
-      aka: "Restaurant Andazi",
-      badge: "−20%",
-      logo: "logos/andazi.png",
-      desc: "„ანდაზი“ სასტუმრო Hilton Garden Inn Tbilisi Chavchavadze-ს რესტორანი და ბარია (ი. ჭავჭავაძის გამზ. 64ა). მისი სამზარეულო აერთიანებს ინოვაციასა და ტრადიციას - „ფერმიდან სუფრამდე“ კონცეფციის სალათებით დაწყებული, საგულდაგულოდ შერჩეული ინგრედიენტებით მომზადებული ძირითადი კერძებით დამთავრებული. გარემო, სადაც თანამედროვე ელეგანტურობა თბილ, რუსტიკულ შტრიხებს ერწყმის, იდეალურია როგორც მყუდრო ვახშმისთვის, ისე საქმიანი შეხვედრებისა და მასშტაბური შეკრებებისთვის.",
-      benefit: "20%-იანი ფასდაკლება რესტორნის სრულ მენიუზე",
-      activation: "დაჯავშნეთ მაგიდა ნომერზე +995 322 25 20 20 და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. ვიზიტისას წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2026 წლის 1 ნოემბრიდან 2027 წლის 31 მარტამდე",
-      links: [{ kind: "web", url: "https://www.hilton.com/en/hotels/tbsgigi-hilton-garden-inn-tbilisi-chavchavadze/dining/" }],
-      conditions: ["ვრცელდება რესტორნის სტანდარტული მენიუს ფასებზე; მოქმედებს მხოლოდ ადგილზე, საცალო ანგარიშსწორებისას"]
-    },
-    {
-      cats: ["Gastronomy"],
-      partner: "იაკობის ეზო",
-      aka: "Iakobis Ezo",
-      badge: "Circle Privilege",
-      logo: "logos/iakobis-ezo.png",
-      desc: "„იაკობის ეზო“ დიზაინ-სასტუმრო Artizan-ის ბაღი, რესტორანი და ბარია (ი. ნიკოლაძის ქ. 14). ნეო-ბისტრო სტუმრებს საუზმიდან გვიან ვახშმამდე სთავაზობს თანამედროვე, გამორჩეულ კერძებს, რომლებშიც ქართული კულინარიული ტრადიციები ფრანგული ტექნიკით არის დახვეწილი.",
-      benefit: "Iakobis Ezo Circle Privilege: შეფ-მზარეულის მისასალმებელი კომპლიმენტი, პრიორიტეტული ჯავშანი სასურველი მაგიდის შერჩევით და მოწვევები გასტრონომიულ ღონისძიებებზე",
-      activation: "დაჯავშნეთ მაგიდა ონლაინ ვებგვერდზე iakobisezo.resos.com (კომენტარის ველში მიუთითეთ CIRCLE Community) ან დარეკეთ ნომერზე +995 511 77 77 32 და აღნიშნეთ, რომ ხართ CIRCLE-ის წევრი. ვიზიტისას წარადგინეთ მშობლის ბარათი.",
-      validity: "ძალაშია 2026 წლის 28 ოქტომბრიდან 2027 წლის 27 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.artizanhotels.com/content/1117/5201/Iakobis-Ezo" }, { kind: "facebook", url: "https://www.facebook.com/iakobisezo" }, { kind: "instagram", url: "https://www.instagram.com/iakobisezo" }],
-      conditions: ["Chef’s Welcome Bite - შეფ-მზარეულის სპეციალური კომპლიმენტი (გაიცემა თითო მაგიდაზე ერთხელ, კერძების შეკვეთის შემთხვევაში)", "მაგიდის პრიორიტეტული დაჯავშნა და სასურველი ადგილის შერჩევის შესაძლებლობა", "სპეციალური მოწვევები „იაკობის ეზოს“ რჩეულ გასტრონომიულ ღონისძიებებსა და თემატურ საღამოებზე", "ყველა პრივილეგია მოქმედებს ადგილების ხელმისაწვდომობის გათვალისწინებით"]
-    },
-    {
-      cats: ["Automotive"],
-      partner: "GeoWrap",
-      aka: "ჯეოვრაპი",
-      badge: "−5–40%",
-      logo: "logos/geowrap.png",
-      desc: "GeoWrap არის ავტომობილის დაცვისა და დითეილინგის სტუდია თბილისში (დიდი დიღომი, ფარსადანის ქ. №9). სტუდია გთავაზობთ:\n• თვითაღდგენადი დამცავი ფირის (PPF) გადაკვრას (გამჭვირვალე პრიალა, გლუვი და ფერადი);\n• Gyeon-ის კერამიკულ დაფარვას;\n• ძარის პოლირებასა და ნაკაწრების მოცილებას;\n• მინების დაბურვას;\n• სალონის ხმაურისა და ვიბრაციის იზოლაციას;\n• დისკების თერმულ შეღებვას.",
-      benefit: "5%-დან 40%-მდე ფასდაკლება Circle-ის წევრებისთვის დამცავ ფირზე, კერამიკულ დაფარვაზე, პოლირებაზე, მინების დაბურვასა და სხვა სერვისებზე",
-      activation: "დაჯავშნეთ ვიზიტი წინასწარ ნომერზე +995 593 10 31 13 (WhatsApp: +995 593 73 13 31) და ეწვიეთ GeoWrap-ის სტუდიას (დიდი დიღომი, ფარსადანის ქ. №9). შეკვეთის გაფორმებისას წარადგინეთ მშობლის ბარათი, ხოლო გადახდისას გამოიყენეთ იმავე პირის სახელზე გაცემული საბანკო ბარათი.",
-      validity: "ძალაშია 2027 წლის 30 სექტემბრამდე",
-      links: [{ kind: "web", url: "https://www.geowrap.ge/" }, { kind: "facebook", url: "https://www.facebook.com/Geowrapgeo/" }, { kind: "instagram", url: "https://www.instagram.com/geowrap/" }],
-      conditions: ["მაღალი რისკის ზონების დაფარვა გამჭვირვალე პრიალა ფირით (კაპოტი, წინა ბამპერი, წინა ფრთები, ფარები, სარკეები): სედანი - 4 050 ₾ (4 860 ₾-⁠ის ნაცვლად)", "ავტომობილის სრული დაფარვა თვითაღდგენადი ფირით (გამჭვირვალე პრიალა, გლუვი ან ფერადი): სედანი - 9 990 ₾ (10 530–11 340 ₾-⁠ის ნაცვლად)", "პოლირება და ნაკაწრების მოცილება: სედანი - 800–1 000 ₾ (1 000–1 200 ₾-⁠ის ნაცვლად)", "Gyeon-ის კერამიკული დაფარვა: 6-თვიანი (Can Coat) - 800 ₾-⁠დან (1 000 ₾-⁠ის ნაცვლად); 5-წლიანი, ორფენიანი - 2 500 ₾-⁠მდე (3 000 ₾-⁠ის ნაცვლად)", "მინების დაბურვა: სტანდარტული სედანი - 1 200 ₾ (1 500 ₾-⁠ის ნაცვლად)", "დისკების თერმული შეღებვა: 2 000 ₾-⁠დან (2 200 ₾-⁠ის ნაცვლად)", "SUV-ებისა და სპორტული ავტომობილების (სუპერქარების) მომსახურების ფასი განისაზღვრება ინდივიდუალურად, სტუდიასთან შეთანხმებით", "ფასდაკლება მოქმედებს მხოლოდ ადგილზე, საცალო შეკვეთებისას"]
-    },
-    {
-      cats: ["Automotive"],
-      partner: "ლექსუს თბილისი",
-      aka: "Lexus Tbilisi",
-      badge: "−10%",
-      logo: "logos/lexus.png",
-      desc: "„ლექსუს თბილისი“ Lexus-ის ოფიციალური დილერი და სერვისცენტრია (დ. აღმაშენებლის ხეივანი 160), სადაც შეგიძლიათ გაეცნოთ Lexus-ის უახლეს სამოდელო რიგს და ჩაუტაროთ ავტომობილს ტექნიკური მომსახურება ორიგინალი სათადარიგო ნაწილებით. სერვისცენტრი მომხმარებლებს ასევე სთავაზობს ავტომობილის დამცავი და დეკორატიული ფირით შეფუთვას.",
-      benefit: "10%-იანი ფასდაკლება სერვისზე, სათადარიგო ნაწილებსა და ავტომობილის ფირით შეფუთვაზე",
-      activation: "ჩაეწერეთ ვიზიტზე ნომერზე +995 32 222 55 88, ელფოსტაზე info@lexus-tbilisi.ge ან ვებგვერდზე lexusgeorgia.ge და აღნიშნეთ, რომ ხართ Circle-ის (BGA) წევრი. გადახდამდე სერვისცენტრის მიმღებში წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი.",
-      validity: "ძალაშია 2027 წლის 14 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.lexusgeorgia.ge/" }],
-      conditions: ["ვრცელდება „ლექსუს თბილისის“ სერვისცენტრის მომსახურებაზე, სათადარიგო ნაწილებსა და ავტომობილის ფირით შეფუთვაზე", "არ ვრცელდება საბურავებსა და ახალი ავტომობილების შეძენაზე", "მოქმედებს მხოლოდ საცალო შესყიდვებზე"]
-    },
-    {
-      cats: ["Expat Services"],
-      partner: "ExpatHub",
-      aka: "ექსპატჰაბი",
-      badge: "−15%",
-      logo: "logos/expathub.png",
-      desc: "ExpatHub უცხოელ რეზიდენტებს (ექსპატებს) საქართველოში ცხოვრებასთან, ბიზნესის წარმოებასა და საიმიგრაციო პროცედურებთან დაკავშირებული საკითხების მოგვარებაში ეხმარება. კომპანიის სერვისები მოიცავს საბუღალტრო და საგადასახადო კონსულტაციებს, ბიზნესის რეგისტრაციას, იმიგრაციასა და ბინადრობის ნებართვის მიღებაში მხარდაჭერას, ასევე იურიდიულ მომსახურებასა და კონსულტაციას უძრავი ქონების ყიდვა-გაქირავების პროცესში. გუნდი მომხმარებლებს ორენოვან მომსახურებას სთავაზობს.",
-      benefit: "15%-იანი ფასდაკლება ExpatHub-ის მომსახურებაზე და პრიორიტეტული ჩაწერა",
-      activation: "დაჯავშნეთ კონსულტაცია ნომერზე +995 511 13 99 29 ან ელფოსტაზე info@expathub.ge; მომსახურების შეკვეთისას წარადგინეთ მშობლის ბარათი და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით. სამუშაო საათები: ორშაბათი – ხუთშაბათი, 10:00-დან 17:00 საათამდე.",
-      validity: "ძალაშია 2027 წლის მარტამდე",
-      links: [{ kind: "web", url: "https://expathub.ge/" }, { kind: "facebook", url: "https://www.facebook.com/ExpatHub.GE/" }, { kind: "instagram", url: "https://www.instagram.com/expathub.ge/" }],
-      conditions: ["მოიცავს იურიდიულ, საგადასახადო და საბუღალტრო მომსახურებას, მათ შორის სასწავლო ბინადრობის ნებართვის მიღებას მოსწავლეებისა და მშობლებისთვის და უძრავი ქონების შეძენასთან დაკავშირებულ საკითხებს", "პრიორიტეტული ჩაწერა Circle-ის წევრებისთვის"]
-    },
-    {
-      cats: ["Other"],
-      partner: "სახლი 7",
-      aka: "Sakhli7 Sakhli",
-      badge: "−5–15%",
-      logo: "logos/sakhli7.png",
-      desc: "კომპანია „სახლი“ ქმნის ავეჯს მთელი სახლისთვის და გამოირჩევა სწრაფი, მომხმარებელზე ორიენტირებული მომსახურებით. ბრენდის მიზანია, პრემიუმ ხარისხის ავეჯით ნებისმიერ სივრცეს განსაკუთრებული ხასიათი შესძინოს. „სახლი“ მომხმარებლებს ასევე სთავაზობს ვირტუალური რეალობის (VR) ინოვაციურ სერვისს, რომელიც იძლევა შესაძლებლობას, პროექტი რეალურ მასშტაბში იხილოთ და დიზაინის შეთანხმების პროცესში ადგილზევე შეიტანოთ სასურველი ცვლილებები.",
-      benefit: "5–15%-იანი ფასდაკლება ავეჯის სრულ კოლექციაზე",
-      activation: "შეკვეთის გაფორმებისას წარადგინეთ მშობლის ბარათი „სახლის“ შოურუმში და გადაიხადეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 8 მარტამდე",
-      links: [{ kind: "web", url: "https://sakhli7.ge/" }],
-      conditions: ["ფასდაკლების ოდენობა (5%-დან 15%-მდე) განისაზღვრება პროდუქციის კატეგორიის მიხედვით", "ვრცელდება მხოლოდ ადგილზე, საცალო შესყიდვებისას"]
-    },
-    {
-      cats: ["Beauty & Personal Care", "Shopping"],
-      partner: "ლუტეცია",
-      aka: "Lutecia",
-      badge: "VIP ბარათი",
-      logo: "logos/lutecia.png",
-      desc: "პარფიუმერულმა ქსელმა „ლუტეციამ“ საქართველოში სურნელების სამყარო 1998 წელს შემოიტანა და დღეს თბილისში, ბათუმსა და ქუთაისში პარფიუმერიისა და კოსმეტიკის 14 მაღაზიას აერთიანებს - მათ შორის სავაჭრო ცენტრებში: „გალერია თბილისი“, „ისთ ფოინთი“, „მერანი მოლი“, „სითი მოლი“ და „თბილისი აუთლეტ ვილიჯი“. მის სივრცეში თავმოყრილია სუნამოების, კანის მოვლისა და დეკორატიული კოსმეტიკის 120-ზე მეტი წამყვანი ბრენდი - დაწყებული Chanel-ით, Dior-ით, Guerlain-სა და Yves Saint Laurent-ით, დამთავრებული Lancôme-ით, Clarins-ით, Estée Lauder-სა და Kiehl's-ით, ასევე თმისა და სხეულის მოვლის საშუალებები და სასაჩუქრე ნაკრებები.",
-      benefit: "„ლუტეციას“ ლოიალობის ბარათი VIP პირობებით, რომელიც ადგილზევე გაიცემა",
-      activation: "წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი „ლუტეციას“ ნებისმიერ ფილიალში, რის საფუძველზეც ადგილზევე გადმოგეცემათ VIP პირობების მქონე ლოიალობის ბარათი. ანგარიშსწორება განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 27 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://www.lutecia.ge/" }, { kind: "facebook", url: "https://www.facebook.com/lutecia.official/" }, { kind: "instagram", url: "https://www.instagram.com/lutecia.official/" }],
-      conditions: ["მოქმედებს მხოლოდ ადგილზე, საცალო შესყიდვებისას „ლუტეციას“ ნებისმიერ ფილიალში", "ლოიალობის ბარათი სახელობითია და მისი სხვა პირისთვის გადაცემა დაუშვებელია", "გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Shopping"],
-      partner: "Suwen",
-      aka: "სუვენი",
-      badge: "−30%",
-      logo: "logos/suwen.png",
-      desc: "Suwen თეთრეულისა და საშინაო სამოსის თურქული ბრენდია, რომელიც 2003 წელს სტამბოლში დაარსდა. მისი კოლექცია აერთიანებს 1,500-ზე მეტი დასახელების მოდელს, მათ შორის ქალის თეთრეულის ნაკრებებს, საღამურებს, კომფორტულ საშინაო ტანსაცმელსა და საცურაო კოსტიუმებს. თბილისში ბრენდის მაღაზიები წარმოდგენილია სავაჭრო ცენტრებში - „ისთ ფოინთსა“ და „გალერია თბილისში“.",
-      benefit: "30%-იანი ფასდაკლება არაფასდაკლებულ პროდუქციაზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი Suwen-ის მაღაზიაში, ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 27 ოქტომბრამდე",
-      links: [{ kind: "instagram", url: "https://www.instagram.com/suwen_georgia/" }],
-      conditions: ["ფასდაკლება ვრცელდება მხოლოდ სრულფასიან (არაფასდაკლებულ) კოლექციაზე", "მოქმედებს მხოლოდ ადგილზე, საცალო შესყიდვებისას Suwen-ის ნებისმიერ მაღაზიაში საქართველოს მასშტაბით", "გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Shopping"],
-      partner: "Scalpers",
-      aka: "სკალპერსი",
-      badge: "−20%",
-      logo: "logos/scalpers.png",
-      desc: "Scalpers ესპანური მოდის ბრენდია, რომელიც 2007 წელს სევილიაში დაარსდა. თავდაპირველად ბრენდი ცნობილი გახდა ელეგანტური კოსტიუმებითა და ჰალსტუხებით, დღეს კი ქმნის მამაკაცის, ქალისა და ბავშვის სრულ ხაზებს - კლასიკური სამოსიდან სპორტულ სტილამდე - და წარმოდგენილია ევროპის, ლათინური ამერიკისა და ახლო აღმოსავლეთის ქვეყნებში. საქართველოში ბრენდის პირველი, 230 კვ.მ ფართობის მაღაზია 2026 წლის ივლისში „ისთ ფოინთში“ გაიხსნა და აერთიანებს ქალისა და მამაკაცის კოლექციებს.",
-      benefit: "20%-იანი ფასდაკლება არაფასდაკლებულ პროდუქციაზე",
-      activation: "გადახდამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი Scalpers-ის მაღაზიაში (თბილისი, „ისთ ფოინთი“), ანგარიშსწორება კი განახორციელეთ იმავე პირის სახელზე გაცემული საბანკო ბარათით.",
-      validity: "ძალაშია 2027 წლის 27 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://en.ww.scalperscompany.com/" }, { kind: "instagram", url: "https://www.instagram.com/scalperscompany/" }],
-      conditions: ["ფასდაკლება ვრცელდება მხოლოდ სრულფასიან (არაფასდაკლებულ) კოლექციაზე", "მოქმედებს მხოლოდ ადგილზე, საცალო შესყიდვებისას Scalpers-ის ნებისმიერ მაღაზიაში საქართველოს მასშტაბით", "გადახდა უნდა განხორციელდეს მშობლის ბარათის მფლობელის სახელზე გაცემული საბანკო ბარათით"]
-    },
-    {
-      cats: ["Shopping"],
-      partner: "Marilisi",
-      aka: "მარილისი",
-      badge: "−7%",
-      logo: "logos/marilisi.png",
-      desc: "Marilisi ქართული საოჯახო საიუველირო სახლია, რომელიც 2008 წლიდან მოღვაწეობს და რეგულარულად მონაწილეობს მსოფლიოს ყველაზე პრესტიჟულ საერთაშორისო გამოფენებში. დამფუძნებლისა და კრეატიული დირექტორის, ნათია გოცირიძის ხელმძღვანელობით, ატელიე აცოცხლებს მრავალსაუკუნოვან ქართულ და ანტიკურ საიუველირო ტექნიკას - მათ შორის, ხელნაკეთ ოქროს მაქმანს - და ქმნის უმაღლესი კლასის სამკაულებს, ნიშნობისა და ქორწინების ბეჭდებსა და ინდივიდუალურ ნაკეთობებს. 2023 წელს Marilisi-მ ტაშკენტის საერთაშორისო საიუველირო გამოფენაზე ოქროს ჯილდო მოიპოვა.",
-      benefit: "7%-იანი ფასდაკლება 2 000 ლარის ან მეტი ღირებულების შენაძენზე და დახურული ჩაის ცერემონია („ჩაი Marilisi-ში“)",
-      activation: "ანგარიშსწორებამდე წარადგინეთ მშობლის ბარათი და პირადობის დამადასტურებელი დოკუმენტი Marilisi-ს ბუტიკში (თბილისი, ირაკლი აბაშიძის ქ. №43; სამუშაო საათები: ყოველდღე, 11:00–19:00). „ჩაი Marilisi-ში“ ვიზიტის დასაჯავშნად დაუკავშირდით ბუტიკს ნომერზე +995 595 11 55 04 (ტელეფონი / WhatsApp) ან ელფოსტაზე info@marilisi.com და აცნობეთ, რომ ხართ Circle-ის (BGA) წევრი.",
-      validity: "ძალაშია 2027 წლის 29 ოქტომბრამდე",
-      links: [{ kind: "web", url: "https://marilisi.ge/" }, { kind: "facebook", url: "https://www.facebook.com/Marilisi.Jewelry.House/" }, { kind: "instagram", url: "https://www.instagram.com/marilisi_official/" }],
-      conditions: ["7%-იანი ფასდაკლება ვრცელდება ვებგვერდზე (marilisi.ge) წარმოდგენილ კოლექციებზე, 2 000 ლარის ან მეტი ღირებულების შენაძენისას", "„ჩაი Marilisi-ში“: ინდივიდუალური ვიზიტი ბუტიკში მაქსიმუმ სამი სტუმრისთვის, წინასწარ შეთანხმებულ დროს", "სტუმრობისას შეხვდებით ბრენდის დამფუძნებელს, ახლოდან დაათვალიერებთ საგამოფენო კოლექციას, გაეცნობით მაღალი საიუველირო ხელოვნების სამყაროს და მიიღებთ უფასო პერსონალურ კონსულტაციას - პრივილეგიას, რომლითაც აქამდე მხოლოდ Marilisi Club-ის წევრები სარგებლობდნენ", "Marilisi Club-ის წევრებთან ერთად, Circle-ის წევრებიც პირველები შეიტყობენ ახალი კოლექციების, აქციებისა და სპეციალური შეთავაზებების შესახებ"]
-    },
-    {
-      cats: ["Expat Services"],
-      partner: "Origen Collection",
-      aka: "ორიჯენ კოლექშენი",
-      badge: "უფასო კონსულტაცია",
-      logo: "logos/origen-collection.png",
-      desc: "Origen Collection ბუტიკური ტიპის საოჯახო სააგენტოა, რომელიც საერთაშორისო მყიდველებს საქართველოში პრემიუმ კლასის უძრავი ქონების შერჩევასა და კონსიერჟ-მომსახურებას სთავაზობს. სააგენტოს ძირითადი მიმართულებაა ექსკლუზიური რეზიდენციები თბილისში, ბათუმსა და სხვა მოთხოვნად ლოკაციებზე - პენტჰაუსებითა და პრემიუმ აპარტამენტებით დაწყებული, მთის ვილებითა და ზღვისპირა სახლებით დამთავრებული. კომპანია სრულ მხარდაჭერას უწევს საქართველოში გადმოსულ ოჯახებს, მყიდველებსა და ინვესტორებს უძრავი ქონების შეძენისა თუ დაქირავების ყველა ეტაპზე, რაც მოიცავს ობიექტის შერჩევას, ინდივიდუალურ დათვალიერებას, მოლაპარაკებების წარმოებასა და იურიდიული თუ ტექნიკური აუდიტის (due diligence) კოორდინაციას.",
-      benefit: "უფასო საკონსულტაციო მომსახურება (სტანდარტული ღირებულება: $2,500–$4,000) და 5%-მდე ფასდაკლება უძრავ ქონებაზე",
-      activation: "მიმართეთ კომპანიას ელფოსტაზე executive@origencollection.com ან დარეკეთ ნომერზე +995 599 380 011, მიუთითეთ Circle-ის პროგრამა და კონსულტაციაზე წარადგინეთ მშობლის ბარათი.",
-      validity: "ძალაშია 2027 წლის 30 სექტემბრამდე",
-      links: [{ kind: "web", url: "https://www.origencollection.com/" }],
-      conditions: ["მოიცავს უფასო ინდივიდუალურ კონსულტაციას, ქონების პრიორიტეტულ მოძიებას, წვდომას დახურულ (off-market) შეთავაზებებზე, ქონების წინასწარ შეფასებას მოლაპარაკებების დაწყებამდე და ტრანზაქციის შემდგომ მხარდაჭერას", "5%-მდე ფასდაკლება Origen Collection-ის პორტფოლიოში არსებულ უძრავ ქონებაზე (ხელმისაწვდომობის გათვალისწინებით და მესაკუთრის ან დეველოპერის თანხმობით)"]
-    }
-  ];
+  // The offers are not in the page: they come from the Circle API after login (see loadOffers).
 
   componentDidMount() {
     this.startTimer();
     this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, authOpen: false, partnerOpen: false, feedbackOpen: false }); };
     window.addEventListener("keydown", this.onKey);
     // Links in our emails open the site with ?register=<link>, ?reset=<link>, ?join (with &email=) or ?login.
+    // A registration or password link starts afresh, even on a device that is logged in.
     const params = new URLSearchParams(window.location.search);
     const register = params.get("register") || "";
+    if (register.length >= 20 || params.get("reset")) {
+      this.saveToken("");
+      this.setState({ signedIn: false, checking: false, account: null });
+    }
     if (register.length >= 20) this.checkRegistration(register);
     else if (params.get("reset")) this.openAuth("reset", { resetToken: params.get("reset") });
-    else if (params.has("join") || params.has("register")) this.openJoin({ authEmail: params.get("email") || "" });
-    else if (params.has("login")) this.openAuth("login");
+    else if (!this.token && (params.has("join") || params.has("register"))) this.openJoin({ authEmail: params.get("email") || "" });
+    else if (!this.token && params.has("login")) this.openAuth("login");
     if (this.token) this.loadAccount();
     const linkParams = ["register", "reset", "join", "login", "email"];
     if (linkParams.some(k => params.has(k))) {
@@ -1110,7 +793,7 @@ class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.searchTimer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
   componentDidUpdate(prevProps) {
     if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
-    document.body.style.overflow = this.state.detailIdx !== null || this.state.authOpen || this.state.partnerOpen || this.state.feedbackOpen ? "hidden" : "";
+    document.body.style.overflow = this.state.detailIdx !== null || (this.state.authOpen && this.state.signedIn) || this.state.partnerOpen || this.state.feedbackOpen ? "hidden" : "";
   }
   startTimer() {
     clearInterval(this.timer);
@@ -1244,7 +927,23 @@ class Component extends DCLogic {
     "numbersOne": "1 პირადი ნომერი",
     "numbersMany": "{n} პირადი ნომერი",
     "savedOne": "შენახულია 1 პირადი ნომერი",
-    "savedMany": "შენახულია {n} პირადი ნომერი"
+    "savedMany": "შენახულია {n} პირადი ნომერი",
+    "tabLogin": "შესვლა",
+    "tabJoin": "რეგისტრაცია",
+    "gateKicker": "CIRCLE · BGA-ს საზოგადოება",
+    "gateTitle1": "მეტი, ვიდრე სკოლა",
+    "gateTitle2": "სამყარო, რომელსაც ეკუთვნით",
+    "gateText": "Circle BGA-ს მშობელთა საზოგადოებაა: ექსკლუზიური შეთავაზებები პარტნიორი ბიზნესებისგან მთელ თბილისში, BGA-ს ოჯახებისა და თანამშრომლებისთვის. შეთავაზებების სანახავად შედით ანგარიშზე ან დარეგისტრირდით.",
+    "partnerQuestion": "გაქვთ ბიზნესი?",
+    "partnerLink": "გახდით Circle-ის პარტნიორი",
+    "contactEmail": "circle@bga.ge",
+    "contactMailto": "mailto:circle@bga.ge",
+    "contactPhone": "+995 322 251 253",
+    "contactTel": "tel:+995322251253",
+    "loadingOffers": "შეთავაზებები იტვირთება…",
+    "failedTitle": "შეთავაზებების ჩატვირთვა ვერ მოხერხდა",
+    "failedText": "შეამოწმეთ ინტერნეტთან კავშირი და სცადეთ ხელახლა.",
+    "retry": "ხელახლა ცდა"
   };
 
   ROLE_LABELS = {
@@ -1430,25 +1129,56 @@ class Component extends DCLogic {
     return data;
   }
 
-  // Checks the saved login and fetches the member's details.
+  // The sign-in page opens on Log in on a device that has logged in before, otherwise on Register.
+  firstMode() {
+    try { return window.localStorage.getItem("circle_member") ? "login" : "join"; } catch (e) { return "join"; }
+  }
+
+  // Checks the saved login and fetches the member's details (and the offers, the first time).
   async loadAccount() {
     try {
       const { account } = await this.api("/me");
-      this.setState({ signedIn: true, account });
+      this.setState({ signedIn: true, checking: false, account });
+      if (!this.offersRequested) this.loadOffers();
     } catch (err) {
-      if (err.error !== "unauthorized" && err.error !== "no_active_student") {
-        if (this.state.authOpen && this.state.authMode === "account") this.setState({ authError: this.errorText(err) });
+      if (err.error === "unauthorized" || err.error === "no_active_student") {
+        this.signOut(err.error === "no_active_student" ? this.errorText(err) : "");
         return;
       }
-      this.saveToken("");
-      this.setState({ signedIn: false, account: null });
-      if (err.error === "no_active_student" && !this.state.authOpen) this.openAuth("login", { authError: this.errorText(err) });
+      // Circle could not be reached: keep the login; the offers section offers to try again.
+      this.setState({ checking: false });
+      if (this.state.authOpen && this.state.authMode === "account") this.setState({ authError: this.errorText(err) });
+      if (!this.offersRequested) this.loadOffers();
+    }
+  }
+
+  // The offers come from the Circle API, which sends them only to logged-in members.
+  async loadOffers() {
+    this.offersRequested = true;
+    this.setState({ offersState: "loading" });
+    try {
+      const { offers } = await this.api("/offers");
+      // A fresh random order on every visit, so that no offer is always on top.
+      for (let i = offers.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [offers[i], offers[j]] = [offers[j], offers[i]]; }
+      this.setState({ offers, offersState: "ready", detailIdx: null });
+    } catch (err) {
+      if (err.error === "unauthorized" || err.error === "no_active_student") this.signOut(err.error === "no_active_student" ? this.errorText(err) : "");
+      else this.setState({ offersState: "failed" });
     }
   }
 
   signIn(data, extra) {
     this.saveToken(data.token);
-    this.setState({ signedIn: true, account: data.account, ...extra });
+    try { window.localStorage.setItem("circle_member", "1"); } catch (e) { /* private browsing */ }
+    this.setState({ signedIn: true, checking: false, account: data.account, ...extra });
+    this.loadOffers();
+  }
+
+  // Back to the sign-in page: after logging out, or when the login has ended.
+  signOut(message) {
+    this.saveToken("");
+    this.offersRequested = false;
+    this.setState({ signedIn: false, checking: false, account: null, offers: null, offersState: "loading", authOpen: false, authMode: "login", authError: message || "", menuOpen: false, detailIdx: null, feedbackOpen: false });
   }
 
   openAuth(mode, extra) {
@@ -1483,10 +1213,7 @@ class Component extends DCLogic {
     Promise.resolve()
       .then(() => work(form))
       .catch(err => {
-        if (err && (err.error === "unauthorized" || err.error === "no_active_student")) {
-          this.saveToken("");
-          this.setState({ signedIn: false, account: null, authMode: "login" });
-        }
+        if (err && (err.error === "unauthorized" || err.error === "no_active_student")) this.signOut();
         this.setState({ authError: this.errorText(err || {}) });
         this.track("form_error", { form: this.state.authMode, reason: (err && err.error) || "unknown" });
       })
@@ -1576,7 +1303,7 @@ class Component extends DCLogic {
           password
         });
         this.track("sign_up", { method: "circle_account", role: data.account.role });
-        this.signIn(data, { authMode: "done", doneKind: "registered" });
+        this.signIn(data, { authMode: "done", doneKind: "registered", authOpen: true });
       } catch (err) {
         if (err.error === "token_invalid" || err.error === "already_registered") {
           this.setState({ authMode: "linkError", authError: this.errorText(err) });
@@ -1610,7 +1337,7 @@ class Component extends DCLogic {
       const password = String(form.get("password") || "");
       if (password.length < 8) throw { error: "validation", fields: { password: "too_short" } };
       const data = await this.api("/reset", { token: this.state.resetToken, password });
-      this.signIn(data, { authMode: "done", doneKind: "reset" });
+      this.signIn(data, { authMode: "done", doneKind: "reset", authOpen: true });
     });
   }
 
@@ -1629,24 +1356,18 @@ class Component extends DCLogic {
 
   logout() {
     this.api("/logout", {}).catch(() => {});
-    this.saveToken("");
-    this.setState({ signedIn: false, account: null, authOpen: false, menuOpen: false });
+    this.signOut("");
     this.track("logout", {});
   }
 
   renderVals() {
-    if (!this.offersShuffled) {
-      // Show the partners in a fresh random order on every visit, so that no offer is always on top.
-      const a = this.OFFERS;
-      for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
-      this.offersShuffled = true;
-    }
+    const OFFERS = this.state.offers || [];
     const { slide, cat, q, partnerForm, feedbackForm, authMode, authBusy, role, account, signup } = this.state;
     const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
-    const activeCats = this.CATS.filter(c => this.OFFERS.some(o => o.cats.includes(c)));
+    const activeCats = this.CATS.filter(c => OFFERS.some(o => o.cats.includes(c)));
     const chips = ["All", ...activeCats].map(c => ({
       label: c === "All" ? "ყველა შეთავაზება" : this.CAT_KA[c] || c,
-      count: c === "All" ? this.OFFERS.length : this.OFFERS.filter(o => o.cats.includes(c)).length,
+      count: c === "All" ? OFFERS.length : OFFERS.filter(o => o.cats.includes(c)).length,
       onClick: () => { this.setState({ cat: c }); this.track("select_category", { category: c }); },
       style: c === cat ? { ...chipBase, background: "#055397", color: "#FFFFFF", borderColor: "#055397" } : chipBase
     }));
@@ -1663,14 +1384,16 @@ class Component extends DCLogic {
       const text = [o.partner, o.aka || "", o.desc, o.benefit, o.cats.join(" "), o.cats.map(c => this.CAT_KA[c] || c).join(" "), o.activation].join(" ").toLowerCase();
       return terms.every(t => text.includes(t));
     };
-    const cards = this.OFFERS.filter(o => (cat === "All" || o.cats.includes(cat)) && matches(o))
-      .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: this.OFFERS.indexOf(o) }); this.track("select_content", { content_type: "offer", item_id: o.partner }); } }));
-    const detail = this.state.detailIdx === null ? null : decorate(this.OFFERS[this.state.detailIdx]);
+    const cards = OFFERS.filter(o => (cat === "All" || o.cats.includes(cat)) && matches(o))
+      .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: OFFERS.indexOf(o) }); this.track("select_content", { content_type: "offer", item_id: o.partner }); } }));
+    const detail = this.state.detailIdx === null ? null : decorate(OFFERS[this.state.detailIdx]);
     const dots = [0, 1, 2].map(i => ({
       onClick: () => this.setState({ slide: i }),
       style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#A0DBF2" : "rgba(255,255,255,.35)" }
     }));
     const authText = this.AUTH_TEXT[authMode] || this.AUTH_TEXT.login;
+    const TAB = { border: "none", borderRadius: "999px", padding: "11px 12px", background: "transparent", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "14px", fontWeight: 800, cursor: "pointer" };
+    const TAB_ON = { ...TAB, background: "#055397", color: "#FFFFFF" };
     const accountName = account ? ((account.firstName || "") + " " + (account.lastName || "")).trim() || account.name : "";
     const sentKids = role && role !== "employee" ? this.filledKids(this.state.kids).map(([value, i]) => {
       const s = this.KID_STATUS[this.state.kidStatus[i]];
@@ -1697,6 +1420,21 @@ class Component extends DCLogic {
       clearFilters: () => this.setState({ q: "", cat: "All" }),
       noResults: cards.length === 0,
       t: this.T,
+      // Visitors who are not logged in see only the sign-in page; members see the site.
+      showChecking: this.state.checking,
+      showSite: this.state.signedIn && !this.state.checking,
+      authPage: !this.state.signedIn && !this.state.checking,
+      authOverlay: this.state.signedIn && !this.state.checking && this.state.authOpen,
+      authTabs: authMode === "login" || authMode === "join",
+      tabLoginOn: authMode === "login",
+      tabJoinOn: authMode === "join",
+      tabLoginStyle: authMode === "login" ? TAB_ON : TAB,
+      tabJoinStyle: authMode === "join" ? TAB_ON : TAB,
+      toJoin: () => { if (this.state.authMode !== "join") this.openJoin(); },
+      offersLoading: this.state.offersState === "loading",
+      offersFailed: this.state.offersState === "failed",
+      showOffers: this.state.offersState === "ready",
+      retryOffers: () => this.loadOffers(),
       signedIn: this.state.signedIn,
       signedOut: !this.state.signedIn,
       openLogin: () => this.openAuth("login"),
@@ -1803,9 +1541,9 @@ class Component extends DCLogic {
       submitFeedback: (e) => this.sendForm(e, "feedbackForm", p => "Circle BGA feedback: " + (p.offer || "general"), { name: "feedback_submit", params: {} }),
       four: 4,
       dots, chips, cards,
-      offerCountLabel: cat === "All" && !terms.length
-        ? `${this.OFFERS.length} შეთავაზება · ${activeCats.length} კატეგორია`
-        : `${cards.length} შეთავაზება ${this.OFFERS.length}-დან`,
+      offerCountLabel: this.state.offersState !== "ready" ? "" : cat === "All" && !terms.length
+        ? `${OFFERS.length} შეთავაზება · ${activeCats.length} კატეგორია`
+        : `${cards.length} შეთავაზება ${OFFERS.length}-დან`,
       showNotes: this.props.showTerms ?? true
     };
   }
