@@ -524,7 +524,7 @@
           <sc-if value="{{ modeJoin }}" hint-placeholder-val="{{ true }}">
             <form onSubmit="{{ submitJoin }}" style="display: flex; flex-direction: column; gap: 14px;">
               <div class="flbl" id="circle-member-type">{{ t.memberType }}</div>
-              <div role="group" aria-labelledby="circle-member-type" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: -6px;">
+              <div role="group" aria-labelledby="circle-member-type" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: -6px;">
                 <sc-for list="{{ roleChoices }}" as="choice" hint-placeholder-count="3"><button type="button" onClick="{{ choice.pick }}" aria-pressed="{{ choice.on }}" style="{{ choice.style }}">{{ choice.label }}</button></sc-for>
               </div>
               <sc-if value="{{ roleChosen }}" hint-placeholder-val="{{ true }}">
@@ -886,7 +886,7 @@ class Component extends DCLogic {
     "myAccount": "ჩემი ანგარიში",
     "becomeMember": "გაწევრიანდი",
     "close": "დახურვა",
-    "memberType": "წევრის ტიპი",
+    "memberType": "სტატუსი",
     "email": "ელფოსტა",
     "emailPh": "name@example.com",
     "workEmail": "სამსახურებრივი ელფოსტა",
@@ -905,7 +905,7 @@ class Component extends DCLogic {
     "sentText": "ბმული გამოგიგზავნეთ მისამართზე {email}. გახსენით ის, რომ მიუთითოთ სახელი და აირჩიოთ პაროლი. ბმული მოქმედებს 7 დღის განმავლობაში. თუ რამდენიმე წუთში წერილს ვერ ნახავთ, შეამოწმეთ სპამის საქაღალდე.",
     "notFoundNote": "✗-ით მონიშნული ნომრები არ დაემატა. შვილის დამატება მოგვიანებით შეგიძლიათ განყოფილებაში „ჩემი ანგარიში“, ან მოგვწერეთ: circle@bga.ge.",
     "backToOffers": "შეთავაზებებზე დაბრუნება",
-    "typeLabel": "წევრის ტიპი",
+    "typeLabel": "სტატუსი",
     "emailLabel": "ელფოსტა",
     "childrenLabel": "შვილები",
     "firstName": "სახელი",
@@ -957,7 +957,7 @@ class Component extends DCLogic {
     "join": {
       "kicker": "წევრობა",
       "title": "გახდით Circle-ის წევრი",
-      "intro": "Circle BGA-ს საზოგადოებისთვისაა. აირჩიეთ წევრის ტიპი და რეგისტრაციის დასასრულებელ ბმულს ელფოსტით გამოგიგზავნით.",
+      "intro": "Circle განკუთვნილია BGA-ს საზოგადოებისთვის. აირჩიეთ თქვენი სტატუსი და რეგისტრაციის დასასრულებლად ბმულს ელფოსტაზე გამოგიგზავნით.",
       "button": [
         "გაგრძელება",
         "მოწმდება…"
@@ -989,8 +989,8 @@ class Component extends DCLogic {
     },
     "login": {
       "kicker": "წევრებისთვის",
-      "title": "Circle-ზე შესვლა",
-      "intro": "შედით იმ ელფოსტითა და პაროლით, რომლითაც დარეგისტრირდით.",
+      "title": "Circle-ში შესვლა",
+      "intro": "შეიყვანეთ რეგისტრაციისას მითითებული ელფოსტა და პაროლი.",
       "button": [
         "შესვლა",
         "შესვლა მიმდინარეობს…"
@@ -1050,7 +1050,7 @@ class Component extends DCLogic {
   };
 
   FIELD_ERRORS = {
-    "role": "გთხოვთ, აირჩიოთ წევრის ტიპი.",
+    "role": "გთხოვთ, აირჩიოთ თქვენი სტატუსი.",
     "email": "გთხოვთ, მიუთითოთ სწორი ელფოსტის მისამართი.",
     "email_not_work_email": "გთხოვთ, მიუთითოთ BGA-ს სამსახურებრივი ელფოსტა (@bga.ge).",
     "children": "გთხოვთ, მიუთითოთ შვილის პირადი ნომერი.",
@@ -1469,7 +1469,7 @@ class Component extends DCLogic {
         label: this.ROLE_LABELS[r],
         on: role === r,
         pick: () => this.setState({ role: r, authError: "" }),
-        style: role === r ? { ...{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", overflowWrap: "anywhere" }, ...{ border: "1px solid #055397", background: "#055397", color: "#FFFFFF", fontWeight: 800 } } : { display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", overflowWrap: "anywhere" }
+        style: role === r ? { ...{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", gridColumn: r === "employee" ? "1 / -1" : "auto" }, ...{ border: "1px solid #055397", background: "#055397", color: "#FFFFFF", fontWeight: 800 } } : { display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", gridColumn: r === "employee" ? "1 / -1" : "auto" }
       })),
       roleChosen: !!role,
       roleNotChosen: !role,
