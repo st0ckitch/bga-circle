@@ -84,14 +84,14 @@
 
   /* Mobile layout. The page is composed with inline styles, so small-screen
      overrides live here and need !important to win. */
-  @media (max-width: 880px) {
+  @media (max-width: 1040px) {
     html { scroll-padding-top: 84px; }
     nav > div { padding: 10px 16px !important; }
     /* Desktop links hide behind the hamburger menu on small screens */
     nav > div > div:last-of-type { display: none !important; }
     nav button[aria-label="მენიუ"] { display: inline-flex !important; }
   }
-  @media (min-width: 881px) {
+  @media (min-width: 1041px) {
     /* Safety: a menu left open while resizing up must not linger */
     nav [data-screen-label="Mobile menu"] { display: none !important; }
   }
@@ -129,7 +129,9 @@
         <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
-        <button onClick="{{ openMember }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">გაწევრიანდი</button>
+        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openLogin }}" style="background: none; border: none; padding: 0; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer;">{{ t.logIn }}</button></sc-if>
+        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">გაწევრიანდი</button></sc-if>
+        <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">{{ t.myAccount }}</button></sc-if>
         <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეთავაზებების ნახვა</a>
       </div>
       <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(4,46,86,.25); border-radius: 12px; background: transparent; color: #055397; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
@@ -139,7 +141,9 @@
         <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
-        <button onClick="{{ openMember }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button>
+        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openLogin }}" style="background: none; border: none; text-align: left; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 16px; font-weight: 700; padding: 13px 6px; cursor: pointer;">{{ t.logIn }}</button></sc-if>
+        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">გაწევრიანდი</button></sc-if>
+        <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">{{ t.myAccount }}</button></sc-if>
         <a href="#offers" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
       </div>
     </sc-if>
@@ -235,8 +239,8 @@
       <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
         <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">01</div>
         <div style="font-size: 17px; font-weight: 800; margin-bottom: 8px;">გახდით Circle-ის წევრი</div>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">შეავსეთ მოკლე სარეგისტრაციო ფორმა. CIRCLE ღიაა BGA-ს ყველა ოჯახისთვის და დადასტურება საჭირო არ არის - რეგისტრაციის შემდეგ თქვენი მშობლის ბარათი Circle-ის წევრობის დასტურია.</p>
-        <button onClick="{{ openMember }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">დარეგისტრირდი</button>
+        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">შექმენით Circle-ის ანგარიში ერთ წუთში. მშობლები და მეურვეები რეგისტრირდებიან შვილის პირადი ნომრით, BGA-ს თანამშრომლები კი - სამსახურებრივი ელფოსტით.</p>
+        <sc-if value="{{ signedOut }}" hint-placeholder-val="{{ true }}"><button onClick="{{ openJoin }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">დარეგისტრირდი</button></sc-if><sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 16px; align-self: flex-start; background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="background: #A0DBF2; color: #055397;">{{ t.myAccount }}</button></sc-if>
       </div>
       <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 20px; padding: 26px; display: flex; flex-direction: column;">
         <div style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 40px; color: #A0DBF2; margin-bottom: 14px;">02</div>
@@ -376,42 +380,175 @@
     </div>
   </sc-if>
 
-  <sc-if value="{{ memberOpen }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Member form popup" onClick="{{ closeMember }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
-      <div onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
-        <button type="button" onClick="{{ closeMember }}" aria-label="დახურვა" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
-        <sc-if value="{{ memberSent }}" hint-placeholder-val="{{ false }}">
-          <div style="text-align: center; padding: 30px 8px 10px;">
-            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;">✓</div>
-            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 10px;">თქვენ დარეგისტრირდით</h3>
-            <p style="margin: 0 auto 24px; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 40ch;">გმადლობთ, რომ Circle-ს შემოუერთდით.</p>
-            <button type="button" onClick="{{ closeMember }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 14px; font-weight: 800; padding: 12px 24px; border-radius: 999px; cursor: pointer;">შეთავაზებებზე დაბრუნება</button>
+  <sc-if value="{{ authOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Account popup" onClick="{{ closeAuth }}" style="position: fixed; inset: 0; z-index: 100; background: rgba(4,46,86,.6); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px;">
+      <div role="dialog" aria-modal="true" aria-label="{{ authTitle }}" onClick="{{ stopClick }}" style="background: #FFFFFF; border-radius: 24px; width: min(540px, 100%); max-height: 90vh; overflow-y: auto; overscroll-behavior: contain; padding: 32px; box-sizing: border-box; position: relative; box-shadow: 0 30px 80px rgba(4,46,86,.35);">
+        <button type="button" onClick="{{ closeAuth }}" aria-label="{{ t.close }}" style="position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DCE6EF; background: #FFFFFF; color: #055397; font-size: 15px; cursor: pointer;">✕</button>
+        <div style="margin-bottom: 22px; padding-right: 40px;">
+          <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
+          <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">{{ authKicker }}</div>
+          <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em; overflow-wrap: anywhere;">{{ authTitle }}</h3>
+          <sc-if value="{{ authHasIntro }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">{{ authIntro }}</p></sc-if>
+        </div>
+
+        <sc-if value="{{ modeJoin }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitJoin }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <div class="flbl" id="circle-member-type">{{ t.memberType }}</div>
+            <div role="group" aria-labelledby="circle-member-type" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: -6px;">
+              <sc-for list="{{ roleChoices }}" as="choice" hint-placeholder-count="3"><button type="button" onClick="{{ choice.pick }}" aria-pressed="{{ choice.on }}" style="{{ choice.style }}">{{ choice.label }}</button></sc-for>
+            </div>
+            <sc-if value="{{ roleChosen }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <label class="flbl">{{ joinEmailLabel }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ joinEmailPh }}"></label>
+                <sc-if value="{{ isEmployee }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478; margin-top: -6px;">{{ t.workEmailHint }}</p></sc-if>
+                <sc-if value="{{ isFamily }}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; flex-direction: column; gap: 14px;">
+              <sc-for list="{{ kidRows }}" as="kid" hint-placeholder-count="1">
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  <div style="display: flex; gap: 8px; align-items: flex-end;">
+                    <label class="flbl" style="flex: 1 1 auto; min-width: 0;">{{ kid.label }}<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" value="{{ kid.value }}" onChange="{{ kid.onChange }}" aria-invalid="{{ kid.bad }}" placeholder="{{ t.kidPh }}" style="{{ kid.fieldStyle }}"></label>
+                    <sc-if value="{{ kid.removable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ kid.remove }}" aria-label="{{ t.remove }}" style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; border: 1px solid #C9D8E6; background: #FFFFFF; color: #055397; font-size: 14px; cursor: pointer;">✕</button></sc-if>
+                  </div>
+                  <sc-if value="{{ kid.hasStatus }}" hint-placeholder-val="{{ false }}"><p role="status" style="{{ kid.statusStyle }}">{{ kid.statusText }}</p></sc-if>
+                </div>
+              </sc-for>
+              <sc-if value="{{ canAddKid }}" hint-placeholder-val="{{ true }}"><div><button type="button" onClick="{{ addKid }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.addKid }}</button></div></sc-if>
+              <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478;">{{ t.kidHint }}</p>
+                  </div>
+                </sc-if>
+                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>{{ consentText }}</span></label>
+                <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+                <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ roleNotChosen }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if></sc-if>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;">{{ t.haveAccount }} <button type="button" onClick="{{ toLogin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.logIn }}</button></p>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ modeJoinSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ sentText }}</p>
+            <sc-if value="{{ hasSentKids }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;"><sc-for list="{{ sentKids }}" as="kid" hint-placeholder-count="1"><p style="{{ kid.style }}">{{ kid.text }}</p></sc-for></div>
+            </sc-if>
+            <sc-if value="{{ someNotFound }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.notFoundNote }}</p></sc-if>
+            <button type="button" onClick="{{ closeAuth }}" class="fbtn">{{ t.backToOffers }}</button>
           </div>
         </sc-if>
-        <sc-if value="{{ memberNotSent }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-bottom: 22px; padding-right: 40px;">
-            <img src="brand/circle-logo.png" alt="Circle" style="height: 46px; width: auto; display: block; margin-bottom: 14px;">
-            <div style="font-size: 11px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 8px;">წევრობა</div>
-            <h3 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 24px; margin: 0 0 8px; letter-spacing: -0.01em;">გახდით Circle-ის წევრი</h3>
-            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">Circle ღიაა BGA-ს საზოგადოებისთვის. დასარეგისტრირებლად შეავსეთ თქვენი მონაცემები ქვემოთ. დადასტურება საჭირო არ არის - შეთავაზებებით მშობლის ბარათით მაშინვე ისარგებლებთ.</p>
-          </div>
-          <form onSubmit="{{ submitMember }}" style="display: flex; flex-direction: column; gap: 14px;">
-            <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
-            <label class="flbl">სახელი და გვარი<input class="fld" type="text" name="name" autocomplete="name" required="{{ true }}" placeholder="მშობელი ან მეურვე"></label>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label class="flbl">ელ. ფოსტა<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" placeholder="name@example.com"></label>
-              <label class="flbl">ტელეფონი<input class="fld" type="tel" name="phone" autocomplete="tel" required="{{ true }}" placeholder="+995"></label>
+
+        <sc-if value="{{ modeFinish }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitFinish }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.typeLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupRole }}</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.emailLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupEmail }}</span></div>
+              <sc-if value="{{ signupHasKids }}" hint-placeholder-val="{{ false }}"><div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.childrenLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ signupKids }}</span></div></sc-if>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
-              <label class="flbl">ბავშვის სახელი და გვარი<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" placeholder="მაგ.: ნინო ბერიძე"></label>
-              <label class="flbl">კლასი<input class="fld" type="text" name="grade" autocomplete="off" required="{{ true }}" placeholder="მაგ.: მე-4 კლასი"></label>
+            <input type="email" name="username" autocomplete="username" value="{{ signupEmail }}" readOnly="{{ true }}" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+              <label class="flbl">{{ t.firstName }}<input class="fld" type="text" name="firstName" autocomplete="given-name" required="{{ true }}" maxlength="60"></label>
+              <label class="flbl">{{ t.lastName }}<input class="fld" type="text" name="lastName" autocomplete="family-name" required="{{ true }}" maxlength="60"></label>
             </div>
-            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; font-weight: 600; line-height: 1.5; color: #5A6478;"><input type="checkbox" name="consent" value="yes" required="{{ true }}" style="margin-top: 3px; accent-color: #055397;"><span>ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან კანონიერი წარმომადგენელი და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.</span></label>
-            <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
-              <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">გაგზავნა ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა ან მოგვწეროთ <a href="{{ memberMailto }}" style="color: #C62828;">circle@bga.ge</a>-ზე.</p>
-            </sc-if>
-            <button type="submit" class="fbtn" disabled="{{ memberSending }}">{{ memberButton }}</button>
+            <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
+            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
           </form>
+        </sc-if>
+
+        <sc-if value="{{ modeDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="width: 62px; height: 62px; border-radius: 50%; background: #A0DBF2; color: #055397; font-size: 26px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</div>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ doneText }}</p>
+            <button type="button" onClick="{{ seeOffers }}" class="fbtn">{{ t.seeOffers }}</button>
+            <button type="button" onClick="{{ openAccount }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.myAccount }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeLinkError }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <p role="alert" style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ authError }}</p>
+            <button type="button" onClick="{{ openJoin }}" class="fbtn">{{ t.registerAgain }}</button>
+            <button type="button" onClick="{{ toLogin }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.logIn }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeLogin }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitLogin }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
+            <label class="flbl">{{ t.password }}<input class="fld" type="password" name="password" autocomplete="current-password" required="{{ true }}" placeholder="{{ t.passwordPh }}"></label>
+            <div><button type="button" onClick="{{ toForgot }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.forgotLink }}</button></div>
+            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;">{{ t.newHere }} <button type="button" onClick="{{ openJoin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.becomeMember }}</button></p>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ modeForgot }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitForgot }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <label class="flbl">{{ t.email }}<input class="fld" type="email" name="email" autocomplete="email" required="{{ true }}" defaultValue="{{ authEmail }}" placeholder="{{ t.emailPh }}"></label>
+            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478; text-align: center;"><button type="button" onClick="{{ toLogin }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.backToLogin }}</button></p>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ modeForgotSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #055397;">{{ forgotSentText }}</p>
+            <button type="button" onClick="{{ toLogin }}" class="fbtn">{{ t.backToLogin }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeReset }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitReset }}" style="display: flex; flex-direction: column; gap: 14px;">
+            <label class="flbl">{{ t.newPassword }}<input class="fld" type="password" name="password" autocomplete="new-password" required="{{ true }}" minlength="8" placeholder="{{ t.newPasswordPh }}"></label>
+            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+            <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ modeAccount }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: #F2F7FB; border: 1px solid #DCE6EF; border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.emailLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ accountEmail }}</span></div>
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 14px; font-size: 13.5px; line-height: 1.5;"><span style="flex: 0 0 auto; color: #5A6478; font-weight: 600;">{{ t.typeLabel }}</span><span style="min-width: 0; color: #055397; font-weight: 800; text-align: right; overflow-wrap: anywhere;">{{ accountRole }}</span></div>
+            </div>
+            <sc-if value="{{ accountIsFamily }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div class="flbl">{{ t.childrenLabel }}</div>
+                <sc-if value="{{ accountHasKids }}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: -4px;">
+                    <sc-for list="{{ accountKids }}" as="kid" hint-placeholder-count="1"><div style="display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 700; color: #055397;"><span aria-hidden="true" style="flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; background: #E5F4EA; color: #1E6B3A; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center;">✓</span><span>{{ kid }}</span></div></sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ accountNoKids }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.noChildren }}</p></sc-if>
+                <form onSubmit="{{ submitAddKids }}" style="display: flex; flex-direction: column; gap: 14px; padding-top: 16px; border-top: 1px dashed #D6E2EC;">
+                  <div style="font-size: 16px; font-weight: 800; color: #055397;">{{ t.addChildTitle }}</div>
+              <sc-for list="{{ addRows }}" as="kid" hint-placeholder-count="1">
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  <div style="display: flex; gap: 8px; align-items: flex-end;">
+                    <label class="flbl" style="flex: 1 1 auto; min-width: 0;">{{ kid.label }}<input class="fld" type="text" name="child" autocomplete="off" required="{{ true }}" value="{{ kid.value }}" onChange="{{ kid.onChange }}" aria-invalid="{{ kid.bad }}" placeholder="{{ t.kidPh }}" style="{{ kid.fieldStyle }}"></label>
+                    <sc-if value="{{ kid.removable }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ kid.remove }}" aria-label="{{ t.remove }}" style="flex: 0 0 auto; width: 46px; height: 46px; border-radius: 12px; border: 1px solid #C9D8E6; background: #FFFFFF; color: #055397; font-size: 14px; cursor: pointer;">✕</button></sc-if>
+                  </div>
+                  <sc-if value="{{ kid.hasStatus }}" hint-placeholder-val="{{ false }}"><p role="status" style="{{ kid.statusStyle }}">{{ kid.statusText }}</p></sc-if>
+                </div>
+              </sc-for>
+              <sc-if value="{{ canAddMore }}" hint-placeholder-val="{{ true }}"><div><button type="button" onClick="{{ addAddRow }}" style="background: none; border: none; padding: 0; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; color: #055397; text-decoration: underline; cursor: pointer;">{{ t.addKid }}</button></div></sc-if>
+              <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #5A6478;">{{ t.kidHint }}</p>
+                  <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+                  <button type="submit" class="fbtn" disabled="{{ authBusy }}">{{ authButton }}</button>
+                </form>
+              </div>
+            </sc-if>
+            <button type="button" onClick="{{ logout }}" style="width: 100%; border: 1px solid rgba(4,46,86,.3); border-radius: 999px; padding: 13px 24px; background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer;">{{ t.logOut }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeWorking }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #5A6478;">{{ t.working }}</p>
+            <sc-if value="{{ authHasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin: 0; font-size: 13px; line-height: 1.5; color: #C62828; font-weight: 700;">{{ authError }}</p></sc-if>
+          </div>
         </sc-if>
       </div>
     </div>
@@ -538,7 +675,9 @@
   &quot;showTerms&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Offers&quot; }
 }">
 class Component extends DCLogic {
-  state = { slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, memberOpen: false, memberForm: "idle", partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
+  // The saved login of a Circle member (see "Circle accounts" below).
+  token = this.readToken();
+  state = { signedIn: !!this.token, account: null, authOpen: false, authMode: "join", authBusy: false, authError: "", authEmail: "", role: "", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
   CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Other"];
   CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
@@ -951,13 +1090,27 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.startTimer();
-    this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, memberOpen: false, partnerOpen: false, feedbackOpen: false }); };
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, detailIdx: null, authOpen: false, partnerOpen: false, feedbackOpen: false }); };
     window.addEventListener("keydown", this.onKey);
+    // Links in our emails open the site with ?register=<link>, ?reset=<link>, ?join (with &email=) or ?login.
+    const params = new URLSearchParams(window.location.search);
+    const register = params.get("register") || "";
+    if (register.length >= 20) this.checkRegistration(register);
+    else if (params.get("reset")) this.openAuth("reset", { resetToken: params.get("reset") });
+    else if (params.has("join") || params.has("register")) this.openJoin({ authEmail: params.get("email") || "" });
+    else if (params.has("login")) this.openAuth("login");
+    if (this.token) this.loadAccount();
+    const linkParams = ["register", "reset", "join", "login", "email"];
+    if (linkParams.some(k => params.has(k))) {
+      linkParams.forEach(k => params.delete(k));
+      const rest = params.toString();
+      try { window.history.replaceState(null, "", window.location.pathname + (rest ? "?" + rest : "") + window.location.hash); } catch (e) { /* ignore */ }
+    }
   }
   componentWillUnmount() { clearInterval(this.timer); clearTimeout(this.searchTimer); window.removeEventListener("keydown", this.onKey); document.body.style.overflow = ""; }
   componentDidUpdate(prevProps) {
     if (prevProps.slideSeconds !== this.props.slideSeconds || prevProps.autoplay !== this.props.autoplay) this.startTimer();
-    document.body.style.overflow = this.state.detailIdx !== null || this.state.memberOpen || this.state.partnerOpen || this.state.feedbackOpen ? "hidden" : "";
+    document.body.style.overflow = this.state.detailIdx !== null || this.state.authOpen || this.state.partnerOpen || this.state.feedbackOpen ? "hidden" : "";
   }
   startTimer() {
     clearInterval(this.timer);
@@ -978,7 +1131,7 @@ class Component extends DCLogic {
   // The Circle API keeps a copy of every form submission, shown in the admin page.
   API_URL = "https://circle-api-production-62a5.up.railway.app";
   SCHOOL = "bga";
-  FORM_KINDS = { memberForm: "registration", partnerForm: "partner", feedbackForm: "feedback" };
+  FORM_KINDS = { partnerForm: "partner", feedbackForm: "feedback" };
 
   // The form services to try, in order, until one accepts the submission.
   formServices(subject) {
@@ -1042,6 +1195,445 @@ class Component extends DCLogic {
       });
   }
 
+  // ---------- Circle accounts: become a member, log in, my account ----------
+  // Texts of the account popup.
+  T = {
+    "logIn": "შესვლა",
+    "logOut": "გასვლა",
+    "myAccount": "ჩემი ანგარიში",
+    "becomeMember": "გაწევრიანდი",
+    "close": "დახურვა",
+    "memberType": "წევრის ტიპი",
+    "email": "ელფოსტა",
+    "emailPh": "name@example.com",
+    "workEmail": "სამსახურებრივი ელფოსტა",
+    "workEmailPh": "name@bga.ge",
+    "workEmailHint": "მიუთითეთ BGA-ს სამსახურებრივი ელფოსტა (@bga.ge). სარეგისტრაციო ბმულს ამ მისამართზე გამოგიგზავნით.",
+    "kidLabel": "შვილის პირადი ნომერი",
+    "kidLabelN": "შვილი {n}: პირადი ნომერი",
+    "kidPh": "11-ნიშნა პირადი ნომერი",
+    "addKid": "+ კიდევ ერთი შვილის დამატება",
+    "remove": "წაშლა",
+    "kidHint": "მიუთითეთ შვილის 11-ნიშნა პირადი ნომერი პირადობის ან დაბადების მოწმობიდან. თუ მოსწავლე საქართველოს მოქალაქე არ არის, მიუთითეთ სკოლაში წარდგენილი პირადობის ან პასპორტის ნომერი.",
+    "consentFamily": "ვადასტურებ, რომ ვარ BGA-ს მოსწავლის მშობელი ან მეურვე და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.",
+    "consentEmployee": "ვადასტურებ, რომ ვმუშაობ BGA-ში და თანახმა ვარ, BGA დამიკავშირდეს Circle-თან დაკავშირებით.",
+    "haveAccount": "უკვე ხართ წევრი?",
+    "newHere": "ჯერ არ ხართ წევრი?",
+    "sentText": "ბმული გამოგიგზავნეთ მისამართზე {email}. გახსენით ის, რომ მიუთითოთ სახელი და აირჩიოთ პაროლი. ბმული მოქმედებს 7 დღის განმავლობაში. თუ რამდენიმე წუთში წერილს ვერ ნახავთ, შეამოწმეთ სპამის საქაღალდე.",
+    "notFoundNote": "✗-ით მონიშნული ნომრები არ დაემატა. შვილის დამატება მოგვიანებით შეგიძლიათ განყოფილებაში „ჩემი ანგარიში“, ან მოგვწერეთ: circle@bga.ge.",
+    "backToOffers": "შეთავაზებებზე დაბრუნება",
+    "typeLabel": "წევრის ტიპი",
+    "emailLabel": "ელფოსტა",
+    "childrenLabel": "შვილები",
+    "firstName": "სახელი",
+    "lastName": "გვარი",
+    "password": "პაროლი",
+    "passwordPh": "თქვენი პაროლი",
+    "newPassword": "ახალი პაროლი",
+    "newPasswordPh": "მინიმუმ 8 სიმბოლო",
+    "doneText": "კეთილი იყოს თქვენი მობრძანება Circle-ში, {name}! თქვენი ანგარიში მზადაა და უკვე შესული ხართ.",
+    "resetDoneText": "ახალი პაროლი შენახულია და თქვენ შესული ხართ ანგარიშზე.",
+    "seeOffers": "შეთავაზებების ნახვა",
+    "registerAgain": "თავიდან რეგისტრაცია",
+    "forgotLink": "დაგავიწყდათ პაროლი?",
+    "forgotSentText": "თუ მისამართზე {email} Circle-ის ანგარიში არსებობს, მასზე გამოვგზავნეთ ბმული ახალი პაროლის ასარჩევად. ბმული მოქმედებს 1 საათის განმავლობაში.",
+    "backToLogin": "შესვლის გვერდზე დაბრუნება",
+    "noChildren": "თქვენს ანგარიშს ჯერ არცერთი მოსწავლე არ აქვს მიბმული.",
+    "addChildTitle": "შვილის დამატება",
+    "working": "ერთი წუთით…",
+    "numbersOne": "1 პირადი ნომერი",
+    "numbersMany": "{n} პირადი ნომერი",
+    "savedOne": "შენახულია 1 პირადი ნომერი",
+    "savedMany": "შენახულია {n} პირადი ნომერი"
+  };
+
+  ROLE_LABELS = {
+    "employee": "BGA-ს თანამშრომელი",
+    "parent": "მშობელი",
+    "guardian": "მეურვე",
+    "student": "მოსწავლე"
+  };
+
+  AUTH_TEXT = {
+    "join": {
+      "kicker": "წევრობა",
+      "title": "გახდით Circle-ის წევრი",
+      "intro": "Circle BGA-ს საზოგადოებისთვისაა. აირჩიეთ წევრის ტიპი და რეგისტრაციის დასასრულებელ ბმულს ელფოსტით გამოგიგზავნით.",
+      "button": [
+        "გაგრძელება",
+        "მოწმდება…"
+      ]
+    },
+    "joinSent": {
+      "kicker": "თითქმის მზადაა",
+      "title": "შეამოწმეთ ელფოსტა"
+    },
+    "finish": {
+      "kicker": "წევრობა",
+      "title": "დაასრულეთ რეგისტრაცია",
+      "intro": "მიუთითეთ სახელი და გვარი და აირჩიეთ პაროლი.",
+      "button": [
+        "ანგარიშის შექმნა",
+        "ანგარიში იქმნება…"
+      ]
+    },
+    "done": {
+      "kicker": "მოგესალმებით",
+      "title": {
+        "registered": "თქვენი ანგარიში მზადაა",
+        "reset": "ახალი პაროლი შენახულია"
+      }
+    },
+    "linkError": {
+      "kicker": "წევრობა",
+      "title": "ბმული აღარ მოქმედებს"
+    },
+    "login": {
+      "kicker": "წევრებისთვის",
+      "title": "Circle-ზე შესვლა",
+      "intro": "შედით იმ ელფოსტითა და პაროლით, რომლითაც დარეგისტრირდით.",
+      "button": [
+        "შესვლა",
+        "შესვლა მიმდინარეობს…"
+      ]
+    },
+    "forgot": {
+      "kicker": "პაროლი",
+      "title": "დაგავიწყდათ პაროლი?",
+      "intro": "მიუთითეთ ელფოსტა და გამოგიგზავნით ბმულს ახალი პაროლის ასარჩევად.",
+      "button": [
+        "ბმულის გაგზავნა",
+        "იგზავნება…"
+      ]
+    },
+    "forgotSent": {
+      "kicker": "პაროლი",
+      "title": "შეამოწმეთ ელფოსტა"
+    },
+    "reset": {
+      "kicker": "პაროლი",
+      "title": "აირჩიეთ ახალი პაროლი",
+      "intro": "ახალი პაროლი მინიმუმ 8 სიმბოლოსგან უნდა შედგებოდეს.",
+      "button": [
+        "პაროლის შენახვა",
+        "ინახება…"
+      ]
+    },
+    "account": {
+      "kicker": "ჩემი ანგარიში",
+      "title": "ჩემი ანგარიში",
+      "button": [
+        "დამატება",
+        "მოწმდება…"
+      ]
+    },
+    "working": {
+      "kicker": "CIRCLE",
+      "title": "ერთი წუთით…"
+    }
+  };
+
+  AUTH_ERRORS = {
+    "validation": "გთხოვთ, შეამოწმოთ ფორმა.",
+    "no_match": "ვერცერთი ეს პირადი ნომერი BGA-ს მოსწავლეთა სიაში ვერ მოიძებნა. შეამოწმეთ ნომრები ან მოგვწერეთ: circle@bga.ge.",
+    "child_full": "ამ მოსწავლეზე უკვე დარეგისტრირებულია ანგარიშების დასაშვები რაოდენობა. თუ ფიქრობთ, რომ ეს შეცდომაა, მოგვწერეთ: circle@bga.ge.",
+    "already_registered": "ამ ელფოსტით Circle-ის ანგარიში უკვე არსებობს. გთხოვთ, შეხვიდეთ ანგარიშზე.",
+    "token_invalid": "ბმულს ვადა გაუვიდა ან უკვე გამოყენებულია. ახალი ბმულის მისაღებად თავიდან გაიარეთ რეგისტრაცია, ან შედით ანგარიშზე, თუ რეგისტრაცია უკვე დაასრულეთ.",
+    "invalid_login": "ელფოსტა ან პაროლი არასწორია.",
+    "unconfirmed": "ეს ანგარიში არ გააქტიურებულა. გთხოვთ, თავიდან დარეგისტრირდეთ იმავე ელფოსტით.",
+    "no_active_student": "თქვენი წვდომა დასრულდა, რადგან თქვენს ანგარიშთან დაკავშირებული მოსწავლე BGA-ს სიაში აღარ არის. თუ ეს შეცდომაა, მოგვწერეთ: circle@bga.ge.",
+    "not_family": "შვილების დამატება მხოლოდ მშობლებსა და მეურვეებს შეუძლიათ.",
+    "unauthorized": "გთხოვთ, ხელახლა შეხვიდეთ ანგარიშზე.",
+    "rate_limited": "ძალიან ბევრი მცდელობა. გთხოვთ, რამდენიმე წუთში სცადოთ ხელახლა.",
+    "mail_failed": "წერილის გაგზავნა ახლა ვერ მოხერხდა. გთხოვთ, რამდენიმე წუთში სცადოთ ხელახლა.",
+    "network": "Circle-თან დაკავშირება ვერ მოხერხდა. შეამოწმეთ ინტერნეტთან კავშირი და სცადეთ ხელახლა.",
+    "server_error": "ჩვენს მხარეს შეცდომა მოხდა. გთხოვთ, რამდენიმე წუთში სცადოთ ხელახლა."
+  };
+
+  FIELD_ERRORS = {
+    "role": "გთხოვთ, აირჩიოთ წევრის ტიპი.",
+    "email": "გთხოვთ, მიუთითოთ სწორი ელფოსტის მისამართი.",
+    "email_not_work_email": "გთხოვთ, მიუთითოთ BGA-ს სამსახურებრივი ელფოსტა (@bga.ge).",
+    "children": "გთხოვთ, მიუთითოთ შვილის პირადი ნომერი.",
+    "children_too_many": "შეგიძლიათ დაამატოთ მაქსიმუმ 6 შვილი.",
+    "children_invalid": "გთხოვთ, შეამოწმოთ შვილის პირადი ნომერი: 11-ნიშნა ნომერი ან სკოლაში წარდგენილი პირადობის ან პასპორტის ნომერი.",
+    "consent": "გთხოვთ, მონიშნოთ თანხმობის ველი.",
+    "firstName": "გთხოვთ, მიუთითოთ სახელი.",
+    "lastName": "გთხოვთ, მიუთითოთ გვარი.",
+    "password": "გთხოვთ, აირჩიოთ მინიმუმ 8 სიმბოლოსგან შემდგარი პაროლი."
+  };
+
+  // What the check of a personal number found: ["ok" or "bad", text].
+  KID_STATUS = {
+    "matched": [
+      "ok",
+      "მოიძებნა BGA-ს მოსწავლეთა სიაში"
+    ],
+    "received": [
+      "ok",
+      "შენახულია"
+    ],
+    "added": [
+      "ok",
+      "დაემატა თქვენს ანგარიშს"
+    ],
+    "already": [
+      "ok",
+      "უკვე მიბმულია თქვენს ანგარიშზე"
+    ],
+    "not_found": [
+      "bad",
+      "BGA-ს მოსწავლეთა სიაში ვერ მოიძებნა"
+    ],
+    "invalid": [
+      "bad",
+      "პირადი ნომერი არასწორია"
+    ],
+    "full": [
+      "bad",
+      "ამ მოსწავლეზე ანგარიშების დასაშვები რაოდენობა ამოწურულია"
+    ],
+    "too_many": [
+      "bad",
+      "შეგიძლიათ მიაბათ მაქსიმუმ 6 შვილი"
+    ]
+  };
+
+  ROLES = ["employee", "parent", "guardian"];
+  MAX_KIDS = 6;
+
+  readToken() {
+    try { return window.localStorage.getItem("circle_session") || ""; } catch (e) { return ""; }
+  }
+  saveToken(token) {
+    this.token = token;
+    try {
+      if (token) window.localStorage.setItem("circle_session", token);
+      else window.localStorage.removeItem("circle_session");
+    } catch (e) { /* private browsing: the login lasts until the page is closed */ }
+  }
+
+  // Calls the Circle API; failures are thrown as { error: "code", ... }.
+  async api(path, body) {
+    let res;
+    try {
+      res = await fetch(this.API_URL + "/api/" + this.SCHOOL + path, {
+        method: body ? "POST" : "GET",
+        headers: { ...(body ? { "Content-Type": "application/json" } : {}), ...(this.token ? { "Authorization": "Bearer " + this.token } : {}) },
+        body: body ? JSON.stringify(body) : undefined
+      });
+    } catch (e) {
+      throw { error: "network" };
+    }
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw { ...data, error: data.error || "server_error" };
+    return data;
+  }
+
+  // Checks the saved login and fetches the member's details.
+  async loadAccount() {
+    try {
+      const { account } = await this.api("/me");
+      this.setState({ signedIn: true, account });
+    } catch (err) {
+      if (err.error !== "unauthorized" && err.error !== "no_active_student") {
+        if (this.state.authOpen && this.state.authMode === "account") this.setState({ authError: this.errorText(err) });
+        return;
+      }
+      this.saveToken("");
+      this.setState({ signedIn: false, account: null });
+      if (err.error === "no_active_student" && !this.state.authOpen) this.openAuth("login", { authError: this.errorText(err) });
+    }
+  }
+
+  signIn(data, extra) {
+    this.saveToken(data.token);
+    this.setState({ signedIn: true, account: data.account, ...extra });
+  }
+
+  openAuth(mode, extra) {
+    this.setState({ authOpen: true, authMode: mode, authBusy: false, authError: "", menuOpen: false, ...extra });
+    if (mode === "join" || mode === "login") this.track("form_open", { form: mode });
+  }
+
+  openJoin(extra) {
+    this.openAuth("join", { role: "", kids: [""], kidStatus: [], ...extra });
+  }
+
+  openAccount() {
+    if (!this.token) return this.openAuth("login");
+    this.openAuth("account", { addKids: [""], addStatus: [] });
+    this.loadAccount();
+  }
+
+  errorText(err) {
+    if (err.error === "validation" && err.fields) {
+      const text = Object.keys(err.fields).map(k => this.FIELD_ERRORS[k + "_" + err.fields[k]] || this.FIELD_ERRORS[k]).filter(Boolean).join(" ");
+      if (text) return text;
+    }
+    return this.AUTH_ERRORS[err.error] || this.AUTH_ERRORS.server_error;
+  }
+
+  // Runs one popup action: shows "busy" while it runs and turns failures into a message.
+  authAction(e, work) {
+    if (e && e.preventDefault) e.preventDefault();
+    if (this.state.authBusy) return;
+    const form = e && e.currentTarget && e.currentTarget.tagName === "FORM" ? new FormData(e.currentTarget) : null;
+    this.setState({ authBusy: true, authError: "" });
+    Promise.resolve()
+      .then(() => work(form))
+      .catch(err => {
+        if (err && (err.error === "unauthorized" || err.error === "no_active_student")) {
+          this.saveToken("");
+          this.setState({ signedIn: false, account: null, authMode: "login" });
+        }
+        this.setState({ authError: this.errorText(err || {}) });
+        this.track("form_error", { form: this.state.authMode, reason: (err && err.error) || "unknown" });
+      })
+      .then(() => this.setState({ authBusy: false }));
+  }
+
+  // The personal number fields that were filled in, as [number, position] pairs.
+  filledKids(list) {
+    return list.map((value, i) => [value.trim(), i]).filter(([value]) => value.replace(/[\s\-./]/g, ""));
+  }
+  // The API answers once per number sent, in order; this puts each answer next to its field.
+  kidResults(list, results) {
+    const out = list.map(() => "");
+    this.filledKids(list).forEach(([, i], n) => { out[i] = results[n] || ""; });
+    return out;
+  }
+
+  // "1 personal number", "3 personal numbers" and the like (kind "numbers" or "saved").
+  countText(kind, n) {
+    return (n === 1 ? this.T[kind + "One"] : this.T[kind + "Many"]).replace("{n}", n);
+  }
+
+  kidRows(listKey, statusKey) {
+    const list = this.state[listKey];
+    const status = this.state[statusKey] || [];
+    return list.map((value, i) => {
+      const s = this.KID_STATUS[status[i]];
+      const ok = !!s && s[0] === "ok";
+      return {
+        value,
+        label: list.length > 1 ? this.T.kidLabelN.replace("{n}", i + 1) : this.T.kidLabel,
+        onChange: (e) => { const v = e.target.value; this.setState(st => ({ [listKey]: st[listKey].map((k, j) => (j === i ? v : k)), [statusKey]: st[statusKey].map((x, j) => (j === i ? "" : x)) })); },
+        removable: list.length > 1,
+        remove: () => this.setState(st => ({ [listKey]: st[listKey].filter((k, j) => j !== i), [statusKey]: st[statusKey].filter((x, j) => j !== i) })),
+        hasStatus: !!s,
+        bad: !!s && !ok,
+        statusText: s ? (ok ? "✓ " : "✗ ") + s[1] : "",
+        statusStyle: { margin: 0, fontSize: "12.5px", fontWeight: 800, lineHeight: 1.5, color: ok ? "#1E6B3A" : "#C62828" },
+        fieldStyle: !s ? {} : ok ? { borderColor: "#2E8B57", background: "#F1FAF4" } : { borderColor: "#C62828", background: "#FDF3F4" }
+      };
+    });
+  }
+
+  // Become a member, step 1: member type and email (and the children's personal numbers). The API checks the numbers
+  // and emails a link to finish registering.
+  join(e) {
+    this.authAction(e, async form => {
+      const role = this.state.role;
+      if (!role) throw { error: "validation", fields: { role: "invalid" } };
+      const family = role !== "employee";
+      const kids = this.state.kids;
+      const email = String(form.get("email") || "").trim();
+      const body = { role, email, consent: form.get("consent") === "yes" };
+      if (family) body.children = this.filledKids(kids).map(([value]) => value);
+      this.setState({ authEmail: email, kidStatus: kids.map(() => "") });
+      try {
+        const data = await this.api("/register/start", body);
+        this.setState({ authMode: "joinSent", kidStatus: family ? this.kidResults(kids, data.children || []) : [] });
+        this.track("sign_up_start", { method: "circle_account", role });
+      } catch (err) {
+        if (family && err.children) this.setState({ kidStatus: this.kidResults(kids, err.children) });
+        throw err;
+      }
+    });
+  }
+
+  // Step 2: the link from the email (?register=...). Shows what the registration is for, then asks for name and password.
+  async checkRegistration(token) {
+    this.openAuth("working", { registerToken: token });
+    try {
+      const signup = await this.api("/register/check", { token });
+      this.setState({ authMode: "finish", signup });
+    } catch (err) {
+      this.setState({ authMode: err.error === "token_invalid" || err.error === "already_registered" ? "linkError" : "working", authError: this.errorText(err) });
+    }
+  }
+
+  finish(e) {
+    this.authAction(e, async form => {
+      const password = String(form.get("password") || "");
+      if (password.length < 8) throw { error: "validation", fields: { password: "too_short" } };
+      try {
+        const data = await this.api("/register/complete", {
+          token: this.state.registerToken,
+          firstName: String(form.get("firstName") || "").trim(),
+          lastName: String(form.get("lastName") || "").trim(),
+          password
+        });
+        this.track("sign_up", { method: "circle_account", role: data.account.role });
+        this.signIn(data, { authMode: "done", doneKind: "registered" });
+      } catch (err) {
+        if (err.error === "token_invalid" || err.error === "already_registered") {
+          this.setState({ authMode: "linkError", authError: this.errorText(err) });
+          return;
+        }
+        throw err;
+      }
+    });
+  }
+
+  login(e) {
+    this.authAction(e, async form => {
+      const email = String(form.get("email") || "").trim();
+      this.setState({ authEmail: email });
+      const data = await this.api("/login", { email, password: String(form.get("password") || "") });
+      this.track("login", { method: "circle_account" });
+      this.signIn(data, { authOpen: false });
+    });
+  }
+
+  forgot(e) {
+    this.authAction(e, async form => {
+      const email = String(form.get("email") || "").trim();
+      await this.api("/forgot", { email });
+      this.setState({ authMode: "forgotSent", authEmail: email });
+    });
+  }
+
+  resetPassword(e) {
+    this.authAction(e, async form => {
+      const password = String(form.get("password") || "");
+      if (password.length < 8) throw { error: "validation", fields: { password: "too_short" } };
+      const data = await this.api("/reset", { token: this.state.resetToken, password });
+      this.signIn(data, { authMode: "done", doneKind: "reset" });
+    });
+  }
+
+  // My account: parents and guardians add children; each number turns green when it is found on the pupil list.
+  addChildren(e) {
+    this.authAction(e, async () => {
+      const kids = this.state.addKids;
+      const children = this.filledKids(kids).map(([value]) => value);
+      if (!children.length) throw { error: "validation", fields: { children: "required" } };
+      this.setState({ addStatus: kids.map(() => "") });
+      const data = await this.api("/children", { children });
+      this.setState({ account: data.account, addStatus: this.kidResults(kids, data.children) });
+      if (data.children.includes("added")) this.track("add_child", {});
+    });
+  }
+
+  logout() {
+    this.api("/logout", {}).catch(() => {});
+    this.saveToken("");
+    this.setState({ signedIn: false, account: null, authOpen: false, menuOpen: false });
+    this.track("logout", {});
+  }
+
   renderVals() {
     if (!this.offersShuffled) {
       // Show the partners in a fresh random order on every visit, so that no offer is always on top.
@@ -1049,7 +1641,7 @@ class Component extends DCLogic {
       for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
       this.offersShuffled = true;
     }
-    const { slide, cat, q, memberForm, partnerForm, feedbackForm } = this.state;
+    const { slide, cat, q, partnerForm, feedbackForm, authMode, authBusy, role, account, signup } = this.state;
     const chipBase = { display: "inline-flex", alignItems: "center", gap: "7px", padding: "10px 16px", borderRadius: "999px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, cursor: "pointer", transition: "all .25s" };
     const activeCats = this.CATS.filter(c => this.OFFERS.some(o => o.cats.includes(c)));
     const chips = ["All", ...activeCats].map(c => ({
@@ -1078,6 +1670,12 @@ class Component extends DCLogic {
       onClick: () => this.setState({ slide: i }),
       style: { width: i === slide ? "34px" : "16px", height: "4px", borderRadius: "99px", border: "none", padding: 0, cursor: "pointer", transition: "all .3s", background: i === slide ? "#A0DBF2" : "rgba(255,255,255,.35)" }
     }));
+    const authText = this.AUTH_TEXT[authMode] || this.AUTH_TEXT.login;
+    const accountName = account ? ((account.firstName || "") + " " + (account.lastName || "")).trim() || account.name : "";
+    const sentKids = role && role !== "employee" ? this.filledKids(this.state.kids).map(([value, i]) => {
+      const s = this.KID_STATUS[this.state.kidStatus[i]];
+      return s && { text: (s[0] === "ok" ? "✓ " : "✗ ") + value + " · " + s[1], bad: s[0] !== "ok", style: { margin: 0, fontSize: "13.5px", fontWeight: 800, lineHeight: 1.5, color: s[0] === "ok" ? "#1E6B3A" : "#C62828", overflowWrap: "anywhere" } };
+    }).filter(Boolean) : [];
     return {
       trackTransform: `translateX(-${slide * 100}%)`,
       slideNum: String(slide + 1).padStart(2, "0"),
@@ -1098,16 +1696,83 @@ class Component extends DCLogic {
       },
       clearFilters: () => this.setState({ q: "", cat: "All" }),
       noResults: cards.length === 0,
-      openMember: () => { this.setState({ memberOpen: true, memberForm: "idle", menuOpen: false }); this.track("form_open", { form: "member" }); },
-      closeMember: () => this.setState({ memberOpen: false }),
-      memberOpen: this.state.memberOpen,
-      memberSent: memberForm === "sent",
-      memberNotSent: memberForm !== "sent",
-      memberSending: memberForm === "sending",
-      memberError: memberForm === "error",
-      memberMailto: (this.failedMail && this.failedMail.memberForm) || "mailto:circle@bga.ge",
-      memberButton: memberForm === "sending" ? "იგზავნება…" : "რეგისტრაცია",
-      submitMember: (e) => this.sendForm(e, "memberForm", p => "Circle BGA membership registration: " + p.name, { name: "sign_up", params: { method: "circle_form" } }),
+      t: this.T,
+      signedIn: this.state.signedIn,
+      signedOut: !this.state.signedIn,
+      openLogin: () => this.openAuth("login"),
+      openJoin: () => this.openJoin(),
+      openAccount: () => this.openAccount(),
+      logout: () => this.logout(),
+      authOpen: this.state.authOpen,
+      closeAuth: () => this.setState({ authOpen: false }),
+      modeJoin: authMode === "join",
+      modeJoinSent: authMode === "joinSent",
+      modeFinish: authMode === "finish",
+      modeDone: authMode === "done",
+      modeLinkError: authMode === "linkError",
+      modeLogin: authMode === "login",
+      modeForgot: authMode === "forgot",
+      modeForgotSent: authMode === "forgotSent",
+      modeReset: authMode === "reset",
+      modeAccount: authMode === "account" && !!account,
+      modeWorking: authMode === "working" || (authMode === "account" && !account),
+      authKicker: authText.kicker,
+      authTitle: authMode === "account" && account ? accountName : authMode === "done" ? authText.title[this.state.doneKind] : authText.title,
+      authIntro: authText.intro || "",
+      authHasIntro: !!authText.intro,
+      authButton: authText.button ? authText.button[authBusy ? 1 : 0] : "",
+      authBusy,
+      authError: this.state.authError,
+      authHasError: !!this.state.authError,
+      authEmail: this.state.authEmail,
+      toLogin: () => this.setState({ authMode: "login", authError: "" }),
+      toForgot: () => this.setState({ authMode: "forgot", authError: "" }),
+      roleChoices: this.ROLES.map(r => ({
+        label: this.ROLE_LABELS[r],
+        on: role === r,
+        pick: () => this.setState({ role: r, authError: "" }),
+        style: role === r ? { ...{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", overflowWrap: "anywhere" }, ...{ border: "1px solid #055397", background: "#055397", color: "#FFFFFF", fontWeight: 800 } } : { display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", overflowWrap: "anywhere" }
+      })),
+      roleChosen: !!role,
+      roleNotChosen: !role,
+      isEmployee: role === "employee",
+      isFamily: !!role && role !== "employee",
+      joinEmailLabel: role === "employee" ? this.T.workEmail : this.T.email,
+      joinEmailPh: role === "employee" ? this.T.workEmailPh : this.T.emailPh,
+      consentText: role === "employee" ? this.T.consentEmployee : this.T.consentFamily,
+      kidRows: this.kidRows("kids", "kidStatus"),
+      canAddKid: this.state.kids.length < this.MAX_KIDS,
+      addKid: () => this.setState(s => ({ kids: [...s.kids, ""], kidStatus: [...s.kidStatus, ""] })),
+      submitJoin: (e) => this.join(e),
+      sentText: this.T.sentText.replace("{email}", this.state.authEmail),
+      sentKids,
+      hasSentKids: sentKids.length > 0,
+      someNotFound: sentKids.some(k => k.bad),
+      signupRole: signup ? this.ROLE_LABELS[signup.role] || signup.role : "",
+      signupEmail: signup ? signup.email : "",
+      signupKids: signup ? signup.children.filter(c => !c.full).map(c => c.firstName + (c.yearGroup ? " (" + c.yearGroup + ")" : "")).join(", ") || this.countText("numbers", signup.numbers) : "",
+      signupHasKids: !!signup && (signup.children.some(c => !c.full) || signup.numbers > 0),
+      submitFinish: (e) => this.finish(e),
+      doneText: this.state.doneKind === "reset" ? this.T.resetDoneText : this.T.doneText.replace("{name}", account ? account.firstName || account.name : ""),
+      seeOffers: () => {
+        this.setState({ authOpen: false });
+        setTimeout(() => { const el = document.getElementById("offers"); if (el) el.scrollIntoView({ behavior: "smooth" }); }, 50);
+      },
+      submitLogin: (e) => this.login(e),
+      submitForgot: (e) => this.forgot(e),
+      forgotSentText: this.T.forgotSentText.replace("{email}", this.state.authEmail),
+      submitReset: (e) => this.resetPassword(e),
+      accountEmail: account ? account.email : "",
+      accountRole: account ? this.ROLE_LABELS[account.role] || account.role : "",
+      accountIsFamily: !!account && account.role !== "employee",
+      // Children found on the pupil list, then the personal numbers that are kept but not matched with it yet.
+      accountKids: account ? [...account.children.map(c => c.firstName + (c.yearGroup ? " · " + c.yearGroup : "")), ...(account.unmatchedNumbers ? [this.countText("saved", account.unmatchedNumbers)] : [])] : [],
+      accountHasKids: !!account && (account.children.length > 0 || account.unmatchedNumbers > 0),
+      accountNoKids: !!account && account.children.length === 0 && !account.unmatchedNumbers,
+      addRows: this.kidRows("addKids", "addStatus"),
+      canAddMore: this.state.addKids.length < this.MAX_KIDS,
+      addAddRow: () => this.setState(s => ({ addKids: [...s.addKids, ""], addStatus: [...s.addStatus, ""] })),
+      submitAddKids: (e) => this.addChildren(e),
       openPartner: () => { this.setState({ partnerOpen: true, partnerForm: "idle" }); this.track("form_open", { form: "partner" }); },
       closePartner: () => this.setState({ partnerOpen: false }),
       partnerOpen: this.state.partnerOpen,
