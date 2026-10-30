@@ -759,7 +759,7 @@
 class Component extends DCLogic {
   // The saved login of a Circle member (see "Circle accounts" below).
   token = this.readToken();
-  state = { signedIn: !!this.token, checking: !!this.token, offers: null, offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
+  state = { signedIn: !!this.token, checking: !!this.token, offers: null, offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "parent", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
   CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Other"];
   CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
@@ -948,7 +948,7 @@ class Component extends DCLogic {
 
   ROLE_LABELS = {
     "employee": "BGA-ს თანამშრომელი",
-    "parent": "მშობელი",
+    "parent": "მშობელი / მეურვე",
     "guardian": "მეურვე",
     "student": "მოსწავლე"
   };
@@ -1098,7 +1098,7 @@ class Component extends DCLogic {
     ]
   };
 
-  ROLES = ["employee", "parent", "guardian"];
+  ROLES = ["parent", "employee"];
   MAX_KIDS = 6;
 
   readToken() {
@@ -1187,7 +1187,7 @@ class Component extends DCLogic {
   }
 
   openJoin(extra) {
-    this.openAuth("join", { role: "", kids: [""], kidStatus: [], ...extra });
+    this.openAuth("join", { role: "parent", kids: [""], kidStatus: [], ...extra });
   }
 
   openAccount() {
@@ -1469,7 +1469,7 @@ class Component extends DCLogic {
         label: this.ROLE_LABELS[r],
         on: role === r,
         pick: () => this.setState({ role: r, authError: "" }),
-        style: role === r ? { ...{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", gridColumn: r === "employee" ? "1 / -1" : "auto" }, ...{ border: "1px solid #055397", background: "#055397", color: "#FFFFFF", fontWeight: 800 } } : { display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer", gridColumn: r === "employee" ? "1 / -1" : "auto" }
+        style: role === r ? { ...{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer" }, ...{ border: "1px solid #055397", background: "#055397", color: "#FFFFFF", fontWeight: 800 } } : { display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: "50px", padding: "8px 10px", borderRadius: "14px", border: "1px solid #C9D8E6", background: "#FFFFFF", color: "#055397", fontFamily: "Manrope, 'Noto Sans Georgian', sans-serif", fontSize: "13.5px", fontWeight: 700, lineHeight: 1.3, cursor: "pointer" }
       })),
       roleChosen: !!role,
       roleNotChosen: !role,
