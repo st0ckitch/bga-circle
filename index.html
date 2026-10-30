@@ -84,14 +84,14 @@
 
   /* Mobile layout. The page is composed with inline styles, so small-screen
      overrides live here and need !important to win. */
-  @media (max-width: 1040px) {
+  @media (max-width: 1399px) {
     html { scroll-padding-top: 84px; }
     nav > div { padding: 10px 16px !important; }
     /* Desktop links hide behind the hamburger menu on small screens */
     nav > div > div:last-of-type { display: none !important; }
     nav button[aria-label="მენიუ"] { display: inline-flex !important; }
   }
-  @media (min-width: 1041px) {
+  @media (min-width: 1400px) {
     /* Safety: a menu left open while resizing up must not linger */
     nav [data-screen-label="Mobile menu"] { display: none !important; }
   }
@@ -106,6 +106,7 @@
     }
     #how { padding: 56px 18px 24px !important; }
     #offers { padding: 44px 18px 60px !important; }
+    #events, #growth { padding-left: 18px !important; padding-right: 18px !important; }
     [data-screen-label="Partner CTA"] { padding: 0 18px 64px !important; }
     [data-screen-label="Partner CTA"] > div { padding: 32px 22px !important; }
     [data-screen-label="Partner CTA"] > div > button { width: 100%; }
@@ -157,6 +158,8 @@
       </div>
       <div style="display: flex; align-items: center; gap: 22px;">
         <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
+        <a href="#events" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">ღონისძიებები და ნეტვორქინგი</a>
+        <a href="#growth" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">ზრდა და განვითარება</a>
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">{{ t.myAccount }}</button></sc-if>
@@ -167,6 +170,8 @@
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F2F7FB; border-bottom: 1px solid rgba(4,46,86,.08); box-shadow: 0 22px 34px rgba(4,46,86,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
         <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
+        <a href="#events" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">ღონისძიებები და ნეტვორქინგი</a>
+        <a href="#growth" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">ზრდა და განვითარება</a>
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">{{ t.myAccount }}</button></sc-if>
@@ -252,8 +257,8 @@
   <div style="max-width: 1400px; margin: 14px auto 0; padding: 0 16px;">
     <div style="overflow: hidden; border-radius: 999px; background: #055397;">
       <div style="display: flex; width: max-content; animation: tickermove 38s linear infinite;">
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ სილამაზე და თავის მოვლა ✦ შოპინგი ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
-        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ სილამაზე და თავის მოვლა ✦ შოპინგი ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ სხვა ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ სილამაზე და თავის მოვლა ✦ შოპინგი ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ განათლება ✦ სხვა ✦&nbsp;</span>
+        <span style="white-space: nowrap; padding: 11px 0 11px 32px; font-size: 11.5px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2;">ველნესი და სპორტი ✦ მოგზაურობა და დასვენება ✦ ჯანდაცვა ✦ გართობა ✦ გასტრონომია ✦ სილამაზე და თავის მოვლა ✦ შოპინგი ✦ ავტო-მოტო ✦ სერვისები ექსპატებისთვის ✦ განათლება ✦ სხვა ✦&nbsp;</span>
       </div>
     </div>
   </div>
@@ -352,6 +357,52 @@
         <button onClick="{{ clearFilters }}" style="background: #055397; border: none; color: #FFFFFF; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 800; padding: 11px 20px; border-radius: 999px; cursor: pointer;">ყველა შეთავაზების ჩვენება</button>
       </div>
     </sc-if>
+    </sc-if>
+  </section>
+
+  <section id="events" data-screen-label="Events and networking" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 14px;">{{ t.eventsKicker }}</div>
+    <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em;">{{ t.eventsTitle }}</h2>
+    <p style="margin: 0 0 24px; font-size: 15px; line-height: 1.6; color: #5A6478; max-width: 62ch;">{{ t.eventsIntro }}</p>
+    <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 18px;">
+        <sc-for list="{{ eventCards }}" as="item" hint-placeholder-count="1">
+          <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 18px; padding: 22px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
+            <sc-if value="{{ item.hasImage }}" hint-placeholder-val="{{ false }}"><img src="{{ item.image }}" alt="" style="width: 100%; height: 170px; object-fit: cover; border-radius: 12px; display: block;"></sc-if>
+            <sc-if value="{{ item.hasNote }}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; background: #A0DBF2; color: #055397; font-size: 12px; font-weight: 800; padding: 5px 11px; border-radius: 999px;">{{ item.note }}</span></sc-if>
+            <div style="font-size: 19px; font-weight: 800; line-height: 1.3; letter-spacing: -0.01em;">{{ item.title }}</div>
+            <sc-if value="{{ item.hasWhen }}" hint-placeholder-val="{{ true }}"><div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #04427A;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ item.when }}</span></div></sc-if>
+            <sc-if value="{{ item.hasDesc }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">{{ item.desc }}</p></sc-if>
+            <sc-if value="{{ item.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ item.link }}" target="_blank" rel="noopener" class="cardlink" style="align-self: flex-start; margin-top: auto;"><span>{{ t.moreInfo }}</span></a></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ true }}">
+      <div style="background: #FFFFFF; border: 1px dashed #C9D8E6; border-radius: 18px; padding: 30px 24px; text-align: center; font-size: 14.5px; line-height: 1.6; color: #5A6478;">{{ t.eventsEmpty }}</div>
+    </sc-if>
+  </section>
+
+  <section id="growth" data-screen-label="Growth and development" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px;">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 14px;">{{ t.growthKicker }}</div>
+    <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em;">{{ t.growthTitle }}</h2>
+    <p style="margin: 0 0 24px; font-size: 15px; line-height: 1.6; color: #5A6478; max-width: 62ch;">{{ t.growthIntro }}</p>
+    <sc-if value="{{ hasSessions }}" hint-placeholder-val="{{ false }}">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 18px;">
+        <sc-for list="{{ sessionCards }}" as="item" hint-placeholder-count="1">
+          <div style="background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 18px; padding: 22px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
+            <sc-if value="{{ item.hasImage }}" hint-placeholder-val="{{ false }}"><img src="{{ item.image }}" alt="" style="width: 100%; height: 170px; object-fit: cover; border-radius: 12px; display: block;"></sc-if>
+            <sc-if value="{{ item.hasNote }}" hint-placeholder-val="{{ true }}"><span style="align-self: flex-start; background: #A0DBF2; color: #055397; font-size: 12px; font-weight: 800; padding: 5px 11px; border-radius: 999px;">{{ item.note }}</span></sc-if>
+            <div style="font-size: 19px; font-weight: 800; line-height: 1.3; letter-spacing: -0.01em;">{{ item.title }}</div>
+            <sc-if value="{{ item.hasWhen }}" hint-placeholder-val="{{ true }}"><div style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: #04427A;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 13px; height: 13px; flex: 0 0 auto;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M16 3v4M8 3v4M3 10h18"></path></svg><span>{{ item.when }}</span></div></sc-if>
+            <sc-if value="{{ item.hasDesc }}" hint-placeholder-val="{{ true }}"><p style="margin: 0; font-size: 14px; line-height: 1.6; color: #5A6478;">{{ item.desc }}</p></sc-if>
+            <sc-if value="{{ item.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ item.link }}" target="_blank" rel="noopener" class="cardlink" style="align-self: flex-start; margin-top: auto;"><span>{{ t.moreInfo }}</span></a></sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+    <sc-if value="{{ noSessions }}" hint-placeholder-val="{{ true }}">
+      <div style="background: #FFFFFF; border: 1px dashed #C9D8E6; border-radius: 18px; padding: 30px 24px; text-align: center; font-size: 14.5px; line-height: 1.6; color: #5A6478;">{{ t.growthEmpty }}</div>
     </sc-if>
   </section>
 
@@ -728,7 +779,7 @@
             <input type="text" name="_honey" autocomplete="off" aria-hidden="true" style="display: none;">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
               <label class="flbl">კომპანიის დასახელება<input class="fld" type="text" name="business" autocomplete="organization" required="{{ true }}" placeholder="კომპანიის სახელი"></label>
-              <label class="flbl">კატეგორია<select class="fld" name="category" required="{{ true }}" defaultValue=""><option value="" disabled="{{ true }}">აირჩიეთ კატეგორია</option><option>ველნესი და სპორტი</option><option>მოგზაურობა და დასვენება</option><option>ჯანდაცვა</option><option>გართობა</option><option>გასტრონომია</option><option>სილამაზე და თავის მოვლა</option><option>შოპინგი</option><option>ავტო-მოტო</option><option>სერვისები ექსპატებისთვის</option><option>სხვა</option></select></label>
+              <label class="flbl">კატეგორია<select class="fld" name="category" required="{{ true }}" defaultValue=""><option value="" disabled="{{ true }}">აირჩიეთ კატეგორია</option><option>ველნესი და სპორტი</option><option>მოგზაურობა და დასვენება</option><option>ჯანდაცვა</option><option>გართობა</option><option>გასტრონომია</option><option>სილამაზე და თავის მოვლა</option><option>შოპინგი</option><option>ავტო-მოტო</option><option>სერვისები ექსპატებისთვის</option><option>განათლება</option><option>სხვა</option></select></label>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;">
               <label class="flbl">საკონტაქტო პირი<input class="fld" type="text" name="contact" autocomplete="name" required="{{ true }}" placeholder="სახელი და გვარი"></label>
@@ -759,10 +810,10 @@
 class Component extends DCLogic {
   // The saved login of a Circle member (see "Circle accounts" below).
   token = this.readToken();
-  state = { signedIn: !!this.token, checking: !!this.token, offers: null, offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "parent", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
+  state = { signedIn: !!this.token, checking: !!this.token, offers: null, events: [], sessions: [], offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "parent", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
-  CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Other"];
-  CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Other": "სხვა" };
+  CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Education", "Other"];
+  CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Education": "განათლება", "Other": "სხვა" };
 
   // The offers are not in the page: they come from the Circle API after login (see loadOffers).
 
@@ -943,7 +994,16 @@ class Component extends DCLogic {
     "loadingOffers": "შეთავაზებები იტვირთება…",
     "failedTitle": "შეთავაზებების ჩატვირთვა ვერ მოხერხდა",
     "failedText": "შეამოწმეთ ინტერნეტთან კავშირი და სცადეთ ხელახლა.",
-    "retry": "ხელახლა ცდა"
+    "retry": "ხელახლა ცდა",
+    "eventsKicker": "ღონისძიებები და ნეტვორქინგი",
+    "eventsTitle": "ღონისძიებები და ნეტვორქინგი",
+    "eventsIntro": "ღონისძიებები, რომლებზეც Circle-ის წევრებს უპირატესობა აქვთ, და ჩვენს პარტნიორებთან ერთად ორგანიზებული ღონისძიებები.",
+    "eventsEmpty": "ღონისძიებები ჯერ არ გამოცხადებულა. ახალი ღონისძიებები აქ გამოჩნდება.",
+    "growthKicker": "ზრდა და განვითარება",
+    "growthTitle": "ზრდა და განვითარება",
+    "growthIntro": "მასტერკლასები და სესიები Circle-ის საზოგადოებისთვის.",
+    "growthEmpty": "მასტერკლასები და სესიები ჯერ არ დაგეგმილა. ისინი აქ გამოჩნდება.",
+    "moreInfo": "დამატებითი ინფორმაცია"
   };
 
   ROLE_LABELS = {
@@ -1152,15 +1212,27 @@ class Component extends DCLogic {
     }
   }
 
-  // The offers come from the Circle API, which sends them only to logged-in members.
+  // An event or session for its card: date and place on one line, and only http(s) links.
+  programmeCards(list) {
+    return list.map(item => {
+      const when = [item.date, item.place].filter(Boolean).join(" · ");
+      const link = /^https?:\/\//.test(item.link || "") ? item.link : "";
+      return {
+        title: item.title, when, hasWhen: !!when, desc: item.desc || "", hasDesc: !!item.desc, note: item.note || "", hasNote: !!item.note,
+        link, hasLink: !!link, image: item.image || "", hasImage: !!item.image
+      };
+    });
+  }
+
+  // The offers, events and sessions come from the Circle API, which sends them only to logged-in members.
   async loadOffers() {
     this.offersRequested = true;
     this.setState({ offersState: "loading" });
     try {
-      const { offers } = await this.api("/offers");
+      const { offers, events, sessions } = await this.api("/content");
       // A fresh random order on every visit, so that no offer is always on top.
       for (let i = offers.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [offers[i], offers[j]] = [offers[j], offers[i]]; }
-      this.setState({ offers, offersState: "ready", detailIdx: null });
+      this.setState({ offers, events: events || [], sessions: sessions || [], offersState: "ready", detailIdx: null });
     } catch (err) {
       if (err.error === "unauthorized" || err.error === "no_active_student") this.signOut(err.error === "no_active_student" ? this.errorText(err) : "");
       else this.setState({ offersState: "failed" });
@@ -1178,7 +1250,7 @@ class Component extends DCLogic {
   signOut(message) {
     this.saveToken("");
     this.offersRequested = false;
-    this.setState({ signedIn: false, checking: false, account: null, offers: null, offersState: "loading", authOpen: false, authMode: "login", authError: message || "", menuOpen: false, detailIdx: null, feedbackOpen: false });
+    this.setState({ signedIn: false, checking: false, account: null, offers: null, events: [], sessions: [], offersState: "loading", authOpen: false, authMode: "login", authError: message || "", menuOpen: false, detailIdx: null, feedbackOpen: false });
   }
 
   openAuth(mode, extra) {
@@ -1435,6 +1507,12 @@ class Component extends DCLogic {
       offersFailed: this.state.offersState === "failed",
       showOffers: this.state.offersState === "ready",
       retryOffers: () => this.loadOffers(),
+      eventCards: this.programmeCards(this.state.events),
+      sessionCards: this.programmeCards(this.state.sessions),
+      hasEvents: this.state.offersState === "ready" && this.state.events.length > 0,
+      noEvents: this.state.offersState === "ready" && this.state.events.length === 0,
+      hasSessions: this.state.offersState === "ready" && this.state.sessions.length > 0,
+      noSessions: this.state.offersState === "ready" && this.state.sessions.length === 0,
       signedIn: this.state.signedIn,
       signedOut: !this.state.signedIn,
       openLogin: () => this.openAuth("login"),
