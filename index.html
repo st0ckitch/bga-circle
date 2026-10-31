@@ -84,14 +84,14 @@
 
   /* Mobile layout. The page is composed with inline styles, so small-screen
      overrides live here and need !important to win. */
-  @media (max-width: 1399px) {
+  @media (max-width: 1339px) {
     html { scroll-padding-top: 84px; }
     nav > div { padding: 10px 16px !important; }
     /* Desktop links hide behind the hamburger menu on small screens */
     nav > div > div:last-of-type { display: none !important; }
     nav button[aria-label="მენიუ"] { display: inline-flex !important; }
   }
-  @media (min-width: 1400px) {
+  @media (min-width: 1340px) {
     /* Safety: a menu left open while resizing up must not linger */
     nav [data-screen-label="Mobile menu"] { display: none !important; }
   }
@@ -163,7 +163,7 @@
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">{{ t.myAccount }}</button></sc-if>
-        <a href="#offers" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">შეთავაზებების ნახვა</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScj8MPrLc3hlyYf-V3ezJez_GLOhFGWvmgoHJqSdORlPg_tRA/viewform" target="_blank" rel="noopener" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">აირჩიე თემა</a>
       </div>
       <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(4,46,86,.25); border-radius: 12px; background: transparent; color: #055397; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
     </div>
@@ -175,7 +175,7 @@
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">{{ t.myAccount }}</button></sc-if>
-        <a href="#offers" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">შეთავაზებების ნახვა</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScj8MPrLc3hlyYf-V3ezJez_GLOhFGWvmgoHJqSdORlPg_tRA/viewform" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">აირჩიე თემა</a>
       </div>
     </sc-if>
   </nav>
