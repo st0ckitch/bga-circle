@@ -138,12 +138,14 @@
     .gate { grid-template-columns: 1fr; }
     .gate-brand { padding: 24px 20px 28px; gap: 18px; }
     .gate-logo { height: 46px; }
+    .gate-kicker { letter-spacing: .12em; }
     .gate-title { font-size: 26px; }
     .gate-text { font-size: 14.5px; }
     .gate-photo, .gate-contact { display: none; }
     .gate-main { align-items: flex-start; padding: 16px 12px 40px; }
     .gate-card { padding: 24px 18px; }
   }
+  @media (max-width: 380px) { .gate-kicker { letter-spacing: .04em; font-size: 11px; } }
 </style>
 </helmet>
 
@@ -981,10 +983,10 @@ class Component extends DCLogic {
     "savedMany": "შენახულია {n} პირადი ნომერი",
     "tabLogin": "შესვლა",
     "tabJoin": "რეგისტრაცია",
-    "gateKicker": "CIRCLE · BGA-ს საზოგადოება",
+    "gateKicker": "საზოგადოება / განვითარება / კუთვნილება",
     "gateTitle1": "მეტი, ვიდრე სკოლა",
     "gateTitle2": "სამყარო, რომელსაც ეკუთვნით",
-    "gateText": "Circle BGA-ს მშობელთა საზოგადოებაა: ექსკლუზიური შეთავაზებები პარტნიორი ბიზნესებისგან მთელ თბილისში, BGA-ს ოჯახებისა და თანამშრომლებისთვის. შეთავაზებების სანახავად შედით ანგარიშზე ან დარეგისტრირდით.",
+    "gateText": "ადგილი, რომელიც აერთიანებს მშობელს, ბავშვს და სკოლას, და ქმნის უნიკალურ ეკოსისტემას - სადაც მშობლისა და ბავშვის განვითარება და კეთილდღეობა პირველ ადგილზეა.",
     "partnerQuestion": "გაქვთ ბიზნესი?",
     "partnerLink": "გახდით Circle-ის პარტნიორი",
     "contactEmail": "circle@bga.ge",
