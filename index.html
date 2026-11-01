@@ -123,7 +123,6 @@
   .gate-ring span { position: absolute; top: 50%; left: -7px; width: 14px; height: 14px; border-radius: 50%; background: #A0DBF2; }
   .gate-logo { position: relative; height: 60px; width: auto; display: block; align-self: flex-start; }
   .gate-copy { position: relative; max-width: 540px; }
-  .gate-kicker { font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #A0DBF2; margin-bottom: 16px; }
   .gate-title { font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.08; margin: 0 0 16px; letter-spacing: -0.01em; }
   .gate-text { font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.72); margin: 0; max-width: 46ch; }
   .gate-photo { position: relative; margin-top: auto; max-width: 540px; }
@@ -138,14 +137,12 @@
     .gate { grid-template-columns: 1fr; }
     .gate-brand { padding: 24px 20px 28px; gap: 18px; }
     .gate-logo { height: 46px; }
-    .gate-kicker { letter-spacing: .12em; }
     .gate-title { font-size: 26px; }
     .gate-text { font-size: 14.5px; }
     .gate-photo, .gate-contact { display: none; }
     .gate-main { align-items: flex-start; padding: 16px 12px 40px; }
     .gate-card { padding: 24px 18px; }
   }
-  @media (max-width: 380px) { .gate-kicker { letter-spacing: .04em; font-size: 11px; } }
 </style>
 </helmet>
 
@@ -160,7 +157,7 @@
       </div>
       <div style="display: flex; align-items: center; gap: 22px;">
         <a href="#offers" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">შეთავაზებები</a>
-        <a href="#events" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">ღონისძიებები და ნეტვორქინგი</a>
+        <a href="#events" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">საზოგადოება და კავშირები</a>
         <a href="#growth" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">ზრდა და განვითარება</a>
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
@@ -172,7 +169,7 @@
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Mobile menu" style="position: absolute; top: 100%; left: 0; right: 0; background: #F2F7FB; border-bottom: 1px solid rgba(4,46,86,.08); box-shadow: 0 22px 34px rgba(4,46,86,.14); padding: 8px 16px 16px; display: flex; flex-direction: column; gap: 6px;">
         <a href="#offers" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">შეთავაზებები</a>
-        <a href="#events" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">ღონისძიებები და ნეტვორქინგი</a>
+        <a href="#events" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">საზოგადოება და კავშირები</a>
         <a href="#growth" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">ზრდა და განვითარება</a>
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
@@ -362,7 +359,7 @@
     </sc-if>
   </section>
 
-  <section id="events" data-screen-label="Events and networking" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px;">
+  <section id="events" data-screen-label="Community and networking" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px;">
     <div style="font-size: 12px; font-weight: 800; letter-spacing: .24em; color: #055397; margin-bottom: 14px;">{{ t.eventsKicker }}</div>
     <h2 style="font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 10px; letter-spacing: -0.01em;">{{ t.eventsTitle }}</h2>
     <p style="margin: 0 0 24px; font-size: 15px; line-height: 1.6; color: #5A6478; max-width: 62ch;">{{ t.eventsIntro }}</p>
@@ -554,7 +551,6 @@
         <div class="ring gate-ring" aria-hidden="true"><span></span></div>
         <img src="brand/circle-logo-reverse.png" alt="Circle" class="gate-logo">
         <div class="gate-copy">
-          <div class="gate-kicker">{{ t.gateKicker }}</div>
           <h1 class="gate-title">{{ t.gateTitle1 }}<br>{{ t.gateTitle2 }}</h1>
           <p class="gate-text">{{ t.gateText }}</p>
         </div>
@@ -983,7 +979,6 @@ class Component extends DCLogic {
     "savedMany": "შენახულია {n} პირადი ნომერი",
     "tabLogin": "შესვლა",
     "tabJoin": "რეგისტრაცია",
-    "gateKicker": "საზოგადოება / განვითარება / კუთვნილება",
     "gateTitle1": "მეტი, ვიდრე სკოლა",
     "gateTitle2": "სამყარო, რომელსაც ეკუთვნით",
     "gateText": "ადგილი, რომელიც აერთიანებს მშობელს, ბავშვს და სკოლას, და ქმნის უნიკალურ ეკოსისტემას - სადაც მშობლისა და ბავშვის განვითარება და კეთილდღეობა პირველ ადგილზეა.",
@@ -997,8 +992,8 @@ class Component extends DCLogic {
     "failedTitle": "შეთავაზებების ჩატვირთვა ვერ მოხერხდა",
     "failedText": "შეამოწმეთ ინტერნეტთან კავშირი და სცადეთ ხელახლა.",
     "retry": "ხელახლა ცდა",
-    "eventsKicker": "ღონისძიებები და ნეტვორქინგი",
-    "eventsTitle": "ღონისძიებები და ნეტვორქინგი",
+    "eventsKicker": "საზოგადოება და კავშირები",
+    "eventsTitle": "საზოგადოება და კავშირები",
     "eventsIntro": "ღონისძიებები, რომლებზეც Circle-ის წევრებს უპირატესობა აქვთ, და ჩვენს პარტნიორებთან ერთად ორგანიზებული ღონისძიებები.",
     "eventsEmpty": "ღონისძიებები ჯერ არ გამოცხადებულა. ახალი ღონისძიებები აქ გამოჩნდება.",
     "growthKicker": "ზრდა და განვითარება",
