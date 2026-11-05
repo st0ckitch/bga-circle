@@ -143,6 +143,30 @@
     .gate-main { align-items: flex-start; padding: 16px 12px 40px; }
     .gate-card { padding: 24px 18px; }
   }
+  .vote { margin-top: 28px; background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 22px; padding: 26px; scroll-margin-top: 90px; }
+  .vote-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px 20px; flex-wrap: wrap; margin-bottom: 18px; }
+  .vote-title { font-family: Sora, 'Noto Sans Georgian', sans-serif; font-weight: 800; font-size: 22px; margin: 0 0 6px; letter-spacing: -0.01em; color: #055397; }
+  .vote-text { margin: 0; font-size: 14.5px; line-height: 1.6; color: #5A6478; max-width: 62ch; }
+  .vote-count { font-size: 13px; font-weight: 800; color: #04427A; background: #EEF4F9; border-radius: 999px; padding: 7px 14px; white-space: nowrap; }
+  .vote-leaders { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 20px; font-size: 12.5px; font-weight: 800; color: #5A6478; }
+  .vote-leader { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; background: #055397; color: #FFFFFF; border-radius: 999px; padding: 5px 13px 5px 5px; font-size: 13px; font-weight: 700; }
+  .vote-leader b { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; background: #A0DBF2; color: #055397; display: inline-flex; align-items: center; justify-content: center; font-size: 11.5px; }
+  .vote-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .vote-group-title { font-size: 11px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; color: #04427A; margin: 0 0 10px; }
+  .vote-row { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; background: #FFFFFF; border: 1px solid #DCE6EF; border-radius: 12px; padding: 10px 12px; margin: 0 0 8px; cursor: pointer; font: inherit; color: #055397; transition: border-color .2s, background .2s; }
+  .vote-row:hover { border-color: #055397; }
+  .vote-row:focus-visible { outline: 2px solid #055397; outline-offset: 2px; }
+  .vote-row[aria-pressed="true"] { background: rgba(160,219,242,.28); border-color: #A0DBF2; }
+  .vote-check { flex: 0 0 auto; width: 20px; height: 20px; box-sizing: border-box; border-radius: 6px; border: 1.5px solid #B9CCDD; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #055397; }
+  .vote-row[aria-pressed="true"] .vote-check { background: #A0DBF2; border-color: #A0DBF2; }
+  .vote-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+  .vote-label { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+  .vote-n { flex: 0 0 auto; font-weight: 800; color: #04427A; }
+  .vote-bar { display: block; height: 5px; border-radius: 999px; background: #E3ECF4; overflow: hidden; }
+  .vote-bar span { display: block; height: 100%; border-radius: 999px; background: #04427A; transition: width .3s; }
+  .vote-error { margin-top: 10px; font-size: 13.5px; font-weight: 700; color: #C8102E; }
+  @media (max-width: 1000px) { .vote-groups { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .vote { padding: 20px 16px; } .vote-title { font-size: 20px; } }
 </style>
 </helmet>
 
@@ -162,7 +186,7 @@
         <a href="#how" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 14px; font-weight: 600;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="background: transparent; border: 1px solid rgba(4,46,86,.3); color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 13.5px; font-weight: 700; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .25s;" style-hover="border-color: #055397; background: #055397; color: #FFFFFF;">{{ t.myAccount }}</button></sc-if>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScj8MPrLc3hlyYf-V3ezJez_GLOhFGWvmgoHJqSdORlPg_tRA/viewform" target="_blank" rel="noopener" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">აირჩიე თემა</a>
+        <a href="#vote" style="background: #A0DBF2; color: #055397; text-decoration: none; font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 999px; transition: all .25s;" style-hover="background: #055397; color: #FFFFFF;">აირჩიე თემა</a>
       </div>
       <button onClick="{{ toggleMenu }}" aria-label="მენიუ" aria-expanded="{{ menuOpen }}" style="display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid rgba(4,46,86,.25); border-radius: 12px; background: transparent; color: #055397; font-size: 19px; line-height: 1; cursor: pointer; padding: 0;">{{ menuIcon }}</button>
     </div>
@@ -174,7 +198,7 @@
         <a href="#how" onClick="{{ closeMenu }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">როგორ მუშაობს</a>
         <a href="#feedback" onClick="{{ openFeedback }}" style="color: #055397; text-decoration: none; font-size: 16px; font-weight: 700; padding: 13px 6px;">უკუკავშირი</a>
         <sc-if value="{{ signedIn }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAccount }}" style="margin-top: 4px; border: 1px solid rgba(4,46,86,.3); background: transparent; color: #055397; font-family: Manrope, 'Noto Sans Georgian', sans-serif; font-size: 15px; font-weight: 700; padding: 13px 18px; border-radius: 999px; cursor: pointer;">{{ t.myAccount }}</button></sc-if>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScj8MPrLc3hlyYf-V3ezJez_GLOhFGWvmgoHJqSdORlPg_tRA/viewform" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">აირჩიე თემა</a>
+        <a href="#vote" onClick="{{ closeMenu }}" style="background: #A0DBF2; color: #055397; text-decoration: none; text-align: center; font-size: 15px; font-weight: 800; padding: 13px 18px; border-radius: 999px;">აირჩიე თემა</a>
       </div>
     </sc-if>
   </nav>
@@ -403,6 +427,39 @@
     <sc-if value="{{ noSessions }}" hint-placeholder-val="{{ true }}">
       <div style="background: #FFFFFF; border: 1px dashed #C9D8E6; border-radius: 18px; padding: 30px 24px; text-align: center; font-size: 14.5px; line-height: 1.6; color: #5A6478;">{{ t.growthEmpty }}</div>
     </sc-if>
+    <div id="vote" class="vote-anchor">
+    <sc-if value="{{ hasTopics }}" hint-placeholder-val="{{ true }}">
+      <div class="vote" data-screen-label="Topic vote">
+        <div class="vote-head">
+          <div>
+            <h3 class="vote-title">{{ t.voteTitle }}</h3>
+            <p class="vote-text">{{ t.voteText }}</p>
+          </div>
+          <div class="vote-count">{{ topicCount }}</div>
+        </div>
+        <sc-if value="{{ hasLeaders }}" hint-placeholder-val="{{ true }}">
+          <div class="vote-leaders"><span>{{ t.voteLeaders }}:</span><sc-for list="{{ topicLeaders }}" as="leader" hint-placeholder-count="3"><span class="vote-leader"><b>{{ leader.rank }}</b><span>{{ leader.title }}</span></span></sc-for></div>
+        </sc-if>
+        <div class="vote-groups">
+          <sc-for list="{{ topicGroups }}" as="group" hint-placeholder-count="3">
+            <div>
+              <div class="vote-group-title">{{ group.title }}</div>
+              <sc-for list="{{ group.topics }}" as="topic" hint-placeholder-count="5">
+                <button type="button" class="vote-row" aria-pressed="{{ topic.mine }}" onClick="{{ topic.toggle }}">
+                  <span class="vote-check" aria-hidden="true">{{ topic.check }}</span>
+                  <span class="vote-main">
+                    <span class="vote-label"><span>{{ topic.title }}</span><span class="vote-n">{{ topic.votes }}</span></span>
+                    <span class="vote-bar" aria-hidden="true"><span style="{{ topic.bar }}"></span></span>
+                  </span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ voteFailed }}" hint-placeholder-val="{{ false }}"><div class="vote-error" role="alert">{{ t.voteError }}</div></sc-if>
+      </div>
+    </sc-if>
+    </div>
   </section>
 
   <section data-screen-label="Partner CTA" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 84px;">
@@ -808,7 +865,7 @@
 class Component extends DCLogic {
   // The saved login of a Circle member (see "Circle accounts" below).
   token = this.readToken();
-  state = { signedIn: !!this.token, checking: !!this.token, offers: null, events: [], sessions: [], offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "parent", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
+  state = { signedIn: !!this.token, checking: !!this.token, offers: null, events: [], sessions: [], topics: null, voteFailed: false, offersState: "loading", account: null, authOpen: false, authMode: this.firstMode(), authBusy: false, authError: "", authEmail: "", role: "parent", kids: [""], kidStatus: [], signup: null, registerToken: "", resetToken: "", doneKind: "registered", addKids: [""], addStatus: [], slide: 0, cat: "All", q: "", paused: false, menuOpen: false, detailIdx: null, partnerOpen: false, partnerForm: "idle", feedbackOpen: false, feedbackForm: "idle", feedbackOffer: "" };
 
   CATS = ["Wellness & Sport", "Travel & Leisure", "Healthcare", "Entertainment", "Gastronomy", "Beauty & Personal Care", "Shopping", "Automotive", "Expat Services", "Education", "Other"];
   CAT_KA = { "Wellness & Sport": "ველნესი და სპორტი", "Travel & Leisure": "მოგზაურობა და დასვენება", "Healthcare": "ჯანდაცვა", "Entertainment": "გართობა", "Gastronomy": "გასტრონომია", "Beauty & Personal Care": "სილამაზე და თავის მოვლა", "Shopping": "შოპინგი", "Automotive": "ავტო-მოტო", "Expat Services": "სერვისები ექსპატებისთვის", "Education": "განათლება", "Other": "სხვა" };
@@ -999,8 +1056,13 @@ class Component extends DCLogic {
     "growthKicker": "ზრდა და განვითარება",
     "growthTitle": "ზრდა და განვითარება",
     "growthIntro": "მასტერკლასები და სესიები Circle-ის საზოგადოებისთვის.",
-    "growthEmpty": "მასტერკლასები და სესიები ჯერ არ დაგეგმილა. ისინი აქ გამოჩნდება.",
-    "moreInfo": "დამატებითი ინფორმაცია"
+    "growthEmpty": "მასტერკლასები და სესიები ჯერ არ დაგეგმილა. ქვემოთ მონიშნეთ თემები, რომლებიც გაინტერესებთ, და შედეგების მიხედვით დავგეგმავთ.",
+    "moreInfo": "დამატებითი ინფორმაცია",
+    "voteTitle": "აირჩიეთ საინტერესო თემები",
+    "voteText": "მონიშნეთ თემები, რომლებიც გაინტერესებთ — შეგიძლიათ რამდენიმე აირჩიოთ. შედეგების მიხედვით დავგეგმავთ სესიებს და მასტერკლასებს.",
+    "voteCount": "ჯერჯერობით {n} პასუხი",
+    "voteLeaders": "ყველაზე მოთხოვნადი თემები",
+    "voteError": "ხმა ვერ შეინახა. გთხოვთ, სცადოთ ხელახლა."
   };
 
   ROLE_LABELS = {
@@ -1209,6 +1271,47 @@ class Component extends DCLogic {
     }
   }
 
+  // A vote for a topic, or taking it back. The page shows it at once; the API's answer brings everyone's latest votes.
+  async voteTopic(id, vote) {
+    const change = topics => topics && {
+      ...topics,
+      groups: topics.groups.map(g => ({ ...g, topics: g.topics.map(t => (t.id === id && t.mine !== vote ? { ...t, mine: vote, votes: t.votes + (vote ? 1 : -1) } : t)) }))
+    };
+    const before = this.state.topics;
+    this.setState({ topics: change(before), voteFailed: false });
+    this.track("topic_vote", { topic: id, vote: vote ? "yes" : "no" });
+    try {
+      const { topics } = await this.api("/topics/" + encodeURIComponent(id), { vote });
+      this.setState({ topics });
+    } catch (err) {
+      if (err.error === "unauthorized" || err.error === "no_active_student") return this.signOut(err.error === "no_active_student" ? this.errorText(err) : "");
+      this.setState({ topics: before, voteFailed: true });
+    }
+  }
+
+  // The vote's groups of topics, with a bar for each topic's share of the most votes, and the three most wanted.
+  topicVals() {
+    const topics = this.state.topics;
+    const all = topics ? topics.groups.flatMap(g => g.topics) : [];
+    const most = Math.max(1, ...all.map(t => t.votes));
+    const leaders = all.filter(t => t.votes > 0).sort((a, b) => b.votes - a.votes).slice(0, 3);
+    return {
+      hasTopics: this.state.offersState === "ready" && all.length > 0,
+      topicCount: this.T.voteCount.replace("{n}", topics ? topics.responses : 0),
+      hasLeaders: leaders.length > 0,
+      topicLeaders: leaders.map((t, i) => ({ rank: String(i + 1), title: t.title })),
+      topicGroups: (topics ? topics.groups : []).map(g => ({
+        title: g.title,
+        topics: g.topics.map(t => ({
+          title: t.title, votes: String(t.votes), mine: t.mine, check: t.mine ? "✓" : "",
+          bar: { width: Math.round((t.votes / most) * 100) + "%" },
+          toggle: () => this.voteTopic(t.id, !t.mine)
+        }))
+      })),
+      voteFailed: this.state.voteFailed
+    };
+  }
+
   // An event or session for its card: date and place on one line, and only http(s) links.
   programmeCards(list) {
     return list.map(item => {
@@ -1226,10 +1329,10 @@ class Component extends DCLogic {
     this.offersRequested = true;
     this.setState({ offersState: "loading" });
     try {
-      const { offers, events, sessions } = await this.api("/content");
+      const { offers, events, sessions, topics } = await this.api("/content");
       // A fresh random order on every visit, so that no offer is always on top.
       for (let i = offers.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [offers[i], offers[j]] = [offers[j], offers[i]]; }
-      this.setState({ offers, events: events || [], sessions: sessions || [], offersState: "ready", detailIdx: null });
+      this.setState({ offers, events: events || [], sessions: sessions || [], topics: topics || null, offersState: "ready", detailIdx: null });
     } catch (err) {
       if (err.error === "unauthorized" || err.error === "no_active_student") this.signOut(err.error === "no_active_student" ? this.errorText(err) : "");
       else this.setState({ offersState: "failed" });
@@ -1247,7 +1350,7 @@ class Component extends DCLogic {
   signOut(message) {
     this.saveToken("");
     this.offersRequested = false;
-    this.setState({ signedIn: false, checking: false, account: null, offers: null, events: [], sessions: [], offersState: "loading", authOpen: false, authMode: "login", authError: message || "", menuOpen: false, detailIdx: null, feedbackOpen: false });
+    this.setState({ signedIn: false, checking: false, account: null, offers: null, events: [], sessions: [], topics: null, voteFailed: false, offersState: "loading", authOpen: false, authMode: "login", authError: message || "", menuOpen: false, detailIdx: null, feedbackOpen: false });
   }
 
   openAuth(mode, extra) {
@@ -1510,6 +1613,7 @@ class Component extends DCLogic {
       noEvents: this.state.offersState === "ready" && this.state.events.length === 0,
       hasSessions: this.state.offersState === "ready" && this.state.sessions.length > 0,
       noSessions: this.state.offersState === "ready" && this.state.sessions.length === 0,
+      ...this.topicVals(),
       signedIn: this.state.signedIn,
       signedOut: !this.state.signedIn,
       openLogin: () => this.openAuth("login"),
