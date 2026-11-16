@@ -9,19 +9,17 @@
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Circle - BGA-ს მშობელთა საზოგადოება</title>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P2HJS7RT');</script>
+<!-- End Google Tag Manager -->
 <script>
-  // Google Analytics 4 measurement ID (G-XXXXXXXXXX); tracking stays off while this is empty.
-  window.CIRCLE_GA_ID = "";
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function () { dataLayer.push(arguments); };
-  if (window.CIRCLE_GA_ID) {
-    var ga = document.createElement("script");
-    ga.async = true;
-    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + window.CIRCLE_GA_ID;
-    document.head.appendChild(ga);
-    gtag("js", new Date());
-    gtag("config", window.CIRCLE_GA_ID);
-  }
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 </script>
 <script src="./support.js"></script>
 </head>
@@ -906,8 +904,19 @@ class Component extends DCLogic {
     }, s * 1000);
   }
 
+  // Analytics: every event goes to Google Tag Manager (GTM-P2HJS7RT) as a custom event, with its details and
+  // the school (site: bist or bga). Details an event does not have are cleared, so none carries over from the
+  // event before. Never personal data: no names, emails or personal numbers.
   track(name, params) {
-    if (window.gtag) window.gtag("event", name, params || {});
+    const event = { event: name };
+    for (const key of this.TRACK_KEYS) event[key] = undefined;
+    (window.dataLayer = window.dataLayer || []).push({ ...event, ...(params || {}), site: this.SCHOOL });
+  }
+  TRACK_KEYS = ["offer_name", "offer_category", "link_type", "form", "lead_type", "reason", "after_thanks", "from", "method", "role", "search_term", "topic", "vote"];
+
+  // The Circle API counts the offers members open and the partner links they follow (admin page: Offer clicks).
+  countOfferClick(partner, action) {
+    if (this.token) this.api("/offers/click", { partner, action }).catch(() => {});
   }
 
   // Web3Forms access key for circle@bga.ge, from web3forms.com. It only lets the site send to that address,
@@ -1536,14 +1545,14 @@ class Component extends DCLogic {
     const chips = ["All", ...activeCats].map(c => ({
       label: c === "All" ? "ყველა შეთავაზება" : this.CAT_KA[c] || c,
       count: c === "All" ? OFFERS.length : OFFERS.filter(o => o.cats.includes(c)).length,
-      onClick: () => { this.setState({ cat: c }); this.track("select_category", { category: c }); },
+      onClick: () => { this.setState({ cat: c }); this.track("select_category", { offer_category: c }); },
       style: c === cat ? { ...chipBase, background: "#055397", color: "#FFFFFF", borderColor: "#055397" } : chipBase
     }));
     const LINK_LABEL = { web: "ვებგვერდი", facebook: "Facebook", instagram: "Instagram" };
     const LINK_CTA = { web: "ვებგვერდი", facebook: "Facebook გვერდი", instagram: "Instagram გვერდი" };
     const decorate = o => {
       const links = (o.links || []).map(l => ({ ...l, label: LINK_LABEL[l.kind] || "ბმული", cta: LINK_CTA[l.kind] || "გადასვლა", isWeb: l.kind === "web", isFb: l.kind === "facebook", isIg: l.kind === "instagram", title: o.partner + ": " + (LINK_LABEL[l.kind] || "ბმული"),
-        onClick: (e) => { e.stopPropagation(); this.track("partner_link_click", { partner: o.partner, link_type: l.kind }); } }));
+        onClick: (e) => { e.stopPropagation(); this.track("offer_link_click", { offer_name: o.partner, offer_category: o.cats[0], link_type: l.kind }); this.countOfferClick(o.partner, "link"); } }));
       const primary = ["web", "facebook", "instagram"].map(k => links.find(l => l.kind === k)).find(Boolean);
       return { ...o, catLabel: o.cats.map(c => this.CAT_KA[c] || c).join(" · "), links, hasLinks: links.length > 0, cardLinks: primary ? [primary] : [] };
     };
@@ -1553,7 +1562,7 @@ class Component extends DCLogic {
       return terms.every(t => text.includes(t));
     };
     const cards = OFFERS.filter(o => (cat === "All" || o.cats.includes(cat)) && matches(o))
-      .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: OFFERS.indexOf(o) }); this.track("select_content", { content_type: "offer", item_id: o.partner }); } }));
+      .map(o => ({ ...decorate(o), open: () => { this.setState({ detailIdx: OFFERS.indexOf(o) }); this.track("offer_click", { offer_name: o.partner, offer_category: o.cats[0] }); this.countOfferClick(o.partner, "open"); } }));
     const detail = this.state.detailIdx === null ? null : decorate(OFFERS[this.state.detailIdx]);
     const dots = [0, 1, 2].map(i => ({
       onClick: () => this.setState({ slide: i }),
