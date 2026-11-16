@@ -904,13 +904,16 @@ class Component extends DCLogic {
     }, s * 1000);
   }
 
-  // Analytics: every event goes to Google Tag Manager (GTM-P2HJS7RT) as a custom event, with its details and
-  // the school (site: bist or bga). Details an event does not have are cleared, so none carries over from the
-  // event before. Never personal data: no names, emails or personal numbers.
+  // Analytics: every event goes to Google Analytics (G-FMN9BQ13LM, the Google tag in the Tag Manager container
+  // GTM-P2HJS7RT) through gtag(), with its details and the school (site: bist or bga); and to Tag Manager as a
+  // custom event with the same details, cleared first so none carries over from the event before.
+  // Never personal data: no names, emails or personal numbers.
   track(name, params) {
-    const event = { event: name };
-    for (const key of this.TRACK_KEYS) event[key] = undefined;
-    (window.dataLayer = window.dataLayer || []).push({ ...event, ...(params || {}), site: this.SCHOOL });
+    const details = { ...(params || {}), site: this.SCHOOL };
+    const cleared = { event: name };
+    for (const key of this.TRACK_KEYS) cleared[key] = undefined;
+    (window.dataLayer = window.dataLayer || []).push({ ...cleared, ...details });
+    if (typeof window.gtag === "function") window.gtag("event", name, details);
   }
   TRACK_KEYS = ["offer_name", "offer_category", "link_type", "form", "lead_type", "reason", "after_thanks", "from", "method", "role", "search_term", "topic", "vote"];
 
